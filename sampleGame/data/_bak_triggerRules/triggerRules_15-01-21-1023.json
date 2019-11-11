@@ -1,0 +1,62 @@
+{
+	"fileName": "triggerRules",
+	"type": "trigger",
+	"rules": [
+		{
+			"name": "Rival is always confident",
+			"conditions": [
+				{
+					"class": "trait",
+					"type": "rival",
+					"first": "someone",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "mood",
+					"type": "confident",
+					"first": "someone",
+					"value": true
+				}
+			],
+			"origin": "triggerRules",
+			"id": "triggerRules_1"
+		},
+		{
+			"name": "Love is repulsed by self indulged people",
+			"conditions": [
+				{
+					"class": "trait",
+					"type": "love",
+					"first": "theLove",
+					"value": true
+				},
+				{
+					"class": "SFDBLabelUndirected",
+					"type": "self-involved",
+					"first": "someone",
+					"value": true
+				},
+				{
+					"class": "SFDBLabelUndirected",
+					"type": "self-involved",
+					"first": "someoneElse",
+					"value": false
+				}
+			],
+			"effects": [
+				{
+					"class": "feeling",
+					"type": "closeness",
+					"first": "theLove",
+					"second": "someoneElse",
+					"value": 10,
+					"operator": "+"
+				}
+			],
+			"origin": "triggerRules",
+			"id": "triggerRules_11"
+		}
+	]
+}
