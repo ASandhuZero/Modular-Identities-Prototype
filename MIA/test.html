@@ -5,11 +5,64 @@
 <head>
 	<title>CiF Test</title>
 	<script src="cif.js"></script>
+	<script src="mia.js"></script>
 	
 </head>
 <body>
 
 	<h1>Hello?</h1>
+
+	<div id="titleDiv">
+		<h1>Modular Identities Architecture</h1>
+	</div>
+	<div id="statusDiv">
+		<h3 id="statusMessage">Click Button to progress the state of the world</h3>
+	</div>
+
+	<div class = "field" onclick="move()">
+		<div class = "character" id="hero">
+			\O/
+		</div>
+		<div class = "character" id="love">
+			0\
+		</div>
+		<div class = "character" id="rival">
+			@.o
+		</div>
+	</div>
+
+	<div id="actionArea">
+		<h1> What to do on turn <span id="turnNumberPlace">0</span>:</h1>
+		Towards Love:
+		<div id="actionList_hero_love"> </div>
+		Towards Yourself:
+		<div id="actionList_hero_hero"></div>
+		<!--Towards Rival:-->
+		<div id="actionList_hero_rival"></div>
+	</div>
+
+	<div id="chatBubble"></div>
+
+	<div id="stateArea">
+		<h1>Social State</h1>
+		<div id="kinshipStateDisplay">
+			<h2>Kinship</h2>
+			<div id="kinshipHeroToLover">Hero to Lover: <span id="kinshipHeroToLoverNumber">NA</span></div>
+			<div id="kinshipLoverToHero">Lover to Hero: <span id="kinshipLoverToHeroNumber">NA</span></div>
+			<div id="kinshipLoverToHero">Lover to Rival: <span id="kinshipLoverToRivalNumber">NA</span></div>
+		</div>
+		<div id="dutyStateDisplay">
+			<h2>Duty</h2>
+			<div id="dutyHeroToLover">Hero to Lover: <span id="dutyHeroToLoverNumber">NA</span></div>
+			<div id="dutyLoverToHero">Lover to Hero: <span id="dutyLoverToHeroNumber">NA</span></div>
+			<div id="dutyLoverToRival">Lover to Rival: <span id="dutyLoverToRivalNumber">NA</span></div>
+		</div>
+		<div id="Hero Attributes">
+			<h2>Hero Attributes</h2>
+			<div id="heroStrength">Strength: <span id="heroStrengthNumber">NA</span></div>
+			<div id="heroIntelligence">Intelligence: <span id="heroIntelligenceNumber">NA</span></div>
+		</div>
+	</div>
 
 
 	<script type="text/javascript">
@@ -36,6 +89,8 @@
 			console.log("schema", schema);
 			console.log("cast", cast);
 			console.log("actions", actions);
+
+			setUpInitialState();	
 
 			var storedVolitions = cif.calculateVolition(cast);
 
