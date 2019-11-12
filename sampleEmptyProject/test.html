@@ -24,11 +24,10 @@
 			var rawCast = cif.loadFile("cast.json");
 			var cast = cif.addCharacters(rawCast);
 
-			var rawRules = cif.loadFile("testTrigger.json");
-			console.log(rawRules);
+			var rawRules = cif.loadFile("triggerRules.json");
 			var ids = cif.addRules(rawRules);
 			console.log("ids", ids);
-			ids = cif.addRules(cif.loadFile("samsVolition.json"));
+			ids = cif.addRules(cif.loadFile("volitionRules.json"));
 			console.log("ids2", ids);
 
 			var rawActions = cif.loadFile("actions.json");
@@ -40,13 +39,40 @@
 
 			var storedVolitions = cif.calculateVolition(cast);
 
-			var char1 = "brax";
-			var char2 = "grunt";
-			var vol = storedVolitions.getFirst(char1, char2);
+			var aldric  = "Aldric";
+			var beatrice = "Beatrice";
+			var cedric = "Cedric";
+			var vol = storedVolitions.getFirst(aldric , beatrice, cedric);
 			console.log(vol);
 
-			var actions = cif.getAction(char1, char2, storedVolitions, cast);
+
+
+
+
+			var nextTurn = function(){
+				console.log("We have achieved A NEW TURN!");
+
+				gameVariables.turnNumber += 1;
+				checkForEndConditions();
+				if(gameVariables.gameOver === true){
+					var endMessageArea = document.getElementById("statusMessage");
+					endMessageArea.innerHTML = gameVariables.endingText;
+				}
+				else{
+					cif.setupNextTimeStep();
+					cif.dumpSFDB();
+					storedVolitions = cif.calculateVolition(cast);
+					var aBActions = cif.getAction(aldric , beatrice, storedVolitions, cast);
+					var aCActions = cif.getAction(aldric , cedric, storedVolitions, cast);
+					var bAActions = cif.getAction(beatrice, aldric, storedVolitions, cast);
+					var bCActions = cif.getAction(beatrice, cedric, storedVolitions, cast);
+					console.log("actions")
+					populateActionLists(storedVolitions, cast);
+					cleanUpUIForNewTurn();
+				}
+			};
 			console.log("Actions: ", actions);
+
 		}, false);
 	</script>
 
