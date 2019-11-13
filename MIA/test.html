@@ -64,19 +64,19 @@
 			var loadResult = cif.init();
 			console.log(loadResult);
 
-			var rawSchema = cif.loadFile("schema.json");
+			var rawSchema = cif.loadFile("data/schema.json");
 			var schema = cif.loadSocialStructure(rawSchema);
 
-			var rawCast = cif.loadFile("cast.json");
+			var rawCast = cif.loadFile("data/cast.json");
 			var cast = cif.addCharacters(rawCast);
 
-			var rawRules = cif.loadFile("triggerRules.json");
+			var rawRules = cif.loadFile("data/triggerRules.json");
 			var ids = cif.addRules(rawRules);
 			console.log("ids", ids);
-			ids = cif.addRules(cif.loadFile("volitionRules.json"));
+			ids = cif.addRules(cif.loadFile("data/volitionRules.json"));
 			console.log("ids2", ids);
 
-			var rawActions = cif.loadFile("actions.json");
+			var rawActions = cif.loadFile("data/actions.json");
 			var actions = cif.addActions(rawActions);
 
 			console.log("schema", schema);

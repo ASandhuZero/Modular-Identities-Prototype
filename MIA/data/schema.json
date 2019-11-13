@@ -32,7 +32,7 @@
 			"class": "professions",
 			"isBoolean": true,
 			"directionType": "undirected",
-			"types": ["bard", "paladin", "rogue", "wizard", "cleric"],
+			"types": ["hero", "bard", "paladin", "rogue", "wizard", "cleric"],
 			"defaultValue": false,
 			"allowIntent": false
 		}
