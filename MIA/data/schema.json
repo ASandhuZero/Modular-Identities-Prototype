@@ -32,7 +32,31 @@
 			"class": "professions",
 			"isBoolean": true,
 			"directionType": "undirected",
-			"types": ["hero", "bard", "paladin", "rogue", "wizard", "cleric"],
+			"types": ["hero", "paladin", "rogue", "cleric"],
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "emotions",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": ["ecstasy", "admiration", "terror", "amazement", "grief", "loathing", "rage", "vigilance"],
+			"defaultValue": false,
+			"allowIntent": false
+		},
+				{
+			"class": "traits",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [],
+			"defaultValue": false,
+			"allowIntent": false
+		}
+		{
+			"class": "trauma",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [],
 			"defaultValue": false,
 			"allowIntent": false
 		}

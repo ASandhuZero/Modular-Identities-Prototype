@@ -1,5 +1,5 @@
 body {
-	background-color: pink;
+	background-color: forestgreen;
 	color: white;
 }
 
@@ -13,7 +13,7 @@ body {
 
 .field .character {
 	position: absolute;
-	background-color: pink;
+	background-color: forestgreen;
 	width: 30px;
 	height: 20px;
 	padding-top: 10px;

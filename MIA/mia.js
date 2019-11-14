@@ -5,6 +5,9 @@ var stateInformation = {
  "alricToCedricDuty" : "NA",
  "alricToAlricKinship" : "NA",
  "alricToAlricDuty" :"NA",
+ "alricProfession" : "NA",
+ "beatriceProfession" : "NA",
+ "cedricProfession" : "NA",
  "heroStrength" : "NA",
  "heroIntelligence" : "NA"
 };
