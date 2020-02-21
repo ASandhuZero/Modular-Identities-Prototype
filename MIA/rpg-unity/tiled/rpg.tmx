@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="build_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="../../../Downloads/Atlas2/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="obj_misk_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="../../../Downloads/Atlas2/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="base_out_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="../../../Downloads/Atlas/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3073" name="terrain_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="../../../Downloads/Atlas/terrain_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="dirt" tile="-1"/>
+   <terrain name="pool" tile="-1"/>
+  </terraintypes>
+  <tile id="16" terrain="0,0,0,"/>
+  <tile id="17" terrain="0,0,,0"/>
+  <tile id="48" terrain="0,,0,0"/>
+  <tile id="49" terrain=",0,0,0"/>
+  <tile id="79" terrain=",,,0"/>
+  <tile id="80" terrain=",,0,0"/>
+  <tile id="81" terrain=",,0,"/>
+  <tile id="111" terrain=",0,,0"/>
+  <tile id="112" terrain="0,0,0,0"/>
+  <tile id="113" terrain="0,,0,"/>
+  <tile id="143" terrain=",0,,"/>
+  <tile id="144" terrain="0,0,,"/>
+  <tile id="145" terrain="0,,,"/>
+  <tile id="295" terrain="1,1,1,"/>
+  <tile id="296" terrain="1,1,,1"/>
+  <tile id="327" terrain="1,,1,1"/>
+  <tile id="328" terrain=",1,1,1"/>
+  <tile id="358" terrain=",,,1"/>
+  <tile id="359" terrain=",,1,1"/>
+  <tile id="360" terrain=",,1,"/>
+  <tile id="390" terrain=",1,,1"/>
+  <tile id="391" terrain="1,1,1,1"/>
+  <tile id="392" terrain="1,,1,"/>
+  <tile id="422" terrain=",1,,"/>
+  <tile id="423" terrain="1,1,,"/>
+  <tile id="424" terrain="1,,,"/>
+ </tileset>
+ <tileset firstgid="4097" name="red" tilewidth="32" tileheight="32" tilecount="1">
+  <image source="../../../Downloads/red.png" width="32" height="32"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="31.9511" height="31.9511"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="grass" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwr52FgKKcAbydT3zYS1O6gst3UxqT4ZahgbGFLC3+SEofEqsWVXugdf6S4g1Q3E2sGtfxGDfdRMy0g43ReBoYMIM7kJd9umBkg7AnEHUDciWTeDiLtSUczAxkjm5eOpMYDaibM/8jh0I7FnA4kfehuRpeDuRXkfnMgezkQrwBiTag6DSgfWQwfBvlhG9SNIPMARi7RoQ==
+  </data>
+ </layer>
+ <layer name="path" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzNk9ENgCAMRBmAH9kEJ1EnUSdBJpYPm1yak5BCopfcBwLPchTnvtXinVuVN29nzMWHcoT5lhoYYyoO5DvjsP3CuB7n4gRjca2OSa3NDTmxOoTVsl9L/q2ziIZ7QyXC7WUKVzMtPVZj6h6zsNn5R+SAPYbsszNXYYcBNaL2l0x7cmWZCt8i/W6RP0LI/7tul7I/Uw==
+  </data>
+ </layer>
+ <layer name="low path decals" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgYsJOPgWE73wBZPgpGwSgYBaOAYgAA9OgBjQ==
+  </data>
+ </layer>
+ <layer name="path decals" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgYsJePgWEfH/XMuws06x4Z5m2n0A07ofp3kGgOur07idC/G6hmDxDvIkItSA0hv90Gyt+BqtlGpbigNDypCajlJ3oBYuKVmoDUNIsMfvNTzx2kgt1E2E2MGhi4jUXtSV5Us5DVIOfV/QTC8BgvxCxk85DNOsKLqv4+knnY4ucEUP1xXkxxZHejy+MKi+c4xI+h6T+Jxkd2PwCHLCYc
+  </data>
+ </layer>
+ <layer name="tree base" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA+qOJjYKgG4ho+8vTXAvXVAXE9VP8sID0biOegmUesPXOB8vOAeD4BdbjsoSWIpNAuZP2Uhju6fmzhgR43+AAx4Uls3FACiA1jYvxGiv+J8dtg8j8xgFAaIzUNEkojlOZ9YgGpeZ+UdECMHnLSAT3SDiEAAGcqMKc=
+  </data>
+ </layer>
+ <layer name="tree tops" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzNk9kNwjAQRLcB8s/ZB2clQF+cfXD2wdkHp3iIRLJWtmMnP4z0FDneWa/ksYjIqiKyhg2YmrCewkz91+olIn0YJL/1gfojnJTPdY7WkD4jGCf+Otc5sfO7NMe3gGXqD53fpS2+HexTv23+mJnP1Fzg6qktM/MTzwvehlfPfON7h0dA/wb32YSW516r7NWgnnP3X+nc2dRmrwPdgH6huTOlM1JWOiNasZnOy0jZt58py0rM27flK1NeVmzn+DwhWYnxFMlKEc+/6wOcv0z5
+  </data>
+ </layer>
+ <layer name="collisions" width="20" height="20" opacity="0.48">
+  <data encoding="base64" compression="zlib">
+   eJxjYKANYBQgLI9PDSH9pKobKYCU8MAWB8ToH85hPtL9TwwgJm/T0x2wdEyJvchmIJuLSw02eUJuQdeLi42uhxQ3E3IHpWGFrg8A6hcDQg==
+  </data>
+ </layer>
+</map>

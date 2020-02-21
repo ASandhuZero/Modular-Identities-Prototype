@@ -1,0 +1,1933 @@
+{
+	"type": "candid",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "candid.json",
+			"id": "candid_38"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "publicly romantically committed to",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_39"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_40"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_41"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_42"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_43"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_44"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_45"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_46"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_47"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_48"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_49"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_50"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_51"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_52"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_53"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "embarrassed",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_54"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "successful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_55"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "guilty",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_56"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "fearful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_57"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "envy",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_58"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_59"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "afraid of",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_60"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_61"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_62"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_63"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_64"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "wisdom",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_65"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "charisma",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_66"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "selfish",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_67"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "embarrassing",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_68"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_69"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_70"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_71"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "embarrassing",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_72"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_264"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_265"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed public relationship",
+					"type": "is boss of",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed public relationship",
+					"type": "is boss of",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_266"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_267"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_268"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_269"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_270"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_271"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_272"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				},
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "y",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_273"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				},
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "y",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_274"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				},
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "y",
+					"second": "z",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_275"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_276"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "afraid of",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed statuses",
+					"type": "afraid of",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_277"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_337"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_338"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_339"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_340"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_341"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_342"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_343"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_344"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_345"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_346"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_347"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_348"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "candid",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "candid",
+			"origin": "candid.json",
+			"id": "candid_349"
+		}
+	]
+}

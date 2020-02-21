@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="hyptosis_tile-art-batch-4" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_tile-art-batch-4.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="901" name="hyptosis_til-art-batch-2" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_til-art-batch-2.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="1801" name="red" tilewidth="32" tileheight="32" tilecount="1">
+  <image source="red.png" width="32" height="32"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="32.037" height="31.8719"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJx7z8bA8IEA/gihEz4BaXwYqGbBqDrs6oBheOADEkaSg4u9B2IAwk5unQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAeyLIRJ2eNRx0+OWoANjYIpiXQZGVg0AJibVb86tyB8h5A7ElAXSpQPg2I04EYAG+2A5Y=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAMHGNkYDjOSFjdE6Cap0SooxQ8Y2VgeM5KWB0LGwMDKxvt3UMqAACDTQVH
+  </data>
+ </layer>
+ <layer name="collisions" width="10" height="10" opacity="0.44">
+  <data encoding="base64" compression="zlib">
+   eJzjZGdg4CQSYwPIcvjUEmseLrOJVUeqW6llLyE1uPyOLg4AZfMC0Q==
+  </data>
+ </layer>
+</map>

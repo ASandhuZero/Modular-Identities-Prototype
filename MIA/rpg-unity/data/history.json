@@ -1,0 +1,617 @@
+{
+	"history": [
+	{
+		"pos": 0,
+		"data": [
+			{
+				"class": "directed relationship feelings",
+				"type": "rivals",
+				"first": "Clayton",
+				"second": "player",
+				"value": true
+			},
+			{
+				"class" : "object trait",
+				"type" : "is weapon",
+				"first" : "laser saber",
+				"second" : "laser saber",
+				"value" : true
+			},
+			{
+				"class" : "character to object",
+				"type" : "has",
+				"first" : "Clayton",
+				"second" : "laser saber",
+				"value" : true
+			},
+			{
+				"class" : "character to object count",
+				"type" : "has amount of",
+				"first" : "Clayton",
+				"second" : "money",
+				"value" : 30
+			},
+			
+			
+			{
+				"class": "public relationship",
+				"type": "publicly romantically committed to",
+				"first": "Clayton",
+				"second": "Emma",
+				"value": true
+			},
+			
+			{
+				"class": "public relationship",
+				"type": "publicly romantically committed to",
+				"first": "Emma",
+				"second": "Clayton",
+				"value": true
+			},
+			
+			{
+				"class": "public relationship",
+				"type": "publicly romantically committed to",
+				"first": "Belle",
+				"second": "Brim",
+				"value": true
+			},
+			
+			{
+				"class": "public relationship",
+				"type": "publicly romantically committed to",
+				"first": "Brim",
+				"second": "Belle",
+				"value": true
+			},
+			
+			{
+				"class": "public relationship",
+				"type": "public friends",
+				"first": "Cogsworth",
+				"second": "Belle",
+				"value": true
+			},
+			
+			
+			{
+				"class": "public relationship",
+				"type": "public friends",
+				"first": "Belle",
+				"second": "Cogsworth",
+				"value": true
+			},
+			
+		
+			{
+				"class": "directed public relationship",
+				"type": "is boss of",
+				"first": "Brim",
+				"second": "Mick",
+				"value": true
+			},
+			
+						{
+				"class": "directed public relationship",
+				"type": "is boss of",
+				"first": "Brim",
+				"second": "Emma",
+				"value": true
+			},
+			
+						{
+				"class": "directed public relationship",
+				"type": "is boss of",
+				"first": "Brim",
+				"second": "Stan",
+				"value": true
+			},
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Cogsworth",
+				"second": "Brim",
+				"value": true
+			},
+			
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Clayton",
+				"second": "Brim",
+				"value": true
+			},
+			
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Stan",
+				"second": "Brim",
+				"value": true
+			},
+			
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Clayton",
+				"second": "Belle",
+				"value": true
+			},
+			
+					
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Mick",
+				"second": "Belle",
+				"value": true
+			},
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "idolize",
+				"first": "Stan",
+				"second": "Emma",
+				"value": true
+			},
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "rivals",
+				"first": "Clayton",
+				"second": "Cogsworth",
+				"value": true
+			},
+			
+			{
+				"class": "directed relationship feelings",
+				"type": "rivals",
+				"first": "Cogsworth",
+				"second": "Clayton",
+				"value": true
+			},
+			
+			
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Cogsworth",
+				"second" : "Stan",
+				"value" : 8
+			},
+			
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Clayton",
+				"second" : "Emma",
+				"value" : 7
+			},
+			
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Emma",
+				"second" : "Clayton",
+				"value" : 8
+			},
+			
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Stan",
+				"second" : "Cogsworth",
+				"value" : 6
+			},
+			
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Stan",
+				"second" : "Mick",
+				"value" : 8
+			},
+						
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Mick",
+				"second" : "Stan",
+				"value" : 8
+			},
+			
+						
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Belle",
+				"second" : "Clayton",
+				"value" : 9
+			},
+						
+			{
+				"class" : "network",
+				"type" : "friendship",
+				"first" : "Clayton",
+				"second" : "Belle",
+				"value" : 9
+			},
+						
+			{
+				"class" : "network",
+				"type" : "romance",
+				"first" : "Belle",
+				"second" : "Brim",
+				"value" : 9
+			},
+									
+			{
+				"class" : "network",
+				"type" : "romance",
+				"first" : "Brim",
+				"second" : "Belle",
+				"value" : 9
+			},
+			
+			{
+				"class" : "network",
+				"type" : "romance",
+				"first" : "Stan",
+				"second" : "Emma",
+				"value" : 8
+			},
+			
+			{
+				"class" : "network",
+				"type" : "romance",
+				"first" : "Mick",
+				"second" : "Emma",
+				"value" : 9
+			},
+			
+			{
+				"class" : "network",
+				"type" : "romance",
+				"first" : "Emma",
+				"second" : "Mick",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Brim",
+				"second" : "Belle",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Belle",
+				"second" : "Brim",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Stan",
+				"second" : "Belle",
+				"value" : 10
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Belle",
+				"second" : "Stan",
+				"value" : 10
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Clayton",
+				"second" : "Emma",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Emma",
+				"second" : "Clayton",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "familial",
+				"first" : "Cogsworth",
+				"second" : "Stan",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Cogsworth",
+				"second" : "Stan",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Cogsworth",
+				"second" : "Clayton",
+				"value" : 2
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Clayton",
+				"second" : "Emma",
+				"value" : 2
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Clayton",
+				"second" : "Cogsworth",
+				"value" : 2
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Emma",
+				"second" : "Brim",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Mick",
+				"second" : "Stan",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Belle",
+				"second" : "Clayton",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Clayton",
+				"second" : "Belle",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Belle",
+				"second" : "Stan",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Belle",
+				"second" : "Brim",
+				"value" : 9
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Stan",
+				"second" : "Belle",
+				"value" : 10
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Stan",
+				"second" : "Cogsworth",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Stan",
+				"second" : "Mick",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Brim",
+				"second" : "Belle",
+				"value" : 9
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Mick",
+				"second" : "Clayton",
+				"value" : 0
+			},
+		
+			{
+				"class" : "network",
+				"type" : "trust",
+				"first" : "Clayton",
+				"second" : "Mick",
+				"value" : 0
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Cogsworth",
+				"second" : "Brim",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Clayton",
+				"second" : "Brim",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Clayton",
+				"second" : "Belle",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Emma",
+				"second" : "Brim",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Mick",
+				"second" : "Belle",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Belle",
+				"second" : "Brim",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Stan",
+				"second" : "Brim",
+				"value" : 9
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Brim",
+				"second" : "Belle",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "respect",
+				"first" : "Clayton",
+				"second" : "Mick",
+				"value" : 0
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Clayton",
+				"second" : "Cogsworth",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Cogsworth",
+				"second" : "Clayton",
+				"value" : 8
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Clayton",
+				"second" : "Emma",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Clayton",
+				"second" : "Mick",
+				"value" : 9
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Emma",
+				"second" : "Clayton",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Mick",
+				"second" : "Clayton",
+				"value" : 9
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Clayton",
+				"second" : "Mick",
+				"value" : 0
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Belle",
+				"second" : "Emma",
+				"value" : 7
+			},
+		
+			{
+				"class" : "network",
+				"type" : "antagonism",
+				"first" : "Bella",
+				"second" : "Mick",
+				"value" : 7
+			}
+
+
+			
+			
+		]}
+	]
+}

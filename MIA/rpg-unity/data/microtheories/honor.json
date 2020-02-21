@@ -1,0 +1,1133 @@
+{
+	"type": "honor",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "honor.json",
+			"id": "honor_110"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "publicly romantically committed to",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_111"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_112"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_113"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_114"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_115"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_116"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_117"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_118"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_119"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_120"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "indebted",
+					"first": "x",
+					"value": 6,
+					"second": "y",
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_121"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 4,
+					"operator": "<",
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_122"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"value": 4,
+					"second": "y",
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_123"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "successful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_124"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "envy",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_125"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"value": true,
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_126"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_127"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_128"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "friendly",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_129"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"value": true,
+					"second": "y",
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_130"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"value": true,
+					"second": "y",
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_131"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					],
+					"second": "y"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_132"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"value": true,
+					"second": "y",
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_133"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "y",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_285"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "y",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_286"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "y",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_287"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"value": 4,
+					"operator": "<",
+					"second": "z"
+				},
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "y",
+					"value": 4,
+					"operator": "<",
+					"second": "z"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_288"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 6,
+					"second": "z",
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_373"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 6,
+					"second": "z",
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_374"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"value": 6,
+					"second": "z",
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_375"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"value": 6,
+					"second": "z",
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_376"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"value": 6,
+					"second": "z",
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_377"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_378"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_379"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_380"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"value": 6,
+					"operator": ">",
+					"second": "z"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"value": true,
+					"second": "z",
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "honor",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "honor",
+			"origin": "honor.json",
+			"id": "honor_381"
+		}
+	]
+}

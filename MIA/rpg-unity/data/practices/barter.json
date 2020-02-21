@@ -1,0 +1,2035 @@
+{
+	"practice": {
+		"label": "Barter",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Ask if they have",
+				"Ask for thing stage"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Ask if they have",
+				"eventStage": false,
+				"nextStages": [
+					"Don't have stage",
+					"Have stage"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Polite ask if they have",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('You wouldn't have  %subject% perchance?', 'Do you have  %subject%?')%</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"line": "",
+								"defaultLine": true,
+								"useDefault": true
+							}
+						}
+					},
+					{
+						"label": "Demand ask if they have",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\"> %repeatVariation('Give me the %subject%!', 'I demand the %subject%'. Now.)%</line>",
+						"performanceTree": {
+							"Demand ask if they have": {
+								"line": "",
+								"defaultLine": true,
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Don't have stage",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Ask if they have",
+					"Ask if they have",
+					"Ask if they have",
+					"Ask if they have"
+				],
+				"actions": [
+					{
+						"label": "Don't have",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I'm afraid I don't have  %subject%. I'm sorry.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Don't have": {
+									"line": "<line s=\"%X%\"></line>",
+									"useDefault": true
+								}
+							},
+							"Demand ask if they have": {
+								"Don't have": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Don't have": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Have but say they don't",
+						"intent": "manipulate",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\"></line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Have but say they don't": {
+									"line": "<line s=\"%X%\">I'm afraid not.  %subject% is really hard to come by.</line>",
+									"useDefault": true
+								}
+							},
+							"Demand ask if they have": {
+								"Have but say they don't": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Have but say they don't": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Have stage",
+				"eventStage": false,
+				"nextStages": [
+					"Ask for thing stage"
+				],
+				"parentStages": [
+					"Ask if they have",
+					"Ask if they have",
+					"Ask if they have",
+					"Ask if they have"
+				],
+				"actions": [
+					{
+						"label": "Has thing",
+						"intent": "trust",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"line": "<line s=\"%X%\">Indeed I do, I have %subject%.</line>",
+									"useDefault": false
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"line": "",
+									"useDefault": false
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Has thing": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Ask for thing stage",
+				"eventStage": false,
+				"nextStages": [
+					"Give thing stage",
+					"Ask for something in return",
+					"Refuse request"
+				],
+				"parentStages": [
+					"Have stage",
+					"Don't have stage",
+					"Have stage",
+					"Don't have stage",
+					"Have stage",
+					"Don't have stage",
+					"Have stage"
+				],
+				"actions": [
+					{
+						"label": "Polite ask for",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I wonder, can I have %subject%?</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"line": "<line s=\"%X%\">I wonder, can I have %subject%?</line>",
+										"useDefault": true
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"line": "<line s=\"%X%\">Are you sure? I would really like %subject%.</line>",
+										"useDefault": true
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Polite ask for": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Demand thing",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Don't have": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Have but say they don't": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Don't have": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Have but say they don't": {
+									"Demand thing": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Demand thing": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Give thing stage",
+				"eventStage": false,
+				"nextStages": [
+					"Agree to acquire thing",
+					"Refuse to acquire thing"
+				],
+				"parentStages": [
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage"
+				],
+				"actions": [
+					{
+						"label": "Give for free",
+						"intent": "favor",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">It is my pleasure to give it to you. It's a gift.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Give for free": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Ask for something in return",
+				"eventStage": false,
+				"nextStages": [
+					"Agree to acquire thing",
+					"Refuse to acquire thing"
+				],
+				"parentStages": [
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage"
+				],
+				"actions": [
+					{
+						"label": "Politely ask for something in exchange",
+						"intent": "candid",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">If you have something to give in return I would be most grateful.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely ask for something in exchange": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Politely ask for something in exchange": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Irritated ask for something in return",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">Well, these don't come for free. You must give me something in return. </line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Irritated ask for something in return": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Irritated ask for something in return": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Refuse request",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage",
+					"Ask for thing stage"
+				],
+				"actions": [
+					{
+						"label": "Politely refuse",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I'm afraid I can't part with %subject%. I'm sorry.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Politely refuse": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Politely refuse": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Angrily refuse request",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">Never! %subject% is mine, and it stays mine!</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									},
+									"Demand thing": {
+										"Angrily refuse request": {
+											"line": "",
+											"useDefault": true
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Angrily refuse request": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Agree to acquire thing",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return"
+				],
+				"actions": [
+					{
+						"label": "Gladly acquire thing",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "indebted",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							}
+						],
+						"performance": "<line s=\"%X%\">Thank you! I really wanted %subject%.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Gladly acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Gladly acquire thing": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Begrudgingly accept thing",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">Oh well. If I must. </line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly accept thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Begrudgingly accept thing": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Refuse to acquire thing",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return",
+					"Give thing stage",
+					"Ask for something in return"
+				],
+				"actions": [
+					{
+						"label": "Polite refuse to acquire",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">There is always a cost. It's just too high. I can't accept it I'm afraid, not this time. </line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Polite refuse to acquire": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Polite refuse to acquire": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					},
+					{
+						"label": "Begrudgingly refuse to acquire thing",
+						"intent": "trust",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">It's not acceptable! I refuse.</line>",
+						"performanceTree": {
+							"Polite ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							},
+							"Demand ask if they have": {
+								"Has thing": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Don't have": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								},
+								"Have but say they don't": {
+									"Polite ask for": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									},
+									"Demand thing": {
+										"Give for free": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Politely ask for something in exchange": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										},
+										"Irritated ask for something in return": {
+											"Begrudgingly refuse to acquire thing": {
+												"line": "",
+												"useDefault": true
+											}
+										}
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Begrudgingly refuse to acquire thing": {
+								"line": "",
+								"defaultLine": true
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

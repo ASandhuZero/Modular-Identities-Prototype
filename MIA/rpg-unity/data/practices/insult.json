@@ -1,0 +1,268 @@
+{
+	"practice": {
+		"label": "Insult",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Insult"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Insult",
+				"eventStage": false,
+				"nextStages": [
+					"Respond to Insult negatively",
+					"Misunderstand insult trustingly",
+					"Respond to insult positively and caring",
+					"Respond to insult neutrally"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Insult",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('You suck!', 'You bastard.','You stink.','Douchebag!','You ludicrous ballbag!','You insufferable frog faced wanker!','You tit.','You weapons-grade plum.','Who is using the family brain cell today?','You absolute donut!', 'You spoon.', 'You tool!', 'You weaselheaded nugget!','You mangled hellbeast!', 'You utter and complete eejit!','You cluless numpty.','You bloviating flesh bag!','You incompressible jizztrumpet!', 'You tinyfingered ferretwearing gibbon!')% </line>",
+						"performanceTree": {
+							"Insult": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Respond to Insult negatively",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insult",
+					"Insult",
+					"Insult"
+				],
+				"actions": [
+					{
+						"label": "Respon NEG to insult action",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "friendship",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "-"
+							},
+							{
+								"class": "network",
+								"type": "antagonism",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							}
+						],
+						"performance": "<line s=\"%X%\">%repeatVariation('Look who's talking!', 'You suck!','You bastard.')%</line>",
+						"performanceTree": {
+							"Insult": {
+								"Respon NEG to insult action": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Misunderstand insult trustingly",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insult",
+					"Insult",
+					"Insult"
+				],
+				"actions": [
+					{
+						"label": "misunderstand insult trustingly action",
+						"intent": "trust",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">Heh, your'e always so funny %Y%!</line>",
+						"performanceTree": {
+							"Insult": {
+								"misunderstand insult trustingly action": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Respond to insult positively and caring",
+				"eventStage": false,
+				"nextStages": [
+					"apoligise for insult third stage"
+				],
+				"parentStages": [
+					"Insult",
+					"Insult",
+					"Insult"
+				],
+				"actions": [
+					{
+						"label": "Respond positively and caring to insult action ",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "friendship",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							}
+						],
+						"performance": "<line s=\"%X%\">%Y%, why would you say that? %random('How do you feel?', 'Are you allright?','Did something happen?')%</line>",
+						"performanceTree": {
+							"Insult": {
+								"Respond positively and caring to insult action ": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Respond to insult neutrally",
+				"eventStage": false,
+				"nextStages": [
+					"apoligise for insult third stage"
+				],
+				"parentStages": [
+					"Insult",
+					"Insult",
+					"Insult"
+				],
+				"actions": [
+					{
+						"label": "Respond to Insult Neutrally",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('I believe you are projecting.', 'You have no right to speak to me that way.')%</line>",
+						"performanceTree": {
+							"Insult": {
+								"Respond to Insult Neutrally": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Respond to Insult Neutrally": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "apoligise for insult third stage",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Respond to insult positively and caring",
+					"Respond to insult positively and caring",
+					"Respond to insult neutrally",
+					"Respond to insult positively and caring",
+					"Respond to insult neutrally"
+				],
+				"actions": [
+					{
+						"label": "apologise for insult",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "friendship",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							},
+							{
+								"class": "intents",
+								"type": "trust",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							}
+						],
+						"performance": "<line s=\"%X%\">%repeatVariation('I'm sorry.', 'I'm sorry I said that','I shouldn't have said that to you. I'm sorry.')% </line>",
+						"performanceTree": {
+							"Insult": {
+								"Respond positively and caring to insult action ": {
+									"apologise for insult": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Respond to Insult Neutrally": {
+									"apologise for insult": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"apologise for insult": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

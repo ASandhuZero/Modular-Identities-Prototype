@@ -1,0 +1,34 @@
+{
+	"practice": {
+		"label": "Long Time No See Greeting",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Long Time No See Greeting"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Long Time No See Greeting",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [],
+				"actions": [],
+				"entryStage": true
+			},
+			{
+				"label": "Respond to Long Time no See Greeting",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [],
+				"actions": []
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

@@ -1,0 +1,630 @@
+{
+	"type": "romantic",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "publicly romantically committed to",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "romantic.json",
+			"id": "romantic_213"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_214"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_215"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_216"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "embarrassed",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_217"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "heartbroken",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_218"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_219"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_220"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_221"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_222"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_223"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_224"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_225"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_406"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_408"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_409"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_410"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_411"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_412"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_414"
+		}
+	]
+}

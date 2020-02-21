@@ -1,0 +1,1963 @@
+{
+	"type": "kind",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "kind.json",
+			"id": "kind_164"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "publicly romantically committed to",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_165"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_166"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_167"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_168"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_169"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_170"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_171"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_172"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_173"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_174"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "gratitude",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_175"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_176"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_177"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_178"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_179"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_180"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "successful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_181"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "envy",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_182"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -5,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_183"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_184"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_185"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_186"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "friendly",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_187"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "xenophobia",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_188"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "helpful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_189"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_190"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_191"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_192"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_193"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_194"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_195"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_196"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_197"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_198"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_291"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_292"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_293"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "y",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_294"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_295"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_384"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_385"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_386"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_387"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_388"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_389"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_390"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_391"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "romantic",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_392"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_393"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "romantic",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_394"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_395"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_396"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_397"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_398"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_399"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_400"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_401"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_402"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "familial",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						31,
+						9999
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_403"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_404"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "kind",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "kind",
+			"origin": "kind.json",
+			"id": "kind_405"
+		}
+	]
+}

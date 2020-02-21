@@ -1,0 +1,269 @@
+{
+	"type": "idealistic",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "idealistic.json",
+			"id": "idealistic_134"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_135"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "fearful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_136"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "envy",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_137"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "betrayed by",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_138"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "afraid of",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_139"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_140"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "altruism",
+					"first": "x",
+					"value": 12,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_141"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character traits",
+					"type": "selfish",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_142"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "idealistic",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "idealistic",
+			"origin": "idealistic.json",
+			"id": "idealistic_289"
+		}
+	]
+}

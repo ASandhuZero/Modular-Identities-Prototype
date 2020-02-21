@@ -1,0 +1,620 @@
+{
+	"type": "ingratiate",
+	"rules": [
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "ingratiate.json",
+			"id": "ingratiate_145"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "publicly romantically committed to",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_146"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "feuding",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_147"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed public relationship",
+					"type": "is boss of",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_148"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "idolize",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_149"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed relationship feelings",
+					"type": "rivals",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_150"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_151"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_152"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "indebted",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_153"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "respect",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_154"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "successful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_155"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "guilty",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_156"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "statuses",
+					"type": "fearful",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_157"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "directed statuses",
+					"type": "afraid of",
+					"first": "x",
+					"second": "y",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_158"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "honor",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_159"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "character attributes",
+					"type": "charisma",
+					"first": "x",
+					"value": 7,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 3,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_160"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "nice",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_161"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": -1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_162"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "HistoryLabels",
+					"type": "did a favor for",
+					"first": "x",
+					"second": "y",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_163"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "x",
+					"second": "z",
+					"value": true
+				},
+				{
+					"class": "public relationship",
+					"type": "public friends",
+					"first": "y",
+					"second": "z",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_290"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						0,
+						8
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_382"
+		},
+		{
+			"name": "",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "antagonism",
+					"first": "x",
+					"second": "z",
+					"value": 6,
+					"operator": ">"
+				},
+				{
+					"class": "HistoryLabels",
+					"type": "mean",
+					"first": "y",
+					"second": "z",
+					"value": true,
+					"turnsAgoBetween": [
+						9,
+						30
+					]
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "ingratiate",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "ingratiate",
+			"origin": "ingratiate.json",
+			"id": "ingratiate_383"
+		}
+	]
+}

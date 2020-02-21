@@ -1,0 +1,140 @@
+{
+	"practice": {
+		"label": "Leave",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Leave"
+			],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Leave",
+				"eventStage": false,
+				"nextStages": [
+					"Leave Response",
+					"Dislike Response"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Say Goodbye kindly",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Say Goodbye kindly": {
+								"line": "<emote character=\"%X%\" emotion=\"neutral\"></emote>\n<line s=\"%X%\">%repeatVariation('Goodbye!', 'So Long!','Until next time! Bye!','Adios!', 'Bye bye!', 'Bye, see you!')%</line>"
+							}
+						}
+					},
+					{
+						"label": "Say Goodbye insultingly",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I can't stand you anymore you %random('cur', 'not cool person', 'clod', 'loser', 'fool', 'ninnymuggins')%!!! Bye!</line>",
+						"performanceTree": {
+							"Say Goodbye insultingly": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Leave Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Leave",
+					"Leave",
+					"Leave"
+				],
+				"actions": [
+					{
+						"label": "Goodbye Response",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Say Goodbye kindly": {
+								"Goodbye Response": {
+									"line": "<emote character=\"%X%\" emotion=\"neutral\"></emote>\n\n<line s=\"%X%\">%repeatVariation('Goodbye!', 'So Long!','Until next time.','Adios!', 'Bye bye!', 'Bye, see you!' 'Bye, then.')%</line>"
+								}
+							},
+							"Say Goodbye insultingly": {
+								"Goodbye Response": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Dislike Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Leave",
+					"Leave",
+					"Leave"
+				],
+				"actions": [
+					{
+						"label": "Hate",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "antagonism",
+								"first": "x",
+								"second": "y",
+								"value": 5,
+								"operator": "+"
+							}
+						],
+						"performance": "",
+						"performanceTree": {
+							"Say Goodbye kindly": {
+								"Hate": {
+									"line": "<emote character=\"%X%\" emotion=\"angry\"></emote>\n<line s=\"%X%\">Get lost you %random('cur', 'not cool person', 'clod', 'loser', 'fool', 'ninnymuggins')%!!!</line>"
+								}
+							},
+							"Say Goodbye insultingly": {
+								"Hate": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

@@ -1,0 +1,122 @@
+{
+	"practice": {
+		"label": "Introductions",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Introduce first stage"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Introduce first stage",
+				"eventStage": false,
+				"nextStages": [
+					"Introduce response second stage"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Introduce self action, going first",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('I don't believe we have met. My name is %x%', 'A pleasure to meet you. I am %x%.','My name is %x%. How do you do.,'Nice to meet you. My name is %x%')% </line>",
+						"performanceTree": {
+							"Introduce self action, going first": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Introduce response second stage",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Introduce first",
+					"Introduce first"
+				],
+				"actions": [
+					{
+						"label": "Respond to introduction nicely",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "HistoryLabels",
+								"type": "nice",
+								"first": "x",
+								"second": "y",
+								"value": true
+							}
+						],
+						"performance": "<line s=\"%X%\">%repeatVariation('A pleasure. I'm %X%', 'How nice. I am %x', 'My name is %x%,'I'm %X%')% </line>",
+						"performanceTree": {
+							"Introduce self action, going first": {
+								"Respond to introduction nicely": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					},
+					{
+						"label": "Respond to introduction feeling forgotten",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [
+							{
+								"class": "public relationship",
+								"type": "have met",
+								"first": "x",
+								"second": "y",
+								"value": true,
+								"turnsAgoBetween": [
+									0,
+									9999
+								]
+							}
+						],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "friendship",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "-"
+							}
+						],
+						"performance": "<line s=\"%X%\">We have actually met before, %Y%. I guess I didn't make much of an impression.</line>",
+						"performanceTree": {
+							"Introduce self action, going first": {
+								"Respond to introduction feeling forgotten": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

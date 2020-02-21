@@ -1,0 +1,11 @@
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\ProxyTCPIP.exe.config
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\ProxyTCPIP.exe
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\ProxyTCPIP.pdb
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\obj\Debug\ProxyTCPIP.csprojResolveAssemblyReference.cache
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\obj\Debug\ProxyTCPIP.exe
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\obj\Debug\ProxyTCPIP.pdb
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\Newtonsoft.Json.dll
+D:\Development\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\Newtonsoft.Json.xml
+D:\Development\cif-au\cif-proxy\proxy-src\test\ProxyTCPIP\bin\Debug\ProxyTCPIP.exe.config
+D:\Development\cif-au\cif-proxy\proxy-src\test\ProxyTCPIP\obj\Debug\ProxyTCPIP.exe
+D:\Development\cif-au\cif-proxy\proxy-src\test\ProxyTCPIP\obj\Debug\ProxyTCPIP.pdb

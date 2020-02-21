@@ -1,0 +1,20 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "XMLGenerator.js",
+  "dependencies": {
+    "amdefine": "^1.0.0",
+    "detect-node": "^2.0.3",
+    "fs": "^0.0.2",
+    "jquery": "^2.2.1",
+    "json-socket": "^0.1.2",
+    "requirejs": "^2.1.22"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

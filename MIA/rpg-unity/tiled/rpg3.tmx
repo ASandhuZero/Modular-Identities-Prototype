@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="base_out_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="terrain_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas/terrain_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="path" tile="-1"/>
+   <terrain name="lakes" tile="-1"/>
+  </terraintypes>
+  <tile id="16" terrain="0,0,0,"/>
+  <tile id="17" terrain="0,0,,0"/>
+  <tile id="48" terrain="0,,0,0"/>
+  <tile id="49" terrain=",0,0,0"/>
+  <tile id="79" terrain=",,,0"/>
+  <tile id="80" terrain=",,0,0"/>
+  <tile id="81" terrain=",,0,"/>
+  <tile id="111" terrain=",0,,0"/>
+  <tile id="112" terrain="0,0,0,0"/>
+  <tile id="113" terrain="0,,0,"/>
+  <tile id="143" terrain=",0,,"/>
+  <tile id="144" terrain="0,0,,"/>
+  <tile id="145" terrain="0,,,"/>
+  <tile id="295" terrain="1,1,1,"/>
+  <tile id="296" terrain="1,1,,1"/>
+  <tile id="327" terrain="1,,1,1"/>
+  <tile id="328" terrain=",1,1,1"/>
+  <tile id="358" terrain=",,,1"/>
+  <tile id="359" terrain=",,1,1"/>
+  <tile id="360" terrain=",,1,"/>
+  <tile id="390" terrain=",1,,1"/>
+  <tile id="391" terrain="1,1,1,1"/>
+  <tile id="392" terrain="1,,1,"/>
+  <tile id="422" terrain=",1,,"/>
+  <tile id="423" terrain="1,1,,"/>
+  <tile id="424" terrain="1,,,"/>
+ </tileset>
+ <tileset firstgid="2049" name="build_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas2/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3073" name="obj_misk_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas2/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4097" name="red" tilewidth="32" tileheight="32" tilecount="1">
+  <image source="red.png" width="32" height="32"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.0909091" y="-0.0909091" width="32.0909" height="32"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="grass" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwrZ2FgKB/Fo3gUj+JRPIpJxAA5psAx
+  </data>
+ </layer>
+ <layer name="grass decals" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzVlNENgzAMRPmwd2k3KZPQLlCxAe0msABkvOYkLAwyIQ794SRLKODnS7BTVdfRSPb6RPvvcoT8QEuNcILlEWpNc63SmpphSbhvzmfmeCk5b2uvz+jrxfYesObxDU+f+P2DFy5qtbz+xx6BJ6G5otbhD7rzmon4JhiB0t7rDesWY3B60tKcfmbJGZbMRq84JQr035lMzUquH8/6nmRuG6OnjnL0HiRfolY9Zc2ozt3eHXjujP6UnpI+1NwfIF89SA==
+  </data>
+ </layer>
+ <layer name="path" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzN0tENgCAMBFA+uoBugpOIm7iJOLEk2EgIrdiieEk/7+VCMObfcRBvgTbeCvFsI3eEy0xdqb2Fjj/vLTt3te/Re7PE5jajLf0b1Gar+Gtz6E6FnRLHEVaNh31HOEPyrh74LrcDnT0zarqlHbmDofp3O6hwG544GE33ixx0xT8n
+  </data>
+ </layer>
+ <layer name="path decorations" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg6QICFdD272RgY9rBRx/7tQHNuA/EdKpk3EGAv0O37qOj+u0Cz7pFg3k4i1YLUGZAY36SqpyXYT+U0cp8K5m0foul22xB1NwhQs/wBAUrLH2rnEQC62w/p
+  </data>
+ </layer>
+ <layer name="tree base" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAwlq2RgY6oC4no00fVVA9dVAXIOmby6QPw+I57PhV4cOZgHlZwPxHCqpGwWDB5CbxnAB9DQ2nAGx+YdYQM/8Qw+3AwA7GBSJ
+  </data>
+ </layer>
+ <layer name="tree tops" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhc4A8rA8NfIP7HSh3zZNgYGGSBWI6NNH0zgfbPAuLZaO6wAZpjC8R2bPjVoYOdQPldQLwbTV0M0JxYII5jw68OHdwEyt8C4ttUUjeSwGBJY7gAehqjFKCnscEEiM0/xAJi8w+xAF/+GcpupxYAAM6xJZ8=
+  </data>
+ </layer>
+ <layer name="collisions" width="20" height="20" opacity="0.54">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFAw0YBWirj1zziTWbEvMp1Y/PzKFkLjXUwNRhU0uqm6nlV1qFGT0BPfIPufGLrB9ZDp0mxT2E7EQGAGQ/Aqk=
+  </data>
+ </layer>
+</map>

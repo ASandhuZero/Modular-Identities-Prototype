@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="base_out_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="terrain_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas/terrain_atlas.png" width="1024" height="1024"/>
+  <terraintypes>
+   <terrain name="path" tile="-1"/>
+   <terrain name="lakes" tile="-1"/>
+  </terraintypes>
+  <tile id="16" terrain="0,0,0,"/>
+  <tile id="17" terrain="0,0,,0"/>
+  <tile id="48" terrain="0,,0,0"/>
+  <tile id="49" terrain=",0,0,0"/>
+  <tile id="79" terrain=",,,0"/>
+  <tile id="80" terrain=",,0,0"/>
+  <tile id="81" terrain=",,0,"/>
+  <tile id="111" terrain=",0,,0"/>
+  <tile id="112" terrain="0,0,0,0"/>
+  <tile id="113" terrain="0,,0,"/>
+  <tile id="143" terrain=",0,,"/>
+  <tile id="144" terrain="0,0,,"/>
+  <tile id="145" terrain="0,,,"/>
+  <tile id="295" terrain="1,1,1,"/>
+  <tile id="296" terrain="1,1,,1"/>
+  <tile id="327" terrain="1,,1,1"/>
+  <tile id="328" terrain=",1,1,1"/>
+  <tile id="358" terrain=",,,1"/>
+  <tile id="359" terrain=",,1,1"/>
+  <tile id="360" terrain=",,1,"/>
+  <tile id="390" terrain=",1,,1"/>
+  <tile id="391" terrain="1,1,1,1"/>
+  <tile id="392" terrain="1,,1,"/>
+  <tile id="422" terrain=",1,,"/>
+  <tile id="423" terrain="1,1,,"/>
+  <tile id="424" terrain="1,,,"/>
+ </tileset>
+ <tileset firstgid="2049" name="build_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas2/build_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="3073" name="obj_misk_atlas" tilewidth="32" tileheight="32" tilecount="1024">
+  <image source="Atlas2/obj_misk_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4097" name="red" tilewidth="32" tileheight="32" tilecount="1">
+  <image source="red.png" width="32" height="32"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.0909091" y="-0.0909091" width="32.0909" height="32"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="4098" name="hyptosis_sprites-and-tiles-for-you" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_sprites-and-tiles-for-you.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="4998" name="hyptosis_tile-art-batch-5" tilewidth="32" tileheight="32" tilecount="722">
+  <image source="hyptosis/hyptosis_tile-art-batch-5.png" width="636" height="1219"/>
+ </tileset>
+ <tileset firstgid="5720" name="hyptosis_tile-art-batch-4" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_tile-art-batch-4.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="6620" name="hyptosis_tile-art-batch-3" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_tile-art-batch-3.png" width="960" height="960"/>
+  <terraintypes>
+   <terrain name="light to dark" tile="-1"/>
+  </terraintypes>
+  <tile id="80" terrain=",,,0"/>
+  <tile id="81" terrain=",,0,0"/>
+  <tile id="82" terrain=",,0,"/>
+  <tile id="110" terrain=",0,,0"/>
+  <tile id="111" terrain="0,0,0,0"/>
+  <tile id="112" terrain="0,,0,"/>
+  <tile id="140" terrain=",0,,"/>
+  <tile id="141" terrain="0,0,,"/>
+  <tile id="142" terrain="0,,,"/>
+  <tile id="233" terrain=",0,0,0"/>
+  <tile id="234" terrain="0,,0,0"/>
+  <tile id="263" terrain="0,0,,0"/>
+  <tile id="264" terrain="0,0,0,"/>
+ </tileset>
+ <tileset firstgid="7520" name="hyptosis_til-art-batch-2" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_til-art-batch-2.png" width="960" height="960"/>
+ </tileset>
+ <tileset firstgid="8420" name="hyptosis_tile-art-batch-1" tilewidth="32" tileheight="32" tilecount="900">
+  <image source="hyptosis/hyptosis_tile-art-batch-1.png" width="960" height="960"/>
+  <terraintypes>
+   <terrain name="light grassy bit" tile="-1"/>
+   <terrain name="darker grassy bit" tile="-1"/>
+  </terraintypes>
+  <tile id="21" terrain=",,,0"/>
+  <tile id="22" terrain=",,0,0"/>
+  <tile id="23" terrain=",,0,"/>
+  <tile id="27" terrain="0,,0,0"/>
+  <tile id="51" terrain=",0,,0"/>
+  <tile id="52" terrain="0,0,0,0"/>
+  <tile id="53" terrain="0,,0,"/>
+  <tile id="57" terrain="0,0,0,"/>
+  <tile id="81" terrain=",0,,"/>
+  <tile id="82" terrain="0,0,,"/>
+  <tile id="83" terrain="0,,,"/>
+  <tile id="87" terrain="0,0,,0"/>
+  <tile id="110" terrain=",,,1"/>
+  <tile id="111" terrain=",,1,1"/>
+  <tile id="112" terrain=",,1,"/>
+  <tile id="117" terrain=",0,0,0"/>
+  <tile id="140" terrain=",1,,1"/>
+  <tile id="141" terrain="1,1,1,1"/>
+  <tile id="142" terrain="1,,1,"/>
+  <tile id="143" terrain=",1,1,1"/>
+  <tile id="144" terrain="1,,1,1"/>
+  <tile id="170" terrain=",1,,"/>
+  <tile id="171" terrain="1,1,,"/>
+  <tile id="172" terrain="1,,,"/>
+  <tile id="173" terrain="1,1,,1"/>
+  <tile id="174" terrain="1,1,1,"/>
+ </tileset>
+ <tileset firstgid="9320" name="PathAndObjects" tilewidth="32" tileheight="32" tilecount="256">
+  <image source="PathAndObjects.png" width="512" height="512"/>
+ </tileset>
+ <layer name="grass" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztz6ENACAMRcHOgWOeTsP+huArCIaKE+d+0tccEQk8W7P37bP51di97/aHzn0AAAAAQG0DnHB49A==
+  </data>
+ </layer>
+ <layer name="water" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+  </data>
+ </layer>
+ <layer name="grass decals" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJgDAMheFu4AYlnsXh3MA4iLN68FBBPcUmVv8PCqU08BpCUwJ8dLnsh3x/z9v4oiyto5eAv6nfFwAAANqzSHSCb1GJTvAPq5zPmOVnqJT9VZ9bphKdoK5ZbPVqrLeoPWsR/8PxTRuPeAoz
+  </data>
+ </layer>
+ <layer name="path" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzVls1SwkAMx9cZL3p2xrpQ7A548e4Iok+gVw88gscq78Hga+oL+IGYHZppCFtps6liZkJLWbK//DebrTH/0+5dte8Kx3QH+G7typ9g3tyV373nxbNp8fwvOCmb9wdbeu42GZHzt8yz3dmfxyDjo2vO95YZ8w7+kcn48hp8aFMB3zGMTcCXmTFfWbt8qKGE7wS8K6iLtvkuYOwY/FLIN29Qf8+C9fVmYXxHyOfnm7v1veo5Fln53H+fRexf5JPUIM45c6XTfDmXpPdhPImGdF68t0VNd5XODsrXVMPQ+YV80p7AbVjskVhGNMw3EaxHlVENpXsFjea7Kxpyi6npJowLISfG0lzjEGNM/rYFPoy763w+bgo+Ar+K7Ftae8TbJ8SZKOVNa0VDQ8qW1tTN7x/uVCtNDSU9AfswXvHcQNYJ+T1GQ9SuaW8ZudLHjLPj1vmlfJyt42R9eujCvMgoWWNacwljo3nvnzWLS3kpJ9fQz8/rlj6bMJbQ+viYRwI+yknPY7qXQjVVtZaUK3GyNd7GyNcopA3ep4EaqfqvRv+ybnOvJ4RlxNz3N6p9SDvN9zh+biY18+d1zHPU0o9r0fQMtRW51T1L6ph18rrh+muz8Tmaxub9NebdZRufdt5aNmwh72UXPlJj9lK9mBp23ltdU+DqgZ8q8730jXntx8cZA9c1+I0y38HAmMOBbsz/Zt904dPx
+  </data>
+ </layer>
+ <layer name="path decorations" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmElOwzAUhs1wBCQg4OBIKSw4AAtgw3AIdgxHgAMQblC6ZwXdAlLLCYAlSNBwg16AYQEb+K0kwnXSDI2TuFJ+6a/UOO378p6f7ZaQWmlkG4Q04GV4xaiaJqwtMG3DO/CuQr5TpuZ79sF0AB/CRxrmr5ZaXbBy481Z5cYbJodFX9eFr9ZoOmPx47y+OtdYdz6uKEaHFRcv6xoV8I1DHlsmITfwrVk1TVhB/p7A9myqO2NklRMTd1zqrDPjdYa5V9UciFOW9aGlYZ+p1LHwfKPMuVXpzK+63k3T26N16YkeJcSlg9fE/YP73q6GjesdbB/wJRi6vtv2IF8P7134zXcV6iDug+9H+7+2Yp0/cb0PTzfyxztP2cdyjlwhR3Kdub4wNpODT+4/MQ/D+OT7o3pDVa80Fax/8nPJvCp+U+ZdH6K4VJ9Zs/LxHr7y3bbDnz8pYG9Kk8cO1pcu9Xo4WGPu7GLPpYZQn6Q9+QVsrzTcw8G5tAjNCnzzGuxTsjjfgqZ838yby5yNwmsl8f0u4gXzZILG35emtkn/I8iaRMyphLgU4ya8FHEfz9mP7z1Lfe4YYloJfOsY34A3I+4Tc1bFvPsDButeGg==
+  </data>
+ </layer>
+ <layer name="houses" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztl0tKw1AUhs9EHDlsTTKwkDQ+x5quwMc4DzfgYyz42ICPidSJrkNdgboOq50IbkCoioL/JTf0orlpsTfJFfPBB6Ud9OOk5XCIisNziEIYwZZT4BcPScj7rnnjICam8m8SuUTTKWzDK7ijwQx7NtErfLPjtq4dv9+W9M1aRHNwHi5Y+ffV0FCHFuyg7YH7CM9S+pbRtAJX4VoBfSIGekyuJXm2G2jahFtwu+C+ior/itnAf7JRdoUcD20tjftCtEUa91VUVPxNPE3vCYaON0/g9A2Fm2KYm0fEdYmm4YybXx9r+7Tju0J2U8hYRNcS9BT3sTuiw2+I5KZgyG6K/SbRQfPn+yG6Irjuxq9VYQg3RIe3dXlvGsdoO0npS3jCZ3XFM0ww+Lyybp5BvGS068IzGsdymuGosK4e+mqa9rGu8ZLbdjGfvYzf2WTJfYdoO1L4P1C9U8/RdqGozxd2KtsRPlcXAmGn+hr2+U5/fwXCDHXhRtivt9w7ye4qA9b2Dj++7X5duBfmZ/Ln+tvdmhfGCPteJV/yJFqw
+  </data>
+ </layer>
+ <layer name="windows" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjZIEQZgQcj2K/EwHAAiA8qIcRKBpFb7wDd9QOI70HdN0EZggcLkAC6RQyIxaFuGmzuIxewKAy0C0bBYAJecgwM3kDsA8S+cgPtGkyQAXRTJhBnDUK3gUAb0F3tg9Rto4B8MAVYL01VIqyOGHBSkTrmIINNQLdtppL7nlPZfbTwLzUBtf07CkYBNvCZSvmTHuDTALlVVZW65hVRuY1uSmX3ofchKO1TuFLJfRuAbZiNSO2Y79D+2U8s6eKPPHXsJAWcA7rtPJL7RNH6Z8hASoFuzqI6+AcM2/8DEL7EAhkFBgZZBQT/mQoDAw+FaZCW7YVvKpSbQcv2wr1BEtfUdAe7AvXMggF7KpbDqgrUM2ukgWOyDAzHZVHFCgfJuNgVOUw2iO4fBO57g1aG4Ktf6QmWAMNnKRA3o7kDuX4Vh7r92QD0mw4B3XYYiF8A7T6LZL8YkG2iDKFNgdgMiM3p6D4AVIVCZg==
+  </data>
+ </layer>
+ <layer name="tree base" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztl8lOFFEUho+sZJI5AWSoMJkwo4lPoEYZXoJBphdAW2ADC15ABXTjUtcK6Ial7BlkwbRlHmXLV4sK6aK6u27VLapC+JNv0amue7+azr1H5DotpSKt0AZP4VmpRCobhsgmbME27Bhh2tzMWYnIOVzAf7gsCdsoPnk8z3wogEIoitjz1fn+jVSJvKvS47VbKbIHXfgcPhY5gmM4Man0NuZH3D4l8es053M59kNDJB2G8csqE8mGR5BjYnjzS5Uh3IZd+tXh8ASm8KvHqQEaoclE0e899ywGH2BU0/N9gcNLeAWvcXoD7dBhouj3GadpmIFZTX7dOPRAL/TBW+iHARhU8PuJzy+Yg3lY0ORn5Xu5yI9yf2Ms47QCq7Dm4Odnjr+ct+TTz8o5bhcOfjrnUKkBVnKrqfOQDwXVwcxhRaUGWGnGqQVaoc2Fn5c57qOWIGqqzgRRU3Ul6JqaLG73OKlqalBJtcexJ1FNDTuqNfW2k6im6twDe03MoK7AKIzBuHF9TPX9sEfH9U3jMwOz8AW+Gt7HmqiI/616fU57mzl85mEBfsMfBb9i27r5reLmf3JrE5+fUxt/3Glvs4LPKqzBP1hX8Htu81t08PObPXrwfTiAQziKWE+eTk+UAZlm7wbZEevJw85JjchpTdgWifOA7yMtyTd0l+KnV7iN3PcKqdPvssaGtXeYdOnnd+/gN/a1PmpxWuujlCDWei+5AmizgtQ=
+  </data>
+ </layer>
+ <layer name="tree tops" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0bENgDAMRNEQPEVSYLEZ+y9BUlAkBQIJySf0X+fu65wSgMtRogvesxpdcG8X7+uW1piFO7fW5sJ9AAAAT6weXYAvmI+36l/nThWqewEA8FcnamMCNw==
+  </data>
+ </layer>
+ <layer name="collisions" width="40" height="40" opacity="0.54">
+  <data encoding="base64" compression="zlib">
+   eJztmN0KwCAIhdsb7P2fdsQIIjxmm9VB+mAXbaBHc/2Y0qHmut+HhaKn1cWiEelo35exlt82Vo8YkV/Ndk+fZM8Da+yoHiR9THUi6WHRl5Hyz6TPAqteplqMyOy16XDw5tRpbCLNbeRaZYvty51npX507mbJITrHSrqlb5odL231GGkY8Wm9M+1it/8W77vizNjYclfD+O8zwpSjQm/d+2uXcW/IoJhZ0PpaM/yM2kb71wwsNYRqbUUfyzI3zL3JBxSDCjs=
+  </data>
+ </layer>
+</map>
