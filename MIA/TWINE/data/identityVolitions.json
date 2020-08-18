@@ -1,5 +1,5 @@
 {
-	"fileName": "volitionRules",
+	"fileName": "identityVolitions",
 	"type": "volition",
 	"rules": [
 		{	
@@ -129,12 +129,6 @@
 					"first": "x",
 					"weight": 10,
 					"intentDirection" : true
-				}, 
-				{
-					"class": "SFDBLabelUndirected",
-					"type" : "physical-action",
-					"first" : "x",
-					"weight" : 1
 				}
 			]
 		}

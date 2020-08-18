@@ -55,10 +55,6 @@ class MIA {
         return volitions;
     }
 
-
-    //TODO: This is the spot I left on off. I am working on getting the intent selection working with MIA. I need to pass in CiF at some point because there 
-    // are rules that need to fire in order for the things do go well
-    // Actual intent selection
     intentSelection(charVolition : object[], char: string) {
         let intents : object[];
         let rankedIntents : object;
@@ -75,6 +71,7 @@ class MIA {
         // Select dominant intent for right now
         // get action template from intent
         intent = this.chooseIntent(rankedIntents)
+        //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
         action = this.chooseAction(intent);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);

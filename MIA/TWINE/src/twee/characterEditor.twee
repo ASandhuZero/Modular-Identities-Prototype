@@ -35,8 +35,7 @@ console.log(state.variables);
 console.log(state.variables.identitiesValues);
 console.log(state.variables.identityDescription);
 console.log(cif.getCharacters());
-console.log("We actually did it lol");
 <</script>>
 
-<<set $description = $evaluateIdentities($identities_values, $identity_description)>>
+<<set $description = $evaluateIdentities($identitiesValues, $identityDescription)>>
 Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.
