@@ -1,0 +1,56 @@
+{
+	"type": "humble",
+	"rules": [
+		{
+			"name": "You are more likely to be humble if you are depressed",
+			"conditions": [
+				{
+					"class": "mood",
+					"type": "depressed",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "humble",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "humble.json",
+			"id": "humble_4"
+		},
+		{
+			"name": "You are more likely to be humble if you are not close friends",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 4,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "humble",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "humble",
+			"origin": "humble.json",
+			"id": "humble_12"
+		}
+	]
+}

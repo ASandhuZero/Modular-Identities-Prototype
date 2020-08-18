@@ -1,0 +1,214 @@
+{
+"fileName" : "guard-actions.json",
+	"actions" : [
+		{
+			"name" : "RAISESAFETY",
+			"intent" : {
+				"class" : "feeling",
+				"type"  : "safety",
+				"intentDirection" : true,
+				"first" : "initiator",
+				"second" : "responder"
+			},
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["DEFENDPERSON", "Patrol"]
+		},
+		{
+			"name" : "Patrol",
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "Effective",
+				"first" : "initiator",
+				"operator" : "+",
+				"value" : 10
+			}] 
+		},
+		{
+			"name" : "DEFENDPERSON",
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["DefendPersonSuccess", "DefendPersonFail"]
+		},
+		{
+			"name" : "DefendPersonSuccess",
+			"conditions" : [],
+			"influenceRules" : [],
+			"isAccept" : true,
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "+",
+				"value" : 10
+			},{
+				"class" : "SFDBLabel",
+				"type" : "guard-success",
+				"first" : "initiator",
+				"value" : true
+			}] 
+		},
+		{
+			"name" : "DefendPersonFail",
+			"displayName" : "Write Love Note <REJECT>",
+			"conditions" : [],
+			"influenceRules" : [],
+			"isAccept" : false,
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "-",
+				"value" : 10
+			},{
+				"class" : "SFDBLabel",
+				"type" : "guard-failure",
+				"first" : "initiator",
+				"value" : true
+			}]
+		},
+
+
+
+		{
+			"name" : "CONFRONTTHREAT",
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["ConfrontThreatSuccess", "ConfrontThreatFail"]
+		},
+		{
+			"name" : "KISS",
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["kissSuccess", "kissFail"]
+		},
+		{
+			"name" : "kissSuccess",
+			"displayName" : "Kiss <SUCCESS>",
+			"conditions" : [{
+				"class" : "feeling",
+				"type"  : "Safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"value" : 40,
+				"operator" : ">"
+				},{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "responder",
+				"second" : "initiator",
+				"operator" : "+",
+				"value" : 10
+			},{
+				"class" : "trait",
+				"type" : "rival",
+				"first" : "evilPerson",
+				"value" : true
+			}],
+			"influenceRules" : [],
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "+",
+				"value" : 100
+			},{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "responder",
+				"second" : "initiator",
+				"operator" : "+",
+				"value" : 100
+			},{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "responder",
+				"second" : "evilPerson",
+				"operator" : "=",
+				"value" : 10
+			},{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "initiator",
+				"second" : "evilPerson",
+				"operator" : "=",
+				"value" : 10
+			}]
+		},
+		{
+			"name" : "kissFail",
+			"displayName" : "Kiss <FAIL>",
+			"isAccept" : false,
+			"conditions" : [{
+				"class" : "feeling",
+				"type"  : "Safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"value" : -10,
+				"operator" : ">"
+				}],
+			"influenceRules" : [],
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "-",
+				"value" : 100
+			},{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "responder",
+				"second" : "initiator",
+				"operator" : "-",
+				"value" : 100
+			}]
+		},
+		{
+			"name" : "writeLoveNoteAccept",
+			"displayName" : "Write Love Note <ACCEPT>",
+			"conditions" : [],
+			"influenceRules" : [],
+			"isAccept" : true,
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "Safety",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "+",
+				"value" : 10
+			},{
+				"class" : "feeling",
+				"type" : "closeness",
+				"first" : "responder",
+				"second" : "initiator",
+				"operator" : "+",
+				"value" : 10
+			}]
+		},
+		{
+			"name" : "writeLoveNoteReject",
+			"displayName" : "Write Love Note <REJECT>",
+			"conditions" : [],
+			"influenceRules" : [],
+			"isAccept" : false,
+			"effects" : [{
+				"class" : "feeling",
+				"type" : "closeness",
+				"first" : "initiator",
+				"second" : "responder",
+				"operator" : "+",
+				"value" : 10
+			},{
+				"class" : "SFDBLabel",
+				"type" : "romantic-failure",
+				"first" : "initiator",
+				"second" : "responder",
+				"value" : true
+			}]
+		}
+	]
+}

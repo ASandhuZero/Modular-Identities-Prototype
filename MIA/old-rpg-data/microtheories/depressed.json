@@ -1,0 +1,29 @@
+{
+	"type": "depressed",
+	"rules": [
+		{
+			"name": "You are more likely to act depressed if you are depressed",
+			"conditions": [
+				{
+					"class": "mood",
+					"type": "depressed",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "depressed",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "depressed.json",
+			"id": "depressed_1"
+		}
+	]
+}

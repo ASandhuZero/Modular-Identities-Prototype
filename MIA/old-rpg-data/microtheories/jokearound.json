@@ -1,0 +1,56 @@
+{
+	"type": "jokearound",
+	"rules": [
+		{
+			"name": "You are more likely to joke around when you are happy",
+			"conditions": [
+				{
+					"class": "attribute",
+					"type": "happiness",
+					"first": "x",
+					"value": 70,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "jokearound",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "jokearound.json",
+			"id": "jokearound_5"
+		},
+		{
+			"name": "You are more likely to joke around if you have high humor",
+			"conditions": [
+				{
+					"class": "attribute",
+					"type": "humor",
+					"first": "x",
+					"value": 60,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "jokearound",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "jokearound",
+			"origin": "jokearound.json",
+			"id": "jokearound_6"
+		}
+	]
+}

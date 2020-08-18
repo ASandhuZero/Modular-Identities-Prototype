@@ -1,0 +1,56 @@
+{
+	"type": "romantic",
+	"rules": [
+		{
+			"name": "You are more likely to be romantic towards someone you have high romance with",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "romantic.json",
+			"id": "romantic_8"
+		},
+		{
+			"name": "You are more likely to be romantic if you are happy",
+			"conditions": [
+				{
+					"class": "mood",
+					"type": "happy",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "romantic",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "romantic",
+			"origin": "romantic.json",
+			"id": "romantic_9"
+		}
+	]
+}

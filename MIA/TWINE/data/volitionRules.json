@@ -1,0 +1,142 @@
+{
+	"fileName": "volitionRules",
+	"type": "volition",
+	"rules": [
+		{	
+			"name": "Hero test rule!",
+			"conditions": [
+				{
+					"class": "hero",
+					"type": "chosen one",
+					"first": "x",
+					"operator": ">",
+					"value": 1
+				}
+
+			],
+			"effects": [
+				{
+					"class": "hero",
+					"type": "chosen one",
+					"first": "x",
+					"weight": 10,
+					"intentDirection" : true
+				},
+				{
+					"class": "SFDBLabelUndirected",
+					"type" : "physical-action",
+					"first" : "x",
+					"value" : true
+				}
+			]
+		},
+		{	
+			"name": "smiths want to smith!",
+			"conditions": [
+				{
+					"class": "smith",
+					"type": "blacksmith",
+					"first": "x",
+					"operator": ">",
+					"value": 1
+				}
+			],
+			"effects": [
+				{
+					"class": "smith",
+					"type": "blacksmith",
+					"first": "x",
+					"weight": 1,
+					"intentDirection" : true
+				}, 
+				{
+					"class": "SFDBLabelUndirected",
+					"type" : "physical-action",
+					"first" : "x",
+					"weight" : 1
+				}
+			]
+		},
+		{	
+			"name": "Experienced smiths really want to smith!",
+			"conditions": [
+				{
+					"class": "smith",
+					"type": "blacksmith",
+					"first": "x",
+					"operator": ">",
+					"value": 5
+				}
+			],
+			"effects": [
+				{
+					"class": "smith",
+					"type": "blacksmith",
+					"first": "x",
+					"weight": 5,
+					"intentDirection" : true
+				}, 
+				{
+					"class": "SFDBLabelUndirected",
+					"type" : "physical-action",
+					"first" : "x",
+					"weight" : 1
+				}
+			]
+		},
+		{	
+			"name": "Silversmiths want to smith!",
+			"conditions": [
+				{
+					"class": "smith",
+					"type": "silversmith",
+					"first": "x",
+					"operator": ">",
+					"value": 1
+				}
+			],
+			"effects": [
+				{
+					"class": "smith",
+					"type": "silversmith",
+					"first": "x",
+					"weight": 1,
+					"intentDirection" : true
+				}, 
+				{
+					"class": "SFDBLabelUndirected",
+					"type" : "physical-action",
+					"first" : "x",
+					"weight" : 1
+				}
+			]
+		},
+		{	
+			"name": "Experienced Silversmiths really want to smith!",
+			"conditions": [
+				{
+					"class": "smith",
+					"type": "silversmith",
+					"first": "x",
+					"operator": ">",
+					"value": 5
+				}
+			],
+			"effects": [
+				{
+					"class": "smith",
+					"type": "silversmith",
+					"first": "x",
+					"weight": 10,
+					"intentDirection" : true
+				}, 
+				{
+					"class": "SFDBLabelUndirected",
+					"type" : "physical-action",
+					"first" : "x",
+					"weight" : 1
+				}
+			]
+		}
+	]
+}

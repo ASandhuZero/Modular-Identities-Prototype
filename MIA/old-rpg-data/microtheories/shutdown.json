@@ -1,0 +1,31 @@
+{
+	"type": "shutdown",
+	"rules": [
+		{
+			"name": "You are more likely to shut down someone you don't trust",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "trust",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "shutdown",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "shutdown.json",
+			"id": "shutdown_8"
+		}
+	]
+}

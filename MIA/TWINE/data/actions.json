@@ -1,0 +1,122 @@
+{
+	"fileName" : "actions.json",
+	"actions" : [
+		{
+			"name" : "SMITH",
+			"intent" : {
+				"class" : "smith",
+				"type" : "",
+				"intentDirection" : true,
+				"first" : "initiator"
+			},
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["b_makeSword1", "s_makeSword1"]
+		},
+		{
+			"name" : "b_makeSword1",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "blacksmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				},
+				{
+					"class" : "SFDBLabelUndirected",
+					"type" : "phsyical-action",
+					"first" : "initiator",
+					"value" : true
+				}
+			],
+			"influenceRules" : [],
+			"effects" : [{
+				"class" : "item",
+				"type" : "sword",
+				"operator" : "+",
+				"value" : 1
+			}, {
+				"class" : "smith",
+				"type" : "blacksmith",
+				"first" : "initiator",
+				"operator" : "+",
+				"value" : 1
+			}]
+		},
+		{
+			"name" : "s_makeSword1",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "silversmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				}
+			],
+			"influenceRules" : [
+				{
+					"name": "Silversmiths want to make silver swords.",
+					"conditions": [
+						{
+							"class" : "smith",
+							"type" : "silversmith",
+							"first" : "initiator",
+							"value" : true
+						}
+					],
+					"weight" : 10
+				}
+			],
+			"effects" : [{
+				"class" : "item",
+				"type" : "silver_sword",
+				"operator" : "+",
+				"value" : 1
+			}, {
+				"class" : "smith",
+				"type" : "silversmith",
+				"first" : "initiator",
+				"operator" : "+",
+				"value" : 1
+			}]
+		},
+		{
+			"name" : "talkSilver",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "silversmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				},
+				{
+					"class" : "smith",
+					"type" : "silversmith",
+					"first" : "responder",
+					"operator" : ">",
+					"value" : 1
+				}
+			],
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "smith",
+					"type" : "silversmith",
+					"first" : "initiator",
+					"operator" : "+",
+					"value" : 1
+				},
+				{
+				"class" : "smith",
+				"type" : "silversmith",
+				"first" : "responder",
+				"operator" : "+",
+				"value" : 1
+				}
+			]
+		}
+	]
+}

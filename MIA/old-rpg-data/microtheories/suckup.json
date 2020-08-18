@@ -1,0 +1,31 @@
+{
+	"type": "suckup",
+	"rules": [
+		{
+			"name": "You are more likely to suck up towards someone you feel romantic towards",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "romance",
+					"first": "x",
+					"second": "y",
+					"value": 7,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "suckup",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "suckup.json",
+			"id": "suckup_9"
+		}
+	]
+}

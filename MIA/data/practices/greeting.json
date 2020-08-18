@@ -1,0 +1,75 @@
+{
+	"practice": {
+		"label": "Greeting",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Greet"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Greet",
+				"eventStage": false,
+				"nextStages": [
+					"Respond to Greeting"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Greet",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('Hi!','Hello','Good day to you')%</line>",
+						"performanceTree": {
+							"Greet": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Respond to Greeting",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Greet",
+					"Greet"
+				],
+				"actions": [
+					{
+						"label": "Respond to greeting",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('Hi!','Hello.','Good day.')%</line>",
+						"performanceTree": {
+							"Greet": {
+								"Respond to greeting": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

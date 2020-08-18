@@ -1,0 +1,117 @@
+{
+	"schema": [
+		{
+			"class": "network",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"trust",
+				"friendship",
+				"romance"
+			],
+			"defaultValue": 5,
+			"minValue": 0,
+			"maxValue": 10,
+			"allowIntent": false
+		},
+		{
+			"class": "mood",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [
+				"depressed",
+				"happy"
+			],
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "attribute",
+			"types": [
+				"age",
+				"happiness",
+				"intelligence",
+				"humor"
+			],
+			"isBoolean": false,
+			"directionType": "undirected",
+			"defaultValue": 20,
+			"maxValue": 100,
+			"minValue": 0,
+			"allowIntent": false
+		},
+		{
+			"class": "convoTracking",
+			"types": [
+				"entryA",
+				"entryB",
+				"entryC",
+				"entryD",
+				"AtoA",
+				"AtoB",
+				"AtoC",
+				"AtoD",
+				"BtoA",
+				"BtoB",
+				"BtoC",
+				"BtoD",
+				"CtoA",
+				"CtoB",
+				"CtoC",
+				"CtoD",
+				"DtoA",
+				"DtoB",
+				"DtoC",
+				"DtoD",
+				"AtoBtoA",
+				"AtoBtoB",
+				"BtoBtoA",
+				"BtoBtoB",
+				"CtoBtoA",
+				"CtoBtoB",
+				"DtoBtoA",
+				"DtoBtoB"
+			],
+			"isBoolean": true,
+			"directionType": "undirected",
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "SFDBLabel",
+			"types": [
+				"met",
+				"positive",
+				"negative",
+				"rude",
+				"family reference"
+			],
+			"isBoolean": true,
+			"directionType": "directed",
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "intents",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"putdown",
+				"suckup",
+				"friendly",
+				"romantic",
+				"humble",
+				"jokearound",
+				"depressed",
+				"shutdown",
+				"disdain",
+				"putdown"
+			],
+			"defaultValue": 0,
+			"minValue": -10,
+			"maxValue": 10,
+			"allowIntent": true
+		}
+	],
+	"source_file": "/Users/anne/Dropbox (Personal)/extended-game/social-practice-src/test/ulivdata/schema.json"
+}

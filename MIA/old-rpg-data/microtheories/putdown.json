@@ -1,0 +1,31 @@
+{
+	"type": "putdown",
+	"rules": [
+		{
+			"name": "You are more likely to put down someone you are not friends with",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "putdown",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "putdown.json",
+			"id": "putdown_6"
+		}
+	]
+}

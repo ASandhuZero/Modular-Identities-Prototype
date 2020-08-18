@@ -1,0 +1,71 @@
+:: Utility Functions [script]
+var playerName = "foo";
+
+
+:: Add Cif [script]
+let newScript = document.createElement("script");
+console.log(newScript);
+newScript.src = "build/cif.js";
+$("head").append(newScript);
+
+:: Add MIA [script]
+newScript = document.createElement("script");
+console.log(newScript);
+newScript.src = "build/MIA.js";
+$("head").append(newScript);
+
+
+:: Check if CiF loaded [script]
+document.addEventListener('cifLoaded', function (e) {
+
+//Init CiF
+    let loadResult = cif.init();
+	console.log(loadResult);
+    //Load in our schema, cast, triggerRules and volitionRules, and actions.
+    let rawSchema = cif.loadFile("data/schema.json");
+    let schema = cif.loadSocialStructure(rawSchema);
+    let identities = rawSchema["identities"];
+    console.log(identities);
+
+    let rawCast = cif.loadFile("data/cast.json");
+    let cast = cif.addCharacters(rawCast);
+
+    console.log("Here is our cast! " , cast);
+
+    let rawTriggerRules = cif.loadFile("data/triggerRules.json");
+    let triggerRules = cif.addRules(rawTriggerRules);
+    console.log(triggerRules);
+    
+    let rawVolitionRules = cif.loadFile("data/volitionRules.json");
+    let volitionRules = cif.addRules(rawVolitionRules);
+    console.log(volitionRules);
+
+    let rawActions = cif.loadFile("data/actions.json");
+    let actions = cif.addActions(rawActions);
+    console.log(actions);
+
+    let rawHistory = cif.loadFile("data/history.json");
+    let history = cif.addHistory(rawHistory);
+    console.log(history);
+    var storedVolitions = cif.calculateVolition(cast);
+
+    // updateTimeStep(cif);
+    var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
+    console.log(identityCastValues);
+    playerName = cif.getCharName["Player"];
+    mia.setCiF(cif);
+    mia.getCastActions();
+
+}, false);
+
+
+
+
+
+:: Add identities [script]
+
+//TODO: Change these from function callbacks to just functions that are saved
+state.variables.identitiesValues = mia.getIdentityValues();
+state.variables.identityDescription = mia.getIdentityDescriptions();
+state.variables.evaluateIdentities = mia.evaluateIdentities;
+state.variables.name = playerName;

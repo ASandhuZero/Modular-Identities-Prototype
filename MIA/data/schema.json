@@ -1,0 +1,188 @@
+{
+	"schema": [
+		{
+			"class": "public relationship",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"public friends",
+				"publicly romantically committed to",
+				"feuding",
+				"have met"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "directed public relationship",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"is boss of"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "directed relationship feelings",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"idolize",
+				"rivals"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "network",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"friendship",
+				"romance",
+				"familial",
+				"trust",
+				"respect",
+				"antagonism",
+				"indebted",
+				"gratitude"
+			],
+			"defaultValue": 4,
+			"minValue": 0,
+			"maxValue": 10,
+			"allowIntent": false
+		},
+		{
+			"class": "statuses",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [
+				"embarrassed",
+				"successful",
+				"heartbroken",
+				"guilty",
+				"fearful"
+			],
+			"duration": 10,
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "directed statuses",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"envy",
+				"betrayed by",
+				"afraid of"
+			],
+			"duration": 10,
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "character attributes",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": [
+				"honor",
+				"altruism",
+				"wisdom",
+				"charisma"
+			],
+			"minValue": 0,
+			"maxValue": 18,
+			"allowIntent": false,
+			"defaultValue": 9
+		},
+		{
+			"class": "character traits",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": [
+				"friendly",
+				"xenophobia",
+				"selfish",
+				"helpful"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "HistoryLabels",
+			"types": [
+				"nice",
+				"romantic",
+				"embarrassing",
+				"mean",
+				"did a favor for",
+				"met"
+			],
+			"isBoolean": true,
+			"directionType": "directed",
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "object trait",
+			"types": [
+				"valuable",
+				"cheap",
+				"is weapon"
+			],
+			"isBoolean": true,
+			"directionType": "undirected",
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "character to object",
+			"types": [
+				"has",
+				"wants",
+				"likes",
+				"dislikes"
+			],
+			"isBoolean": true,
+			"directionType": "directed",
+			"defaultValue": false,
+			"allowIntent": false
+		},
+		{
+			"class": "character to object count",
+			"types": [
+				"has amount of"
+			],
+			"isBoolean": false,
+			"directionType": "directed",
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 1000000,
+			"allowIntent": false
+		},
+		{
+			"class": "intents",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"indifferent",
+				"trust",
+				"favor",
+				"romantic",
+				"kind",
+				"honor",
+				"ingratiate",
+				"manipulate",
+				"candid",
+				"idealistic",
+				"antagonistic"
+			],
+			"defaultValue": 0,
+			"minValue": -10,
+			"maxValue": 10,
+			"allowIntent": true
+		}
+	],
+	"source_file": "/Users/mirjam/src/rpg/data/schema.json"
+}

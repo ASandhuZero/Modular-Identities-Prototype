@@ -1,0 +1,68 @@
+{
+	"practice": {
+		"label": "Leave",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Leave"
+			],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Leave",
+				"eventStage": false,
+				"nextStages": [
+					"Leave Response"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Say Goodbye",
+						"intent": "friendly",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Say Goodbye": {
+								"line":"<emote character='%X%' emotion='neutral'/>\n<line s='%X%'>Goodbye! Farewell!</line>"
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Leave Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": ["Leave"],
+				"actions": [
+					{
+						"label": "Goodbye Response",
+						"intent": "friendly",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Say Goodbye": {
+								"Goodbye Response": {
+									"line":"<emote character='%X%' emotion='neutral'/>\n<line s='%X%'>Bye, then.</line>\n"
+								}
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": []
+	}
+}

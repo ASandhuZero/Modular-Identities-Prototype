@@ -1,0 +1,461 @@
+{
+	"practice": {
+		"label": "Compliment",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Insincere",
+				"Sincere"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Insincere",
+				"eventStage": false,
+				"nextStages": [
+					"Joking Response",
+					"Romantic Response",
+					"Negative Response",
+					"Positive Response",
+					"Backhanded Response",
+					"Humble Response"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Backhanded Compliment",
+						"intent": "trust",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"line": "<emote character=\"%X%\" emotion=\"mischievous\"></emote>\n<line s=\"%X%\">I wish I was confident enough to wear something like that. Good for you.</line>"
+							}
+						}
+					},
+					{
+						"label": "Flatter",
+						"intent": "suckup",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Flatter": {
+								"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I wish I was half as talented as you. What's it like to be so good at something?</line>"
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Sincere",
+				"eventStage": false,
+				"nextStages": [
+					"Romantic Response",
+					"Negative Response",
+					"Positive Response",
+					"Humble Response",
+					"Joking Response"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Friendly Compliment",
+						"intent": "friendly",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Friendly Compliment": {
+								"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">It's always so wonderful to chat with you. You always make my day better.</line>"
+							}
+						}
+					},
+					{
+						"label": "Romantic Compliment",
+						"intent": "romantic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Romantic Compliment": {
+								"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I can't stop thinking about you.</line>"
+							}
+						}
+					}
+				],
+				"entryStage": true
+			},
+			{
+				"label": "Joking Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insincere",
+					"Sincere"
+				],
+				"actions": [
+					{
+						"label": "Joke",
+						"intent": "jokearound",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Joke": {
+									"line": "<emote character=\"%X%\" emotion=\"laughing\"></emote>\n<line s=\"%X%\">It'd take more confidence NOT to wear it!</line>"
+								}
+							},
+							"Flatter": {
+								"Joke": {
+									"line": "<emote character=\"%X%\" emotion=\"laughing\"></emote>\n<line s=\"%X%\">Oh, I like the way you think. You can hang out with me any time.</line>"
+								}
+							},
+							"Friendly Compliment": {
+								"Joke": {
+									"line": "<emote character=\"%X%\" emotion=\"laughing\"></emote>\n<line s=\"%X%\">Now my day is better, too!</line>"
+								}
+							},
+							"Romantic Compliment": {
+								"Joke": {
+									"line": "<emote character=\"%X%\" emotion=\"laughing\"></emote>\n<line s=\"%X%\">I can't stop thinking about me either.</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Romantic Response",
+				"eventStage": false,
+				"nextStages": [
+					"Positive Response to Romantic",
+					"Negative Response to Romantic"
+				],
+				"parentStages": [
+					"Insincere",
+					"Sincere"
+				],
+				"actions": [
+					{
+						"label": "Respond Romantically",
+						"intent": "romantic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Romantically": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">Are you confident enough to help me remove it?</line>"
+								}
+							},
+							"Flatter": {
+								"Respond Romantically": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">Want to experience what I'm good at first hand?</line>"
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Romantically": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">My day is better every time I am with you.</line>"
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Romantically": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I can't stop thinking about you either.</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Negative Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insincere",
+					"Sincere"
+				],
+				"actions": [
+					{
+						"label": "Respond Negatively",
+						"intent": "depressed",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Negatively": {
+									"line": "<emote character=\"%X%\" emotion=\"sad\"></emote>\n<line s=\"%X%\">I wish I had confidence, period.</line>"
+								}
+							},
+							"Flatter": {
+								"Respond Negatively": {
+									"line": "<emote character=\"%X%\" emotion=\"sad\"></emote>\n<line s=\"%X%\">The only thing I'm good at is being terrible.</line>"
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Negatively": {
+									"line": "<emote character=\"%X%\" emotion=\"sad\"></emote>\n<line s=\"%X%\">I'm surprised you can stand to talk to me at all.</line>"
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Negatively": {
+									"line": "<emote character=\"%X%\" emotion=\"sad\"></emote>\n<line s=\"%X%\">If I'm bugging you that much, I can leave.</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Positive Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insincere",
+					"Sincere"
+				],
+				"actions": [
+					{
+						"label": "Respond Positively to Compliment",
+						"intent": "friendly",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Positively to Compliment": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">Hey, thanks!</line>"
+								}
+							},
+							"Flatter": {
+								"Respond Positively to Compliment": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">That was really nice. Thanks!</line>"
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Positively to Compliment": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I'm happy to hear that. You make my day better too!</line>"
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Positively to Compliment": {
+									"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">That's really sweet!</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Backhanded Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insincere"
+				],
+				"actions": [
+					{
+						"label": "Respond Backhandedly",
+						"intent": "putdown",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Backhandedly": {
+									"line": "<emote character=\"%X%\" emotion=\"bored\"></emote>\n<line s=\"%X%\">Thanks. I had no idea you had any idea about fashion.</line>"
+								}
+							},
+							"Flatter": {
+								"Respond Backhandedly": {
+									"line": "<emote character=\"%X%\" emotion=\"bored\"></emote>\n<line s=\"%X%\">Maybe you'll find out some day.</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Humble Response",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Insincere",
+					"Sincere"
+				],
+				"actions": [
+					{
+						"label": "Respond Humbly",
+						"intent": "humble",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Humbly": {
+									"line": "<emote character=\"%X%\" emotion=\"surprised\"></emote>\n<line s=\"%X%\">Oh, this? It was the only clean thing I found this morning.</line>"
+								}
+							},
+							"Flatter": {
+								"Respond Humbly": {
+									"line": "<emote character=\"%X%\" emotion=\"surprised\"></emote>\n<line s=\"%X%\">Thank you. But I'm really not that talented. It's all just luck.</line>"
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Humbly": {
+									"line": "<emote character=\"%X%\" emotion=\"surprised\"></emote>\n<line s=\"%X%\">I didn't do anything. You're the one that brought the cheer!</line>"
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Humbly": {
+									"line": "<emote character=\"%X%\" emotion=\"surprised\"></emote>\n<line s=\"%X%\">Oh, I hope it's not all bad thoughts.</line>"
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Positive Response to Romantic",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Romantic Response"
+				],
+				"actions": [
+					{
+						"label": "Respond Positively to Romance",
+						"intent": "romantic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Romantically": {
+									"Respond Positively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I think I could find the courage... let's find out.</line>"
+									}
+								}
+							},
+							"Flatter": {
+								"Respond Romantically": {
+									"Respond Positively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I'd be happy to experience anything to do with your hands.</line>"
+									}
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Romantically": {
+									"Respond Positively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">I'd be happy to make your day better any time.</line>"
+									}
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Romantically": {
+									"Respond Positively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"kind\"></emote>\n<line s=\"%X%\">Maybe we should think about each other together...</line>"
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			{
+				"label": "Negative Response to Romantic",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Romantic Response"
+				],
+				"actions": [
+					{
+						"label": "Respond Negatively to Romance",
+						"intent": "putdown",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "",
+						"performanceTree": {
+							"Backhanded Compliment": {
+								"Respond Romantically": {
+									"Respond Negatively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"annoyed\"></emote>\n<line s=\"%X%\">Ughhh... ew?</line>"
+									}
+								}
+							},
+							"Flatter": {
+								"Respond Romantically": {
+									"Respond Negatively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"offended\"></emote>\n<line s=\"%X%\">I don't think so.</line>"
+									}
+								}
+							},
+							"Friendly Compliment": {
+								"Respond Romantically": {
+									"Respond Negatively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"annoyed\"></emote>\n\n<line s=\"%X%\">Sorry,this district has been zoned for friends.</line>"
+									}
+								}
+							},
+							"Romantic Compliment": {
+								"Respond Romantically": {
+									"Respond Negatively to Romance": {
+										"line": "<emote character=\"%X%\" emotion=\"confused\"></emote>\n<line s=\"%X%\">Ugh... this just got weird.</line>"
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

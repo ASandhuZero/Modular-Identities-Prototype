@@ -1,0 +1,31 @@
+{
+	"type": "disdain",
+	"rules": [
+		{
+			"name": "You are more likely to have disdain for someone you are not friendly towards",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 3,
+					"operator": "<"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "disdain",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "disdain.json",
+			"id": "disdain_2"
+		}
+	]
+}

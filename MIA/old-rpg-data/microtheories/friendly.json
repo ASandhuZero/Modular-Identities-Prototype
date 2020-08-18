@@ -1,0 +1,57 @@
+{
+	"type": "friendly",
+	"rules": [
+		{
+			"name": "You are more likely to be friendly towards someone you have high friendship with",
+			"conditions": [
+				{
+					"class": "network",
+					"type": "friendship",
+					"first": "x",
+					"second": "y",
+					"value": 6,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "friendly",
+					"first": "x",
+					"second": "y",
+					"weight": 2,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"origin": "friendly.json",
+			"id": "friendly_3"
+		},
+		{
+			"name": "If you are happy, you're more likely to be friendly",
+			"conditions": [
+				{
+					"class": "attribute",
+					"type": "happiness",
+					"first": "x",
+					"value": 50,
+					"operator": ">"
+				}
+			],
+			"effects": [
+				{
+					"class": "intents",
+					"type": "friendly",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": true
+				}
+			],
+			"type": "friendly",
+			"origin": "friendly.json",
+			"id": "friendly_13"
+		}
+	]
+}

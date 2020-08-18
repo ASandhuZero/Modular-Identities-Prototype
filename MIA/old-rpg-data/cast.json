@@ -1,0 +1,112 @@
+{
+	"characters": [
+		{
+			"name": "player",
+			"profession":"none",
+			"graphics": {
+				"icon": "player"
+			}
+		},
+		{
+			"name": "Cogsworth",
+			"profession": "Robot",
+			"graphics": {
+			}
+		},
+		{
+			"name": "Clayton",
+			"profession": "Farmer",
+			"graphics": {
+				"icon": "duder1",
+				"body": "g",
+				"head": "o",
+				"hair": "b",
+				"nose": "a",
+				"eyes": "c",
+				"mouth": "e"
+				}
+		},
+		{
+			"name": "Brim",
+			"profession": "Nanosmith",
+			"graphics": {
+				"icon": "dudette1",
+				"body": "c",
+				"head": "f",
+				"hair": "k",
+				"nose": "a",
+				"eyes": "d",
+				"mouth": "c"
+			}
+		},
+		{
+			"name": "Emma",
+		  "profession": "Sheriff",
+			"graphics": {
+				"icon": "dudette2",
+				"body": "b",
+				"head": "g",
+				"hair": "n",
+				"nose": "c",
+				"eyes": "d",
+				"mouth": "a"
+			}
+		},
+		{
+			"name": "Mick",
+		  "profession": "Pilot",
+			"graphics": {
+				"icon": "duder2",
+				"body": "d",
+				"head": "l",
+				"hair": "d",
+				"nose": "a",
+				"eyes": "b",
+				"mouth": "d"
+			}
+		},
+		{
+			"name": "Stan",
+			"profession": "Student",
+			"graphics": {
+				"icon": "duder3",
+				"body": "e",
+				"head": "p",
+				"hair": "c",
+				"nose": "d",
+				"eyes": "a",
+				"mouth": "f"
+			}
+		},
+		{
+			"name": "Belle",
+		  "profession": "Mayor",
+			"graphics": {
+				"icon": "dudette3",
+				"body": "h",
+				"head": "u",
+				"hair": "o",
+				"nose": "e",
+				"eyes": "a",
+				"mouth": "a"
+			}
+		}
+	],
+	"objects": [
+		{
+			"name": "Concert Ticket"
+		},
+		{
+			"name": "Garbage"
+		},
+		{
+			"name": "Necklace"
+		},
+		{
+			"name": "Frisbee"
+		},
+		{
+			"name": "Teddy Bear"
+		}
+	]
+}

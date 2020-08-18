@@ -1,0 +1,476 @@
+{
+	"practice": {
+		"label": "Talk about Subject",
+		"entryStage": {
+			"eventStage": false,
+			"label": "Enter",
+			"nextStages": [
+				"Ask Opinion of Subject",
+				"Ask about facts about subject"
+			],
+			"parentStages": [],
+			"preconditions": [],
+			"actions": []
+		},
+		"stages": [
+			{
+				"label": "Ask Opinion of Subject",
+				"eventStage": false,
+				"nextStages": [
+					"Answer about Opinion of Subject",
+					"Refuse to answer on opinion of subject"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Ask Opinion on Subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('What do you think about', 'How do you like','What's your view on')% %subject%?</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true,
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "Answer about Opinion of Subject",
+				"eventStage": false,
+				"nextStages": [
+					"Reciprocal Question about Subject"
+				],
+				"parentStages": [
+					"Ask Opinion of Subject",
+					"Reciprocal Question about Subject"
+				],
+				"actions": [
+					{
+						"label": "Very positive towards Subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('I just love', 'I live for')% %subject%!</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"Very positive towards Subject": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					},
+					{
+						"label": "Positive towards subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%subject%? %repeatVariation('I like it.', 'Good stuff.')%</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"Positive towards subject": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					},
+					{
+						"label": "Indifferent towards subject answer",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('I like it well enough I suppose.', 'I have no real opinion about it.' 'Honestly, I'm pretty indifferent about it.')% </line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"Indifferent towards subject answer": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": true
+			},
+			{
+				"label": "Reciprocal Question about Subject",
+				"eventStage": false,
+				"nextStages": [
+					"Answer about Opinion of Subject"
+				],
+				"parentStages": [
+					"Answer about Opinion of Subject",
+					"Refuse to answer on opinion of subject"
+				],
+				"actions": [
+					{
+						"label": "Ask reciprocal question of opinion on subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">How about you, what do you think about %subject%?</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"Very positive towards Subject": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Positive towards subject": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Indifferent towards subject answer": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"antagonistic refusal to answer on opinion of subject": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"Indifferent refusal to answer opinion about subject": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								},
+								"kind refusal to answer opinion of subject": {
+									"Ask reciprocal question of opinion on subject": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": true
+			},
+			{
+				"label": "Refuse to answer on opinion of subject",
+				"eventStage": false,
+				"nextStages": [
+					"Reciprocal Question about Subject"
+				],
+				"parentStages": [
+					"Ask Opinion of Subject"
+				],
+				"actions": [
+					{
+						"label": "antagonistic refusal to answer on opinion of subject",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">That's none of your business.</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"antagonistic refusal to answer on opinion of subject": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					},
+					{
+						"label": "Indifferent refusal to answer opinion about subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I'd rather not say.</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"Indifferent refusal to answer opinion about subject": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					},
+					{
+						"label": "kind refusal to answer opinion of subject",
+						"intent": "kind",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I'm so sorry, but I really can't tell you right now.</line>",
+						"performanceTree": {
+							"Ask Opinion on Subject": {
+								"kind refusal to answer opinion of subject": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": true
+			},
+			{
+				"label": "Ask about facts about subject",
+				"eventStage": false,
+				"nextStages": [
+					"Answer with facts about subject",
+					"refuse to answer with facts about subject despite knowing",
+					"Not knowing any facts and answering with that"
+				],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "ask for facts about subject action",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">What can you tell me about %subject%?</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"entryStage": true,
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "Answer with facts about subject",
+				"eventStage": false,
+				"nextStages": [
+					"reciprocal question about facts about subject"
+				],
+				"parentStages": [
+					"Ask about facts about subject"
+				],
+				"actions": [],
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "refuse to answer with facts about subject despite knowing",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Ask about facts about subject"
+				],
+				"actions": [
+					{
+						"label": "antagonistic refusal to give facts",
+						"intent": "antagonistic",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">You don't deserve to know.</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"antagonistic refusal to give facts": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"antagonistic refusal to give facts": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					},
+					{
+						"label": "Indifferent refusal to answer with facts",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">It's secret.</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"Indifferent refusal to answer with facts": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Indifferent refusal to answer with facts": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					},
+					{
+						"label": "Say that don't know facts though knowing",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">I have no idea what you're talking about.</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"Say that don't know facts though knowing": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "Not knowing any facts and answering with that",
+				"eventStage": false,
+				"nextStages": [
+					"reciprocal question about facts about subject"
+				],
+				"parentStages": [
+					"Ask about facts about subject"
+				],
+				"actions": [
+					{
+						"label": "Not knowing any facts and answering with that action",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">%repeatVariation('I have no idea about that.', 'I really don't know anything')%</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"Not knowing any facts and answering with that action": {
+									"line": "",
+									"useDefault": true
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"Not knowing any facts and answering with that action": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "reciprocal question about facts about subject",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [
+					"Not knowing any facts and answering with that",
+					"Answer with facts about subject"
+				],
+				"actions": [
+					{
+						"label": "reciprocal question about facts about subject action",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [],
+						"performance": "<line s=\"%X%\">What about you, what can you tell me about %subject%?</line>",
+						"performanceTree": {
+							"ask for facts about subject action": {
+								"Not knowing any facts and answering with that action": {
+									"reciprocal question about facts about subject action": {
+										"line": "",
+										"useDefault": true
+									}
+								}
+							}
+						},
+						"performanceTreeCache": {
+							"reciprocal question about facts about subject action": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": false
+			},
+			{
+				"label": "Thank for info about facts about subject and becoming grateful",
+				"eventStage": false,
+				"nextStages": [],
+				"parentStages": [],
+				"actions": [
+					{
+						"label": "Thank for info about facts about subject",
+						"intent": "indifferent",
+						"defaultWeight": 0,
+						"preconditions": [],
+						"carryRules": [],
+						"nowRules": [],
+						"effects": [
+							{
+								"class": "network",
+								"type": "gratitude",
+								"first": "x",
+								"second": "y",
+								"value": 1,
+								"operator": "+"
+							}
+						],
+						"performance": "<line s=\"%X%\">%repeatVariation('Thank you for telling me.', 'Thanks, that's really good to know.')% </line>",
+						"performanceTree": {
+							"Thank for info about facts about subject": {
+								"line": "",
+								"useDefault": true
+							}
+						}
+					}
+				],
+				"performanceTreesNeedsUpdate": false
+			}
+		],
+		"eventStages": [],
+		"actionContexts": []
+	}
+}

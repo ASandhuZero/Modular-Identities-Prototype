@@ -1,0 +1,87 @@
+{
+	"identities" : [
+		"hero", 
+		"smith", 
+		"mage", 
+		"tank"
+	],
+	"schema": [
+		{
+			"class": "hero",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": ["chosen one", "hero of the people", "antihero"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class": "smith",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": ["blacksmith", "silversmith"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class": "mage",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": ["scholar", "combat", "healer"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class": "tank",
+			"isBoolean": false,
+			"directionType": "undirected",
+			"types": ["defensive", "distractor ", "brute"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class" : "attribute",
+			"types" : ["strength", "intelligence"],
+			"isBoolean" : false,
+			"directionType" : "undirected",
+			"allowIntent" : true,
+			"defaultValue" : 0,
+			"maxValue" : 100,
+			"minValue" : 0
+		},
+		{
+			"class" : "trait",
+			"isBoolean" : true,
+			"directionType" : "undirected",
+			"types" : ["hero", "love", "rival", "blacksmith", "silversmith", "anyone"],
+			"allowIntent" : false,
+			"defaultValue" : false
+		},
+		{
+			"class": "SFDBLabel",
+			"types": ["romantic-failure", "romantic-advance"],
+			"isBoolean": true,
+			"directionType": "directed",
+			"defaultValue": false,
+			"allowIntent": false,
+			"duration": 0
+		},
+		{
+			"class": "SFDBLabelUndirected",
+			"types": ["dialogue", "physical-action", "mental-action"],
+			"isBoolean": true,
+			"directionType": "undirected",
+			"defaultValue": false,
+			"allowIntent": false,
+			"duration": 0
+		}
+	]
+}
+
