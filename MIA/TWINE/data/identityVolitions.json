@@ -21,12 +21,6 @@
 					"first": "x",
 					"weight": 10,
 					"intentDirection" : true
-				},
-				{
-					"class": "SFDBLabelUndirected",
-					"type" : "physical-action",
-					"first" : "x",
-					"value" : true
 				}
 			]
 		},
@@ -48,12 +42,6 @@
 					"first": "x",
 					"weight": 1,
 					"intentDirection" : true
-				}, 
-				{
-					"class": "SFDBLabelUndirected",
-					"type" : "physical-action",
-					"first" : "x",
-					"weight" : 1
 				}
 			]
 		},
@@ -75,12 +63,6 @@
 					"first": "x",
 					"weight": 5,
 					"intentDirection" : true
-				}, 
-				{
-					"class": "SFDBLabelUndirected",
-					"type" : "physical-action",
-					"first" : "x",
-					"weight" : 1
 				}
 			]
 		},
@@ -102,12 +84,6 @@
 					"first": "x",
 					"weight": 1,
 					"intentDirection" : true
-				}, 
-				{
-					"class": "SFDBLabelUndirected",
-					"type" : "physical-action",
-					"first" : "x",
-					"weight" : 1
 				}
 			]
 		},
