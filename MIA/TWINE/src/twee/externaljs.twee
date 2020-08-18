@@ -46,7 +46,10 @@ document.addEventListener('cifLoaded', function (e) {
 
     let rawHistory = cif.loadFile("data/history.json");
     let history = cif.addHistory(rawHistory);
-    console.log(history);
+    console.log(rawHistory, "rawhistory");
+    history = cif.addHistory(rawHistory);
+    
+    console.log(history, "cif history");
     var storedVolitions = cif.calculateVolition(cast);
 
     // updateTimeStep(cif);
@@ -54,7 +57,7 @@ document.addEventListener('cifLoaded', function (e) {
     console.log(identityCastValues);
     playerName = cif.getCharName["Player"];
     mia.setCiF(cif);
-    mia.getCastActions();
+    mia.getCastActions("dialogue");
 
 }, false);
 

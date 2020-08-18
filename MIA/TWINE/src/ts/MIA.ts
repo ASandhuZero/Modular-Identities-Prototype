@@ -43,19 +43,20 @@ class MIA {
 
 
 
-    getCastActions() {
+    getCastActions(decisionType : string) {
         let storedVolitions = this.cif.calculateVolition(this.cast);
         let rawVolitions : object = storedVolitions.dump();
         let volitions : object[] = []
         for (let i = 0; i < this.cast.length; i ++) {
             let char = this.cast[i];
+            this.addActionCondition(char, decisionType);
             let charVolition = rawVolitions[char][char];
-            this.intentSelection(charVolition, char);
+            this.intentSelection(charVolition, char, decisionType);
         }
         return volitions;
     }
 
-    intentSelection(charVolition : object[], char: string) {
+    intentSelection(charVolition : object[], char: string, decisionType : string){
         let intents : object[];
         let rankedIntents : object;
         let intent : string;
@@ -72,7 +73,7 @@ class MIA {
         // get action template from intent
         intent = this.chooseIntent(rankedIntents)
         //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
-        action = this.chooseAction(intent);
+        action = this.chooseAction(decisionType);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);
         // return action
@@ -106,7 +107,7 @@ class MIA {
         return intent
     }
 
-    chooseAction(intent : string) {
+    chooseAction(intent : string) { 
         console.log(intent);
         return {}
     }
@@ -221,6 +222,7 @@ class MIA {
     }
 
     addActionCondition(character : string, action : string) {
+        let history = [];
         let actionToAdd : object = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
@@ -231,10 +233,19 @@ class MIA {
             "value": true
         }
 
-
-        let history = this.cif.dumpSFDB();
-        history[this.timeStep].push()
-        this.cif.addHistory()
+        for (let i = 0; i < this.timeStep; i++) {
+            history[i] = {
+                "pos" : i, 
+                "data" : this.cif.get(i)
+            }
+        }
+        let historyslice = this.cif.get(this.timeStep);
+        historyslice.push(actionToAdd);
+        history[this.timeStep] = {
+            "pos" : this.timeStep,
+            "data" : historyslice   
+        }
+        this.cif.addHistory({"history" : history});
     }
 
 

@@ -121,18 +121,19 @@ var MIA = /** @class */ (function () {
         }
         return descriptions;
     };
-    MIA.prototype.getCastActions = function () {
+    MIA.prototype.getCastActions = function (decisionType) {
         var storedVolitions = this.cif.calculateVolition(this.cast);
         var rawVolitions = storedVolitions.dump();
         var volitions = [];
         for (var i = 0; i < this.cast.length; i++) {
             var char = this.cast[i];
+            this.addActionCondition(char, decisionType);
             var charVolition = rawVolitions[char][char];
-            this.intentSelection(charVolition, char);
+            this.intentSelection(charVolition, char, decisionType);
         }
         return volitions;
     };
-    MIA.prototype.intentSelection = function (charVolition, char) {
+    MIA.prototype.intentSelection = function (charVolition, char, decisionType) {
         var intents;
         var rankedIntents;
         var intent;
@@ -147,7 +148,7 @@ var MIA = /** @class */ (function () {
         // get action template from intent
         intent = this.chooseIntent(rankedIntents);
         //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
-        action = this.chooseAction(intent);
+        action = this.chooseAction(decisionType);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);
         // return action
@@ -275,6 +276,7 @@ var MIA = /** @class */ (function () {
         this.timeStep = this.cif.setupNextTimeStep();
     };
     MIA.prototype.addActionCondition = function (character, action) {
+        var history = [];
         var actionToAdd = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
@@ -284,9 +286,19 @@ var MIA = /** @class */ (function () {
             "type": action,
             "value": true
         };
-        var history = this.cif.dumpSFDB();
-        history[this.timeStep].push();
-        this.cif.addHistory();
+        for (var i = 0; i < this.timeStep; i++) {
+            history[i] = {
+                "pos": i,
+                "data": this.cif.get(i)
+            };
+        }
+        var historyslice = this.cif.get(this.timeStep);
+        historyslice.push(actionToAdd);
+        history[this.timeStep] = {
+            "pos": this.timeStep,
+            "data": historyslice
+        };
+        this.cif.addHistory({ "history": history });
     };
     return MIA;
 }());
@@ -367,7 +379,10 @@ document.addEventListener('cifLoaded', function (e) {
 
     let rawHistory = cif.loadFile("data/history.json");
     let history = cif.addHistory(rawHistory);
-    console.log(history);
+    console.log(rawHistory, "rawhistory");
+    history = cif.addHistory(rawHistory);
+    
+    console.log(history, "cif history");
     var storedVolitions = cif.calculateVolition(cast);
 
     // updateTimeStep(cif);
@@ -375,7 +390,7 @@ document.addEventListener('cifLoaded', function (e) {
     console.log(identityCastValues);
     playerName = cif.getCharName["Player"];
     mia.setCiF(cif);
-    mia.getCastActions();
+    mia.getCastActions("dialogue");
 
 }, false);
 /* twine-user-script #5: "Add identities" */
@@ -383,7 +398,7 @@ document.addEventListener('cifLoaded', function (e) {
 state.variables.identitiesValues = mia.getIdentityValues();
 state.variables.identityDescription = mia.getIdentityDescriptions();
 state.variables.evaluateIdentities = mia.evaluateIdentities;
-state.variables.name = playerName;</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="CharacterEditor" tags="" position="225,100" size="100,100">name: &lt;&lt;textbox &quot;$name&quot; $name&gt;&gt;
+state.variables.name = playerName;</script><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-passagedata pid="1" name="CharacterEditor" tags="" position="225,100" size="100,100">name: &lt;&lt;textbox &quot;$name&quot; $name&gt;&gt;
 &lt;&lt;for _name, _val range $identitiesValues&gt;&gt;
 	&lt;&lt;set _identity = _name&gt;&gt;
 	&lt;&lt;capture _identity&gt;&gt;

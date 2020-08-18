@@ -15,61 +15,70 @@
 				"value" : 10
 			},
 			{
-			"class" : "hero",
-			"type" : "chosen one",
-			"first" : "player",
-			"value" : 50
-				},{
-			"class" : "trait",
-			"type" : "love",
-			"first" : "love",
-			"value" : true
-				},{
-			"class" : "trait",
-			"type" : "rival",
-			"first" : "rival",
-			"value" : true
-				},{
-			"class" : "trait",
-			"type" : "anyone",
-			"first" : "hero",
-			"value" : true
-				},{
-			"class" : "trait",
-			"type" : "anyone",
-			"first" : "rival",
-			"value" : true
-				},{
-			"class" : "trait",
-			"type" : "anyone",
-			"first" : "love",
-			"value" : true
-				},{
-			"class" : "attribute",
-			"type" : "strength",
-			"first" : "hero",
-			"value" : 0
-			},{
-			"class" : "attribute",
-			"type" : "intelligence",
-			"first" : "hero",
-			"value" : 5
-			},{
-			"class" : "smith",
-			"type" : "blacksmith",
-			"first" : "blacksmith",
-			"value" : 30
-			},{
-			"class" : "smith",
-			"type" : "silversmith",
-			"first" : "silversmith",
-			"value" : 30
+				"class" : "hero",
+				"type" : "chosen one",
+				"first" : "player",
+				"value" : 50
 			},
 			{
-			"class" : "smith",
-			"type" : "blacksmith",
-			"first" : "silversmith",
-			"value" : 10
+				"class" : "trait",
+				"type" : "love",
+				"first" : "love",
+				"value" : true
+			},
+			{
+				"class" : "trait",
+				"type" : "rival",
+				"first" : "rival",
+				"value" : true
+			},
+			{
+				"class" : "trait",
+				"type" : "anyone",
+				"first" : "hero",
+				"value" : true
+			},
+			{
+				"class" : "trait",
+				"type" : "anyone",
+				"first" : "rival",
+				"value" : true
+			},
+			{
+				"class" : "trait",
+				"type" : "anyone",
+				"first" : "love",
+				"value" : true
+			},
+			{
+				"class" : "attribute",
+				"type" : "strength",
+				"first" : "hero",
+				"value" : 0
+			},
+			{
+				"class" : "attribute",
+				"type" : "intelligence",
+				"first" : "hero",
+				"value" : 5
+			},
+			{
+				"class" : "smith",
+				"type" : "blacksmith",
+				"first" : "blacksmith",
+				"value" : 30
+			},
+			{
+				"class" : "smith",
+				"type" : "silversmith",
+				"first" : "silversmith",
+				"value" : 30
+			},
+			{
+				"class" : "smith",
+				"type" : "blacksmith",
+				"first" : "silversmith",
+				"value" : 10
 			}
 		]}
 	]

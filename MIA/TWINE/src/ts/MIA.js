@@ -26,18 +26,19 @@ var MIA = /** @class */ (function () {
         }
         return descriptions;
     };
-    MIA.prototype.getCastActions = function () {
+    MIA.prototype.getCastActions = function (decisionType) {
         var storedVolitions = this.cif.calculateVolition(this.cast);
         var rawVolitions = storedVolitions.dump();
         var volitions = [];
         for (var i = 0; i < this.cast.length; i++) {
             var char = this.cast[i];
+            this.addActionCondition(char, decisionType);
             var charVolition = rawVolitions[char][char];
-            this.intentSelection(charVolition, char);
+            this.intentSelection(charVolition, char, decisionType);
         }
         return volitions;
     };
-    MIA.prototype.intentSelection = function (charVolition, char) {
+    MIA.prototype.intentSelection = function (charVolition, char, decisionType) {
         var intents;
         var rankedIntents;
         var intent;
@@ -52,7 +53,7 @@ var MIA = /** @class */ (function () {
         // get action template from intent
         intent = this.chooseIntent(rankedIntents);
         //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
-        action = this.chooseAction(intent);
+        action = this.chooseAction(decisionType);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);
         // return action
@@ -180,6 +181,7 @@ var MIA = /** @class */ (function () {
         this.timeStep = this.cif.setupNextTimeStep();
     };
     MIA.prototype.addActionCondition = function (character, action) {
+        var history = [];
         var actionToAdd = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
@@ -189,9 +191,19 @@ var MIA = /** @class */ (function () {
             "type": action,
             "value": true
         };
-        var history = this.cif.dumpSFDB();
-        history[this.timeStep].push();
-        this.cif.addHistory();
+        for (var i = 0; i < this.timeStep; i++) {
+            history[i] = {
+                "pos": i,
+                "data": this.cif.get(i)
+            };
+        }
+        var historyslice = this.cif.get(this.timeStep);
+        historyslice.push(actionToAdd);
+        history[this.timeStep] = {
+            "pos": this.timeStep,
+            "data": historyslice
+        };
+        this.cif.addHistory({ "history": history });
     };
     return MIA;
 }());

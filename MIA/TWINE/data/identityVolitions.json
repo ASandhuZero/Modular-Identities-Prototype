@@ -107,6 +107,26 @@
 					"intentDirection" : true
 				}
 			]
+		},
+		{	
+			"name": "Experienced smiths really want to smith!",
+			"conditions": [
+				{
+					"class": "SFDBLabelUndirected",
+					"type": "dialogue",
+					"first": "x",
+					"value": true
+				}
+			],
+			"effects": [
+				{
+					"class": "SFDBLabelUndirected",
+					"type": "dialogue",
+					"first": "x",
+					"weight": 5,
+					"intentDirection" : true
+				}
+			]
 		}
 	]
 }
