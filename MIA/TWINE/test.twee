@@ -1,0 +1,101 @@
+:: StoryTitle
+Actual story for my research lol
+
+
+:: StoryData
+{
+	"ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+	"format": "SugarCube",
+	"format-version": "2.30.0",
+	"start": "CharacterEditor",
+	"tag-colors": {
+		"bar": "green",
+		"foo": "red",
+		"qaz": "blue"
+	},
+	"zoom": 1
+}
+
+
+:: Story JavaScript [script]
+/* twine-user-script #1: "Add Cif" */
+var newScript = document.createElement("script");
+console.log(newScript);
+newScript.src = "build/cif.js";
+$("head").append(newScript);
+/* twine-user-script #2: "Add MIA" */
+var newScript = document.createElement("script");
+console.log(newScript);
+newScript.src = "build/mia.js";
+$("head").append(newScript);
+/* twine-user-script #3: "Check if CiF loaded" */
+document.addEventListener('cifLoaded', function (e) {
+
+//Init CiF
+    var loadResult = cif.init();
+	console.log(loadResult);
+    //Load in our schema, cast, triggerRules and volitionRules, and actions.
+    var rawSchema = cif.loadFile("data/schema.json");
+    var schema = cif.loadSocialStructure(rawSchema);
+
+    var rawCast = cif.loadFile("data/cast.json");
+    var cast = cif.addCharacters(rawCast);
+
+    console.log("Here is our cast! " , cast);
+
+    var rawTriggerRules = cif.loadFile("data/triggerRules.json");
+    var triggerRules = cif.addRules(rawTriggerRules);
+    console.log(triggerRules);
+    
+    var rawVolitionRules = cif.loadFile("data/volitionRules.json");
+    var volitionRules = cif.addRules(rawVolitionRules);
+    console.log(volitionRules);
+
+    var rawActions = cif.loadFile("data/actions.json");
+    var actions = cif.addActions(rawActions);
+    console.log(actions);
+
+    var rawHistory = cif.loadFile("data/history.json");
+    var history = cif.addHistory(rawHistory);
+    console.log(history);
+    mia.setCiF(cif);
+
+}, false);
+/* twine-user-script #4: "Add identities" */
+state.variables.identities_values = identities_values;
+state.variables.identity_description = identity_description;
+state.variables.funct = funct;
+
+
+[[MIA testcase]]
+
+
+Actually edit the character stuff here
+
+
+:: MIA testcase {"position":"350,100","size":"100,100"}
+Get some text to change based on the identity you choose
+<<script>>
+console.log(state.variables);
+console.log(state.variables.identities_values);
+console.log(state.variables.identity_description);
+console.log(cif.getCharacters());
+console.log("We actually did it lol");
+<</script>>
+
+<<set $description = $funct($identities_values, $identity_description)>>
+Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.
+
+
+:: Example of code {"position":"475,100","size":"100,100"}
+<<script>>
+state.active.variables.example = funct();
+console.log(cif);
+<</script>>
+hello $example
+
+
+:: Introduction {"position":"600,100","size":"100,100"}
+Start writing the real story here.
+
+

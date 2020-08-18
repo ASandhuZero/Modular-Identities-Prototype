@@ -1,0 +1,13 @@
+{
+	"cast": {
+		"player" : {
+			"name" : "default"
+		},
+		"silversmith": {
+			"name": "Hozai"
+		},
+		"blacksmith": {
+			"name": "Randel"
+		}
+	}
+}
