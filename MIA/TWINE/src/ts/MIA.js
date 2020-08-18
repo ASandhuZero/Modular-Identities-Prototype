@@ -27,14 +27,20 @@ var MIA = /** @class */ (function () {
         return descriptions;
     };
     MIA.prototype.getCastActions = function (decisionType) {
+        for (var i = 0; i < this.cast.length; i++) {
+            this.addActionCondition(this.cast[i], decisionType);
+        }
         var storedVolitions = this.cif.calculateVolition(this.cast);
         var rawVolitions = storedVolitions.dump();
         var volitions = [];
         for (var i = 0; i < this.cast.length; i++) {
             var char = this.cast[i];
-            this.addActionCondition(char, decisionType);
             var charVolition = rawVolitions[char][char];
             this.intentSelection(charVolition, char, decisionType);
+            // this.cif.getAction();
+            console.log(rawVolitions);
+            var action = this.cif.getActions(char, char, storedVolitions, this.cast, 2);
+            console.log(action, char);
         }
         return volitions;
     };
@@ -48,6 +54,7 @@ var MIA = /** @class */ (function () {
         // Get all intents from the identities
         intents = this.scoreIntents(charVolition);
         // Rank Intents
+        console.log(intents);
         rankedIntents = this.rankIntents(intents);
         // Select dominant intent for right now
         // get action template from intent
@@ -82,6 +89,7 @@ var MIA = /** @class */ (function () {
         }
         return intent;
     };
+    //TODO: Right now this doesn't do anything but it will at some point. Currently offloading action decision making to TWINE
     MIA.prototype.chooseAction = function (intent) {
         console.log(intent);
         return {};

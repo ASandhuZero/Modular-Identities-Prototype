@@ -5,7 +5,7 @@
 			"name" : "SMITH",
 			"intent" : {
 				"class" : "smith",
-				"type" : "",
+				"type" : "blacksmith",
 				"intentDirection" : true,
 				"first" : "initiator"
 			},
@@ -25,7 +25,7 @@
 				},
 				{
 					"class" : "SFDBLabelUndirected",
-					"type" : "phsyical-action",
+					"type" : "dialogue",
 					"first" : "initiator",
 					"value" : true
 				}
@@ -44,6 +44,7 @@
 				"value" : 1
 			}]
 		},
+		
 		{
 			"name" : "s_makeSword1",
 			"conditions" : [

@@ -40,18 +40,18 @@ document.addEventListener('cifLoaded', function (e) {
     let volitionRules = cif.addRules(rawVolitionRules);
     console.log(volitionRules);
 
+    rawVolitionRules = cif.loadFile("data/actionVolitions.json");
+    volitionRules = cif.addRules(rawVolitionRules);
+    console.log(volitionRules);
+
     let rawActions = cif.loadFile("data/actions.json");
     let actions = cif.addActions(rawActions);
     console.log(actions);
 
     let rawHistory = cif.loadFile("data/history.json");
     let history = cif.addHistory(rawHistory);
-    console.log(rawHistory, "rawhistory");
     history = cif.addHistory(rawHistory);
     
-    console.log(history, "cif history");
-    var storedVolitions = cif.calculateVolition(cast);
-
     // updateTimeStep(cif);
     var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
     console.log(identityCastValues);

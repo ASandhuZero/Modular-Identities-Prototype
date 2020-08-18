@@ -44,14 +44,20 @@ class MIA {
 
 
     getCastActions(decisionType : string) {
+        for (let i = 0; i < this.cast.length; i++) {
+            this.addActionCondition(this.cast[i], decisionType);
+        }
         let storedVolitions = this.cif.calculateVolition(this.cast);
         let rawVolitions : object = storedVolitions.dump();
         let volitions : object[] = []
         for (let i = 0; i < this.cast.length; i ++) {
             let char = this.cast[i];
-            this.addActionCondition(char, decisionType);
             let charVolition = rawVolitions[char][char];
             this.intentSelection(charVolition, char, decisionType);
+            // this.cif.getAction();
+            console.log(rawVolitions);
+            let action = this.cif.getActions(char, char, storedVolitions, this.cast, 2);
+            console.log(action, char);
         }
         return volitions;
     }
@@ -68,6 +74,7 @@ class MIA {
         // Get all intents from the identities
         intents = this.scoreIntents(charVolition);
         // Rank Intents
+        console.log(intents);
         rankedIntents = this.rankIntents(intents);
         // Select dominant intent for right now
         // get action template from intent
@@ -106,7 +113,7 @@ class MIA {
 
         return intent
     }
-
+    //TODO: Right now this doesn't do anything but it will at some point. Currently offloading action decision making to TWINE
     chooseAction(intent : string) { 
         console.log(intent);
         return {}
