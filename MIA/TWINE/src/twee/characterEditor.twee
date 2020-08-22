@@ -1,5 +1,5 @@
 :: StoryTitle
-Actual story for my research lol
+Actual story for my research 
 
 
 :: StoryData
@@ -7,7 +7,7 @@ Actual story for my research lol
 	"ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
 	"format": "SugarCube",
 	"format-version": "2.30.0",
-	"start": "CharacterEditor",
+	"start": "Start",
 	"tag-colors": {
 		"bar": "green",
 		"foo": "red",
@@ -16,8 +16,15 @@ Actual story for my research lol
 	"zoom": 1
 }
 
+:: Start 
+This is the start screen
+
+[[CharacterEditor]]
 
 :: CharacterEditor {"position":"225,100","size":"100,100"}
+<<script>>
+// mia.getPlayerIdentities();
+<</script>>
 name: <<textbox "$name" $name>>
 <<for _name, _val range $identitiesValues>>
 	<<set _identity = _name>>
@@ -25,17 +32,20 @@ name: <<textbox "$name" $name>>
 	_identity <label><<textbox "$identitiesValues[_identity]" "100">></label>
 <</capture>>
 <</for>>
+Get some text to change based on the identity you choose
+<<set $description = $evaluateIdentities($identitiesValues, $identityDescription)>>
+
+<<script>>
+
+console.log(state.variables);
+// console.log(cif.getCharacters());
+state.variables.dialogue = mia.getCastActions("dialogue")["blacksmith"]['action'];
+console.log(state.variables.dialogue);
+<</script>>
+
+$dialogue
+Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.
 [[MIA testcase]]
 
 
 :: MIA testcase {"position":"350,100","size":"100,100"}
-Get some text to change based on the identity you choose
-<<script>>
-console.log(state.variables);
-console.log(state.variables.identitiesValues);
-console.log(state.variables.identityDescription);
-console.log(cif.getCharacters());
-<</script>>
-
-<<set $description = $evaluateIdentities($identitiesValues, $identityDescription)>>
-Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.

@@ -1,24 +1,27 @@
-//TODO: WE ARE HERE NOW. Use CiF to actually tally up volition scores and then pass them on to MIA.
-// Get volitions from CIF.
-// Use MIA to decide actions and what to say.
-// Need CiF history data for identity values and CiF intent data for choosing action
-
 class MIA {
 
     //TODO: Put this somewhere else. PlayerName is here just for testing
     playerName : string;
     actionList;
 
+    identityDialogue;
+    interface : object;
+
+    
     timeStep : number;
     test : string;
     identityValues : object;
     identityDescription : object;
     cif;
     cast : string[];
+    allowedIdentities : string[];
 
     constructor() {
         this.playerName = "";
         this.timeStep = 0;
+        this.interface = {
+            "getCastActions" : this.getCastActions
+        }
     }
 
     evaluateIdentities(identities_values : object, identity_description: object) {
@@ -41,50 +44,83 @@ class MIA {
         return descriptions;
     }
 
-
-
-    getCastActions(decisionType : string) {
+    addActionPredicateToSFDB(character : string, action : string) {
+        let actionToAdd : object = {
+            "class": "SFDBLabelUndirected",
+            "duration": 0,
+            "first": character,
+            "second": undefined,
+            "timeHappened": this.timeStep,
+            "type": action,
+            "value": true
+        }
+        this.cif.set(actionToAdd);
+    }
+    // Clean up this function
+    getCastActions(decisionType : string, environmentInfo : object) {
+        let castActions : object = {};
         for (let i = 0; i < this.cast.length; i++) {
-            this.addActionCondition(this.cast[i], decisionType);
+            this.addActionPredicateToSFDB(this.cast[i], decisionType);
         }
         let storedVolitions = this.cif.calculateVolition(this.cast);
-        let rawVolitions : object = storedVolitions.dump();
         let volitions : object[] = []
         for (let i = 0; i < this.cast.length; i ++) {
             let char = this.cast[i];
-            let charVolition = rawVolitions[char][char];
-            this.intentSelection(charVolition, char, decisionType);
-            // this.cif.getAction();
-            console.log(rawVolitions);
-            let action = this.cif.getActions(char, char, storedVolitions, this.cast, 2);
-            console.log(action, char);
+
+            castActions[char] = this.cif.getAction(char, char, storedVolitions, this.cast);
+
+            // let charVolition = rawVolitions[char][char];
+            
+            // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
+            
+            // let actions = this.getActions(decisionType);
+            
+            // let idClass = castActions[char]["intent"]["class"];
+            // let type = castActions[char]["intent"]["type"];
+            // castActions[char]["action"] = actions[idClass][type]["high"];
         }
-        return volitions;
+
+        
+        // CIF gets volitions
+        // MIA picks the highest identity
+        //  if dialogue, NLG and MIA
+        //  if action use CIF
+        // identity and dialoguetype used together to NLG dialogue
+        console.log(castActions);
+        debugger;
+        return castActions;
     }
 
-    intentSelection(charVolition : object[], char: string, decisionType : string){
+    intentSelection(charVolition : object[], char: string, decisionType : string, storedVolitions){
         let intents : object[];
         let rankedIntents : object;
-        let intent : string;
+        let intent : object;
+        let actions : object[];
         let action : object;
         let actionSymbols;
-
         
         // Get all identities active within character solved by the first part
         // Get all intents from the identities
         intents = this.scoreIntents(charVolition);
         // Rank Intents
-        console.log(intents);
+        console.log(intents, "intents");
+        debugger;
         rankedIntents = this.rankIntents(intents);
         // Select dominant intent for right now
         // get action template from intent
-        intent = this.chooseIntent(rankedIntents)
+        console.log(rankedIntents, "rankedIntents")
+        intent = this.chooseIntent(rankedIntents);
+
+        actions = this.cif.getActions(char, char, storedVolitions, this.cast, 2);
         //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
-        action = this.chooseAction(decisionType);
+        action = this.chooseAction(actions, intent);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);
         // return action
-        return actionSymbols;
+        return {
+            "action" : actionSymbols,
+            "intent" : intent
+        };
     }
 
     //TODO maybe we don't need this functioon so we might want to remove it? 
@@ -96,31 +132,48 @@ class MIA {
         let rankedIntents : object = {};
         for (let i = 0; i < intents.length; i++) {
             let intent = intents[i];
-            rankedIntents[intent["type"]] = intent["weight"];
+            rankedIntents[intent["type"]] = {
+                "weight" : intent["weight"],
+                "class" : intent["class"]
+            };
         }
         return rankedIntents;
     }
 
     chooseIntent(rankedIntents : object) {
-        let intent : string = "" 
+        let intent : object = {} 
         let maxWeight : number = 0;
         for (let key in rankedIntents) {
-            if (rankedIntents[key] > maxWeight) {
-                intent = key;
+            if (rankedIntents[key]["weight"] > maxWeight) {
+                intent["type"] = key;
                 maxWeight = rankedIntents[key];
+                intent["class"] = rankedIntents[key]["class"];
             }
         }
 
         return intent
     }
     //TODO: Right now this doesn't do anything but it will at some point. Currently offloading action decision making to TWINE
-    chooseAction(intent : string) { 
-        console.log(intent);
+    chooseAction(actions : object[], intent : object) { 
+        for (let i = 0; i < actions.length; i++) {
+            let action = actions[i];
+            let conditions = action["conditions"];
+            for (let j = 0; j < conditions.length; j++) {
+                let condition = conditions[j];
+                if (condition["type"] === intent["type"]){
+                    return action;
+                }
+            }
+        }
+        // Set up actions as a two phase thing. Get one action file to choose which action to do. Then get back the identtiy information from CIF.
+        // Honestly, this makes sense? Need to do some more building about this. Focus on this in the morning.
+
         return {}
     }
-
+    // This is currently not doing anything. 
+    //TODO: Get this to do something
     chooseActionSymbols(action : object) {
-        return {}
+        return action;
     }
     //get the action that an identity needs.
     getIdentityAction() {
@@ -136,10 +189,6 @@ class MIA {
         return ["placeholder"];
     }
 
-    greet() {
-        return "hello" + this.test;
-    }
-
     setActions(cif) {
         let labels = cif.getSocialStructure()["SFDBLabelUndirected"];
         this.actionList = [];
@@ -148,10 +197,11 @@ class MIA {
         }
     }
 
-    setCiF(cif : object) {
+    setCiF(cif, identities : string[]) {
         this.cif =  cif;
-        this.cast = this.cif.getCharacters();
+        this.cast = cif.getCharacters();
         this.setActions(cif);
+        this.allowedIdentities = identities;
     }
     getIdentities() {
         return {};
@@ -228,39 +278,45 @@ class MIA {
         this.timeStep = this.cif.setupNextTimeStep();
     }
 
-    addActionCondition(character : string, action : string) {
-        let history = [];
-        let actionToAdd : object = {
-            "class": "SFDBLabelUndirected",
-            "duration": 0,
-            "first": character,
-            "second": undefined,
-            "timeHappened": this.timeStep,
-            "type": action,
-            "value": true
-        }
 
-        for (let i = 0; i < this.timeStep; i++) {
-            history[i] = {
-                "pos" : i, 
-                "data" : this.cif.get(i)
-            }
-        }
-        let historyslice = this.cif.get(this.timeStep);
-        historyslice.push(actionToAdd);
-        history[this.timeStep] = {
-            "pos" : this.timeStep,
-            "data" : historyslice   
-        }
-        this.cif.addHistory({"history" : history});
+
+    getPlayerIdentities() {
+        let identities = {}
+        return identities;
     }
-
-
+    setIdentityDialogue(identityDialogue : object) {
+        this.identityDialogue = identityDialogue;
+    }
 
 }
 
 let mia = new MIA();
 
+
+
+let identityDialogue = {
+    "smith" : {
+        "blacksmith" : {
+            "low" : "Yeah, I apprentice at the local blacksmith",
+            "medium" : "Ah yes, I am a hired on blacksmith at the local blacksmith",
+            "high" : "Yes! I do own the local blacksmith"
+        },
+        "silversmith" : {
+            "low" : "Yeah, I apprentice at the local silversmith",
+            "medium" : "Ah yes, I am a hired on silversmith at the local silversmith",
+            "high" : "Yes! I do own the local silversmith"
+        }
+    },
+    "hero" : {
+        "chosen one" : {
+            "low" : "I am trying to learn how to be a good hero!",
+            "medium" : "I rescued someone once!",
+            "high" : "I am the hero of the land!"
+        }
+    }
+}
+
+mia.setIdentityDialogue(identityDialogue);
 
 let identityDescription = {
     "hero" : {
@@ -289,3 +345,7 @@ let identityValues = {
     "tank" : false
 }
 mia.setIdentityValues(identityValues);
+
+event = document.createEvent('Event');
+event.initEvent('MIA', true, true);
+document.dispatchEvent(event);

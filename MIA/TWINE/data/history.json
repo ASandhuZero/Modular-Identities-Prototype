@@ -3,18 +3,6 @@
 		"pos": 0,
 		"data": [
 			{
-				"class" : "smith",
-				"type" : "blacksmith",
-				"first" : "Randal",
-				"value" : 10
-			},
-			{
-				"class" : "smith",
-				"type" : "silversmith",
-				"first" : "Hozai",
-				"value" : 10
-			},
-			{
 				"class" : "hero",
 				"type" : "chosen one",
 				"first" : "player",
@@ -22,32 +10,20 @@
 			},
 			{
 				"class" : "trait",
-				"type" : "love",
-				"first" : "love",
-				"value" : true
-			},
-			{
-				"class" : "trait",
-				"type" : "rival",
-				"first" : "rival",
+				"type" : "anyone",
+				"first" : "blacksmith",
 				"value" : true
 			},
 			{
 				"class" : "trait",
 				"type" : "anyone",
-				"first" : "hero",
+				"first" : "silversmith",
 				"value" : true
 			},
 			{
 				"class" : "trait",
 				"type" : "anyone",
-				"first" : "rival",
-				"value" : true
-			},
-			{
-				"class" : "trait",
-				"type" : "anyone",
-				"first" : "love",
+				"first" : "player",
 				"value" : true
 			},
 			{

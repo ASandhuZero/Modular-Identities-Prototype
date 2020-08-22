@@ -109,7 +109,7 @@
 			]
 		},
 		{	
-			"name": "Experienced smiths really want to smith!",
+			"name": "People need to talk!",
 			"conditions": [
 				{
 					"class": "SFDBLabelUndirected",
@@ -123,7 +123,7 @@
 					"class": "SFDBLabelUndirected",
 					"type": "dialogue",
 					"first": "x",
-					"weight": 5,
+					"weight": true,
 					"intentDirection" : true
 				}
 			]

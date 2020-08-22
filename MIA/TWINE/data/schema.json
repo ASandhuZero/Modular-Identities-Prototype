@@ -61,12 +61,20 @@
 			"isBoolean" : true,
 			"directionType" : "undirected",
 			"types" : ["hero", "love", "rival", "blacksmith", "silversmith", "anyone"],
+			"allowIntent" : true,
+			"defaultValue" : true
+		},
+		{
+			"class" : "actionLevel",
+			"isBoolean" : true,
+			"directionType" : "undirected",
+			"types" : ["low", "medium", "high"],
 			"allowIntent" : false,
 			"defaultValue" : false
 		},
 		{
 			"class": "SFDBLabel",
-			"types": ["romantic-failure", "romantic-advance"],
+			"types": ["romantic-advance"],
 			"isBoolean": true,
 			"directionType": "directed",
 			"defaultValue": false,

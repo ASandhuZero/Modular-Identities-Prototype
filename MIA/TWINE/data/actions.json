@@ -2,7 +2,35 @@
 	"fileName" : "actions.json",
 	"actions" : [
 		{
-			"name" : "SMITH",
+			"name" : "template",
+			"intent" : {
+				"class" : "SFDBLabelUndirected",
+				"type" : "dialogue",
+				"intentDirection" : true,
+				"first" : "initiator"
+			},
+			"conditions" : [
+				{
+					"class" : "trait",
+					"type" : "anyone",
+					"intentDirection" : true,
+					"first" : "initiator"
+				}
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["test"]
+		},
+		{
+			"name" : "test",
+			"conditions" : [
+			],
+			"performance" : "Just here to remind that there can be anything in action and it's okay",
+			"influenceRules" : [],
+			"effects" : [{
+			}]
+		},
+		{
+			"name" : "blacksmith",
 			"intent" : {
 				"class" : "smith",
 				"type" : "blacksmith",
@@ -11,7 +39,19 @@
 			},
 			"conditions" : [],
 			"influenceRules" : [],
-			"leadsTo" : ["b_makeSword1", "s_makeSword1"]
+			"leadsTo" : ["b_makeSword1"]
+		},
+		{
+			"name" : "silversmith",
+			"intent" : {
+				"class" : "smith",
+				"type" : "silversmith",
+				"intentDirection" : true,
+				"first" : "initiator"
+			},
+			"conditions" : [],
+			"influenceRules" : [],
+			"leadsTo" : ["s_makeSword1"]
 		},
 		{
 			"name" : "b_makeSword1",
@@ -21,13 +61,7 @@
 					"type" : "blacksmith",
 					"first" : "initiator",
 					"operator" : ">",
-					"value" : 1
-				},
-				{
-					"class" : "SFDBLabelUndirected",
-					"type" : "dialogue",
-					"first" : "initiator",
-					"value" : true
+					"value" : 10
 				}
 			],
 			"influenceRules" : [],
@@ -53,7 +87,7 @@
 					"type" : "silversmith",
 					"first" : "initiator",
 					"operator" : ">",
-					"value" : 1
+					"value" : 20
 				}
 			],
 			"influenceRules" : [
