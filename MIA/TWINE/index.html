@@ -120,14 +120,14 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         }
         return descriptions;
     };
-    MIA.prototype.addActionPredicateToSFDB = function (character, action) {
+    MIA.prototype.addActionTypePredicateToSFDB = function (character, actionType) {
         var actionToAdd = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
             "first": character,
             "second": undefined,
             "timeHappened": this.timeStep,
-            "type": action,
+            "type": actionType,
             "value": true
         };
         this.cif.set(actionToAdd);
@@ -136,13 +136,15 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
     MIA.prototype.getCastActions = function (decisionType, environmentInfo) {
         var castActions = {};
         for (var i = 0; i < this.cast.length; i++) {
-            this.addActionPredicateToSFDB(this.cast[i], decisionType);
+            this.addActionTypePredicateToSFDB(this.cast[i], decisionType);
         }
         var storedVolitions = this.cif.calculateVolition(this.cast);
         var volitions = [];
         for (var i = 0; i < this.cast.length; i++) {
             var char = this.cast[i];
-            castActions[char] = this.cif.getAction(char, char, storedVolitions, this.cast);
+            var action = {};
+            action = this.cif.getAction(char, char, storedVolitions, this.cast);
+            castActions[char] = action;
             // let charVolition = rawVolitions[char][char];
             // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
             // let actions = this.getActions(decisionType);
@@ -425,7 +427,7 @@ document.addEventListener('bothLoaded', function(e) {
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        let rawActions = cif.loadFile("data/actions.json");
+        let rawActions = cif.loadFile("data/actions/actions.json");
         let actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -438,8 +440,9 @@ document.addEventListener('bothLoaded', function(e) {
 
 
         var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
-        console.log(identityCastValues);
+       
         mia.setCiF(cif, identities);
+       
         state.variables.playerIdentities = mia.getPlayerIdentities;
         state.variables.identitiesValues = mia.getIdentityValues();
         state.variables.identityDescription = mia.getIdentityDescriptions();
@@ -482,7 +485,7 @@ newScript.id = "MIA";
 $("head").append(newScript);
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">This is the start screen
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">This is the start screen
 
 [[CharacterEditor]]</tw-passagedata><tw-passagedata pid="2" name="CharacterEditor" tags="" position="225,100" size="100,100">&lt;&lt;script&gt;&gt;
 // mia.getPlayerIdentities();

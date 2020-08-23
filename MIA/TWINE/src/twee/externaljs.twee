@@ -31,7 +31,7 @@ document.addEventListener('bothLoaded', function(e) {
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        let rawActions = cif.loadFile("data/actions.json");
+        let rawActions = cif.loadFile("data/actions/actions.json");
         let actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -44,8 +44,9 @@ document.addEventListener('bothLoaded', function(e) {
 
 
         var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
-        console.log(identityCastValues);
+       
         mia.setCiF(cif, identities);
+       
         state.variables.playerIdentities = mia.getPlayerIdentities;
         state.variables.identitiesValues = mia.getIdentityValues();
         state.variables.identityDescription = mia.getIdentityDescriptions();

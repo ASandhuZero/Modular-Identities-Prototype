@@ -44,14 +44,14 @@ class MIA {
         return descriptions;
     }
 
-    addActionPredicateToSFDB(character : string, action : string) {
+    addActionTypePredicateToSFDB(character : string, actionType : string) {
         let actionToAdd : object = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
             "first": character,
             "second": undefined,
             "timeHappened": this.timeStep,
-            "type": action,
+            "type": actionType,
             "value": true
         }
         this.cif.set(actionToAdd);
@@ -60,15 +60,15 @@ class MIA {
     getCastActions(decisionType : string, environmentInfo : object) {
         let castActions : object = {};
         for (let i = 0; i < this.cast.length; i++) {
-            this.addActionPredicateToSFDB(this.cast[i], decisionType);
+            this.addActionTypePredicateToSFDB(this.cast[i], decisionType);
         }
         let storedVolitions = this.cif.calculateVolition(this.cast);
         let volitions : object[] = []
         for (let i = 0; i < this.cast.length; i ++) {
-            let char = this.cast[i];
-
-            castActions[char] = this.cif.getAction(char, char, storedVolitions, this.cast);
-
+            let char : string = this.cast[i];
+            let action : object = {};
+            action = this.cif.getAction(char, char, storedVolitions, this.cast);
+            castActions[char] = action;
             // let charVolition = rawVolitions[char][char];
             
             // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
@@ -81,6 +81,8 @@ class MIA {
         }
 
         
+
+
         // CIF gets volitions
         // MIA picks the highest identity
         //  if dialogue, NLG and MIA
