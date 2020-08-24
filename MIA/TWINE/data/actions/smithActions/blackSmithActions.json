@@ -1,0 +1,65 @@
+{
+	"fileName" : "blackSmithActions.json",
+	"actions" : [
+        {
+            "name" : "BLACKSMITHDIALOGUE",
+            "intent" : {
+                "class" : "smith",
+                "type" : "blacksmith",
+                "intentDirection" : true,
+                "first" : "initiator"
+            },
+            "conditions" : [{
+                    "class" : "SFDBLabelUndirected",
+                    "type" : "dialogue",
+                    "first" : "initiator",
+                    "value" : true
+                }
+            ],
+            "influenceRules" : [],
+            "leadsTo" : ["dialogue1"]
+        },
+        {
+			"name" : "dialogue1",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "blacksmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 10
+				}
+			],
+            "performance" : "It's a pleasure to meet you, NLG TIME",
+            "influenceRules" : [],
+			"effects" : [{
+
+			}]
+		},
+        {
+			"name" : "b_makeSword1",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "blacksmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 10
+				}
+			],
+			"influenceRules" : [],
+			"effects" : [{
+				"class" : "item",
+				"type" : "sword",
+				"operator" : "+",
+				"value" : 1
+			}, {
+				"class" : "smith",
+				"type" : "blacksmith",
+				"first" : "initiator",
+				"operator" : "+",
+				"value" : 1
+			}]
+		}
+    ]
+}

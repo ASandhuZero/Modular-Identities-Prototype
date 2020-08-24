@@ -269,3 +269,5 @@ define(["require", "exports", 'cif'], function (require, exports, cif) {
     })(AUNLG || (AUNLG = {}));
     return AUNLG;
 });
+
+module.exports = AUNLG;

@@ -1,3 +1,7 @@
+import * as AUNLG from "./../js/AUNLG.js";
+
+let nlg = AUNLG();
+
 class MIA {
 
     //TODO: Put this somewhere else. PlayerName is here just for testing
@@ -68,29 +72,39 @@ class MIA {
             let char : string = this.cast[i];
             let action : object = {};
             action = this.cif.getAction(char, char, storedVolitions, this.cast);
-            castActions[char] = action;
+            
             // let charVolition = rawVolitions[char][char];
-            
             // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
-            
             // let actions = this.getActions(decisionType);
-            
             // let idClass = castActions[char]["intent"]["class"];
             // let type = castActions[char]["intent"]["type"];
             // castActions[char]["action"] = actions[idClass][type]["high"];
+         
+            castActions[char] = action;
         }
-
-        
-
-
         // CIF gets volitions
         // MIA picks the highest identity
         //  if dialogue, NLG and MIA
         //  if action use CIF
         // identity and dialoguetype used together to NLG dialogue
-        console.log(castActions);
-        debugger;
         return castActions;
+    }
+    getCharDialogue(char : string) {
+        let dialogue : string;
+        this.addActionTypePredicateToSFDB(char, "dialogue");
+        let volitions = this.cif.calculateVolition(this.cast);
+        let action = this.cif.getAction(char, char, volitions, this.cast);
+        
+        
+        
+        
+        dialogue = action.performance;
+        console.log(dialogue);
+        return dialogue;
+    }
+    getCharPhysicalAction(char : string) {
+        console.log("fill out this function")
+        debugger
     }
 
     intentSelection(charVolition : object[], char: string, decisionType : string, storedVolitions){

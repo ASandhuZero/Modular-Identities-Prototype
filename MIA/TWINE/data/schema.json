@@ -87,7 +87,7 @@
 			"isBoolean": true,
 			"directionType": "undirected",
 			"defaultValue": false,
-			"allowIntent": false,
+			"allowIntent": true,
 			"duration": 0
 		}
 	]

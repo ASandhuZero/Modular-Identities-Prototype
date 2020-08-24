@@ -1,0 +1,35 @@
+{
+	"fileName" : "actions.json",
+	"actions" : [
+		{
+			"name" : "herotest",
+			"intent" : {
+				"class" : "SFDBLabelUndirected",
+				"type" : "dialogue",
+				"intentDirection" : true,
+				"first" : "initiator"
+			},
+			"conditions" : [
+				{
+					"class" : "hero",
+					"type" : "chosen one",
+					"intentDirection" : true,
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				}
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["test"]
+		},
+		{
+			"name" : "chosen test",
+			"conditions" : [
+			],
+			"dialogue" : "THE CHOSEN ONE ARISES!",
+			"influenceRules" : [],
+			"effects" : [{
+			}]
+        }
+    ]
+}

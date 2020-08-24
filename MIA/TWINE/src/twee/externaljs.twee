@@ -31,8 +31,15 @@ document.addEventListener('bothLoaded', function(e) {
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        let rawActions = cif.loadFile("data/actions/actions.json");
-        let actions = cif.addActions(rawActions);
+        let rawActions;
+        let actions;
+
+        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
+        actions = cif.addActions(rawActions);
+        rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
+        actions = cif.addActions(rawActions);
+        rawActions = cif.loadFile("data/actions/actions.json");
+        actions = cif.addActions(rawActions);
         console.log(actions);
 
         let rawHistory = cif.loadFile("data/history.json");
@@ -46,14 +53,24 @@ document.addEventListener('bothLoaded', function(e) {
         var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
        
         mia.setCiF(cif, identities);
-       
-        state.variables.playerIdentities = mia.getPlayerIdentities;
+
+        state.variables.interface = {
+            "getPlayerIdentities" : mia.getPlayerIdentities,
+            "getCastActions" : mia.getCastActions
+        }
         state.variables.identitiesValues = mia.getIdentityValues();
         state.variables.identityDescription = mia.getIdentityDescriptions();
+        state.variables.cast = cif.getCharacters();
+        
+        state.variables.getCharDialogue = mia.getCharDialogue;
+        state.variables.playerIdentities = mia.getPlayerIdentities;
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
-        state.variables.cast = cif.getCharacters();
+
+
+        mia.getCharDialogue("blacksmith");
+
     }
 }, false);
 

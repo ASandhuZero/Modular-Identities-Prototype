@@ -39,13 +39,37 @@ Get some text to change based on the identity you choose
 
 console.log(state.variables);
 // console.log(cif.getCharacters());
-state.variables.dialogue = mia.getCastActions("dialogue")["blacksmith"]['action'];
-console.log(state.variables.dialogue);
+var dialogue = mia.getCastActions("dialogue")
+state.variables.dialogue = dialogue["player"]["dialogue"];
+console.log(state.variables.dialogue, "This is the character editor variable of dialogue");
 <</script>>
 
 $dialogue
 Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.
+
+What would you like to do?
+who would you like to talk to? [[blacksmith | Blacksmith dialogue]] 
+[[dialogue]]
+[[physical]]
+
 [[MIA testcase]]
 
-
 :: MIA testcase {"position":"350,100","size":"100,100"}
+
+:: dialogue
+:: Blacksmith dialogue
+<<script>>
+state.variables.dialogue = mia.getCharDialogue("blacksmith");
+<</script>>
+$dialogue
+
+
+:: Silversmith dialogue
+<<script>>
+state.variables.getCharDialogue("silversmith");
+<</script>>
+
+:: physical
+<<script>>
+state.variables.getCharPhsyicalAction("blacksmith");
+<</script>>
