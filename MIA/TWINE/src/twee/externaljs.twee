@@ -107,5 +107,8 @@ newScript.src = "build/MIA.js";
 newScript.id = "MIA";
 $("head").append(newScript);
 
+newScript.src = "src/js/AUNLG.js";
+$("head").append(newScript);
+
 
 //TODO: Change these from function callbacks to just functions that are saved

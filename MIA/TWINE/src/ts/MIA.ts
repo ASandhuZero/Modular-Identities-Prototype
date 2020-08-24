@@ -1,6 +1,3 @@
-import * as AUNLG from "./../js/AUNLG.js";
-
-let nlg = AUNLG();
 
 class MIA {
 
