@@ -134,7 +134,7 @@ var AUNLG;
         };
         return SpecializedLocution;
     })();
-    function getCharacterData(pCharacterRole, pBindings) {
+    function getCharacterData(pCharacterRole, pBindings, cif) {
         var cast = cif.getCharactersWithMetadata();
         var characterName = pBindings[pCharacterRole];
         for (var _i = 0, cast_1 = cast; _i < cast_1.length; _i++) {
@@ -265,4 +265,9 @@ var AUNLG;
     }
     AUNLG.preprocessDialogue = preprocessDialogue;
 })(AUNLG || (AUNLG = {}));
-console.log(AUNLG, "this worked lol")
+
+console.timeLog(AUNLG);
+
+event = document.createEvent('Event');
+event.initEvent('AUNLG', true, true);
+document.dispatchEvent(event);

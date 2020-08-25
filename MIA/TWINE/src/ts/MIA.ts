@@ -1,14 +1,13 @@
-
 class MIA {
-
+    
     //TODO: Put this somewhere else. PlayerName is here just for testing
     playerName : string;
     actionList;
-
+    
     identityDialogue;
     interface : object;
-
     
+    AUNLG;
     timeStep : number;
     test : string;
     identityValues : object;
@@ -16,7 +15,7 @@ class MIA {
     cif;
     cast : string[];
     allowedIdentities : string[];
-
+    
     constructor() {
         this.playerName = "";
         this.timeStep = 0;
@@ -24,7 +23,7 @@ class MIA {
             "getCastActions" : this.getCastActions
         }
     }
-
+    
     evaluateIdentities(identities_values : object, identity_description: object) {
         let arr = []
         let descriptions = {
@@ -91,12 +90,14 @@ class MIA {
         this.addActionTypePredicateToSFDB(char, "dialogue");
         let volitions = this.cif.calculateVolition(this.cast);
         let action = this.cif.getAction(char, char, volitions, this.cast);
-        
+        let pdialogue = "<line s=\"%X%\">%repeatVariation('Hi!','Hello','Good day to you')%</line>";
+        this.AUNLG.preprocessDialogue(pdialogue);
         
         
         
         dialogue = action.performance;
         console.log(dialogue);
+        debugger;
         return dialogue;
     }
     getCharPhysicalAction(char : string) {
@@ -216,6 +217,11 @@ class MIA {
         this.setActions(cif);
         this.allowedIdentities = identities;
     }
+
+    setAUNLG(AUNLG) {
+        this.AUNLG = AUNLG;
+    }
+
     getIdentities() {
         return {};
     }

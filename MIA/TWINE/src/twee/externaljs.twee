@@ -1,10 +1,11 @@
 :: Utility Functions [script]
 var cifLoaded = false;
 var miaLoaded = false;
+var nlgLoaded = false;
 
 :: Check if CiF loaded [script]
-document.addEventListener('bothLoaded', function(e) {
-    if (miaLoaded && cifLoaded) {
+document.addEventListener('allLoaded', function(e) {
+    if (miaLoaded && cifLoaded && nlgLoaded) {
         let playerName;
         let loadResult = cif.init();
         console.log(loadResult);
@@ -53,6 +54,7 @@ document.addEventListener('bothLoaded', function(e) {
         var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
        
         mia.setCiF(cif, identities);
+        mia.setAUNLG(AUNLG);
 
         state.variables.interface = {
             "getPlayerIdentities" : mia.getPlayerIdentities,
@@ -80,25 +82,36 @@ document.addEventListener('bothLoaded', function(e) {
 document.addEventListener('MIA', function(e) {
     miaLoaded = true;
     event = document.createEvent('Event');
-    event.initEvent('bothLoaded', true, true);
+    event.initEvent('allLoaded', true, true);
     document.dispatchEvent(event);
 
 }, false);
 
 
+document.addEventListener('AUNLG', function(e) {
+    nlgLoaded = true;
+    event = document.createEvent('Event');
+    event.initEvent('allLoaded', true, true);
+    document.dispatchEvent(event);
+
+}, false);
+
 document.addEventListener('cifLoaded', function (e) {
     cifLoaded = true
     event = document.createEvent('Event');
-    event.initEvent('bothLoaded', true, true);
+    event.initEvent('allLoaded', true, true);
     document.dispatchEvent(event);
 //Init CiF
 
 }, false);
 
 :: Add Cif [script]
+
 let newScript = document.createElement("script");
 console.log(newScript);
 newScript.src = "build/cif.js";
+$("head").append(newScript);
+newScript.src = "src/js/AUNLG.js";
 $("head").append(newScript);
 
 :: Add MIA [script]
@@ -107,8 +120,6 @@ newScript.src = "build/MIA.js";
 newScript.id = "MIA";
 $("head").append(newScript);
 
-newScript.src = "src/js/AUNLG.js";
-$("head").append(newScript);
 
 
 //TODO: Change these from function callbacks to just functions that are saved

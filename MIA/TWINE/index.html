@@ -164,8 +164,11 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         this.addActionTypePredicateToSFDB(char, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
         var action = this.cif.getAction(char, char, volitions, this.cast);
+        var pdialogue = "<line s=\"%X%\">%repeatVariation('Hi!','Hello','Good day to you')%</line>";
+        this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = action.performance;
         console.log(dialogue);
+        debugger;
         return dialogue;
     };
     MIA.prototype.getCharPhysicalAction = function (char) {
@@ -270,6 +273,9 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         this.cast = cif.getCharacters();
         this.setActions(cif);
         this.allowedIdentities = identities;
+    };
+    MIA.prototype.setAUNLG = function (AUNLG) {
+        this.AUNLG = AUNLG;
     };
     MIA.prototype.getIdentities = function () {
         return {};
@@ -409,9 +415,10 @@ document.dispatchEvent(event);</script>
 	<!-- UUID://D674C58C-DEFA-4F70-B7A2-27742230C0FC// --><tw-storydata name="Actual story for my research" startnode="1" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="D674C58C-DEFA-4F70-B7A2-27742230C0FC" zoom="1" format="SugarCube" format-version="2.30.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "Utility Functions" */
 var cifLoaded = false;
 var miaLoaded = false;
+var nlgLoaded = false;
 /* twine-user-script #2: "Check if CiF loaded" */
-document.addEventListener('bothLoaded', function(e) {
-    if (miaLoaded && cifLoaded) {
+document.addEventListener('allLoaded', function(e) {
+    if (miaLoaded && cifLoaded && nlgLoaded) {
         let playerName;
         let loadResult = cif.init();
         console.log(loadResult);
@@ -460,6 +467,7 @@ document.addEventListener('bothLoaded', function(e) {
         var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
        
         mia.setCiF(cif, identities);
+        mia.setAUNLG(AUNLG);
 
         state.variables.interface = {
             "getPlayerIdentities" : mia.getPlayerIdentities,
@@ -487,16 +495,24 @@ document.addEventListener('bothLoaded', function(e) {
 document.addEventListener('MIA', function(e) {
     miaLoaded = true;
     event = document.createEvent('Event');
-    event.initEvent('bothLoaded', true, true);
+    event.initEvent('allLoaded', true, true);
     document.dispatchEvent(event);
 
 }, false);
 
 
+document.addEventListener('AUNLG', function(e) {
+    nlgLoaded = true;
+    event = document.createEvent('Event');
+    event.initEvent('allLoaded', true, true);
+    document.dispatchEvent(event);
+
+}, false);
+
 document.addEventListener('cifLoaded', function (e) {
     cifLoaded = true
     event = document.createEvent('Event');
-    event.initEvent('bothLoaded', true, true);
+    event.initEvent('allLoaded', true, true);
     document.dispatchEvent(event);
 //Init CiF
 
@@ -506,17 +522,17 @@ let newScript = document.createElement("script");
 console.log(newScript);
 newScript.src = "build/cif.js";
 $("head").append(newScript);
+newScript.src = "src/js/AUNLG.js";
+$("head").append(newScript);
 /* twine-user-script #4: "Add MIA" */
 newScript = document.createElement("script");
 newScript.src = "build/MIA.js";
 newScript.id = "MIA";
 $("head").append(newScript);
 
-newScript.src = "src/js/AUNLG.js";
-$("head").append(newScript);
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">This is the start screen
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">This is the start screen
 
 [[CharacterEditor]]</tw-passagedata><tw-passagedata pid="2" name="CharacterEditor" tags="" position="225,100" size="100,100">&lt;&lt;script&gt;&gt;
 // mia.getPlayerIdentities();
