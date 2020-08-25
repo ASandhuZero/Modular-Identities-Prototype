@@ -1,5 +1,4 @@
-import cif = require('cif');
-import practiceManager = require('practiceManager');
+import cif from './cif.js';
 
 
 module AUNLG {
