@@ -1,5 +1,4 @@
-import cif from './cif.js';
-
+import {cif} from "./cif.js";
 
 module AUNLG {
     /*  GLOBAL VARIABLES */
@@ -296,7 +295,7 @@ module AUNLG {
      * @return {Object}
      *      The cast.json object associated with the character referenced by speakerRole.
      */
-    function getCharacterData(pCharacterRole, pBindings) {
+    export function getCharacterData(pCharacterRole, pBindings) {
         var cast:any = cif.getCharactersWithMetadata();
         var characterName:string = pBindings[pCharacterRole];
         for (var character of cast) {
@@ -439,6 +438,7 @@ module AUNLG {
                 var trimmed:string = (pToken.length > 1) ? trimType(pToken, "x") : undefined;
                 return new CharacterLocution(trimmed);
             } else {
+                debugger;
                 console.log("Unknown locution type: %s", pToken);
                 return undefined;
             }

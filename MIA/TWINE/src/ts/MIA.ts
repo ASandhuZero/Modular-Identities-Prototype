@@ -2,21 +2,25 @@ class MIA {
     
     //TODO: Put this somewhere else. PlayerName is here just for testing
     playerName : string;
-    actionList;
+    actionList : any;
     
-    identityDialogue;
+    identityDialogue : any;
     interface : object;
     
-    AUNLG;
+    AUNLG : any;
     timeStep : number;
-    test : string;
     identityValues : object;
     identityDescription : object;
-    cif;
+    cif : any;
     cast : string[];
     allowedIdentities : string[];
     
     constructor() {
+        this.identityValues = {};
+        this.identityDescription = {};
+        this.cif = {};
+        this.cast = [];
+        this.allowedIdentities = [];
         this.playerName = "";
         this.timeStep = 0;
         this.interface = {
@@ -97,7 +101,6 @@ class MIA {
         
         dialogue = action.performance;
         console.log(dialogue);
-        debugger;
         return dialogue;
     }
     getCharPhysicalAction(char : string) {
