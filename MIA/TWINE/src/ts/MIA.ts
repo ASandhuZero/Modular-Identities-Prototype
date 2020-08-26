@@ -89,20 +89,44 @@ class MIA {
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     }
-    getCharDialogue(char : string) {
+    getCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
-        this.addActionTypePredicateToSFDB(char, "dialogue");
+        this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         let volitions = this.cif.calculateVolition(this.cast);
-        let action = this.cif.getAction(char, char, volitions, this.cast);
-        let pdialogue = "<line s=\"%X%\">%repeatVariation('Hi!','Hello','Good day to you')%</line>";
-        this.AUNLG.preprocessDialogue(pdialogue);
-        
-        
-        
-        dialogue = action.performance;
+        let action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
+        // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
+        let pdialogue = action.performance;
+        let charData = this.cif.getCharactersWithMetadata();
+        let talkingCharData = charData[talkingChar];
+        let listeningCharData = charData[listeningChar];
+        let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+        dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
         console.log(dialogue);
+        debugger;
         return dialogue;
     }
+
+
+    renderText(locutionData, talkingCharData, listeningCharData ) {
+        let renderedTextList = [];
+        let renderedText = "";
+        for (let i = 0; i < locutionData.length; i++) {
+            if (locutionData[i]["rawText"] === "(name)") {
+                renderedTextList.push(listeningCharData.name);
+            } else if (locutionData[i]["rawText"] === "(his/her/their)") {
+                renderedTextList.push("their");
+            } else if (locutionData[i]["choices"] !== undefined) {
+                renderedTextList.push(locutionData[i]["choices"].random());
+            }
+             else if(Object.keys(locutionData[i]).length === 1) {
+                renderedTextList.push(locutionData[i].rawText);
+            }
+
+        }
+        renderedText = renderedTextList.join("");
+        return renderedText;
+    }
+
     getCharPhysicalAction(char : string) {
         console.log("fill out this function")
         debugger

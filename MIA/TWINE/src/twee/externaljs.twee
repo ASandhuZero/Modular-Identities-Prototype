@@ -71,7 +71,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.name = playerName;
 
 
-        mia.getCharDialogue("blacksmith");
+        mia.getCharDialogue("blacksmith", "player");
 
     }
 }, false);

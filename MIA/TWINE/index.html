@@ -164,17 +164,41 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     };
-    MIA.prototype.getCharDialogue = function (char) {
+    MIA.prototype.getCharDialogue = function (talkingChar, listeningChar) {
         var dialogue;
-        this.addActionTypePredicateToSFDB(char, "dialogue");
+        this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
-        var action = this.cif.getAction(char, char, volitions, this.cast);
-        var pdialogue = "<line s=\"%X%\">%repeatVariation('Hi!','Hello','Good day to you')%</line>";
-        this.AUNLG.preprocessDialogue(pdialogue);
-        dialogue = action.performance;
+        var action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
+        // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
+        var pdialogue = action.performance;
+        var charData = this.cif.getCharactersWithMetadata();
+        var talkingCharData = charData[talkingChar];
+        var listeningCharData = charData[listeningChar];
+        var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+        dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
         console.log(dialogue);
         debugger;
         return dialogue;
+    };
+    MIA.prototype.renderText = function (locutionData, talkingCharData, listeningCharData) {
+        var renderedTextList = [];
+        var renderedText = "";
+        for (var i = 0; i < locutionData.length; i++) {
+            if (locutionData[i]["rawText"] === "(name)") {
+                renderedTextList.push(listeningCharData.name);
+            }
+            else if (locutionData[i]["rawText"] === "(his/her/their)") {
+                renderedTextList.push("their");
+            }
+            else if (locutionData[i]["choices"] !== undefined) {
+                renderedTextList.push(locutionData[i]["choices"].random());
+            }
+            else if (Object.keys(locutionData[i]).length === 1) {
+                renderedTextList.push(locutionData[i].rawText);
+            }
+        }
+        renderedText = renderedTextList.join("");
+        return renderedText;
     };
     MIA.prototype.getCharPhysicalAction = function (char) {
         console.log("fill out this function");
@@ -489,7 +513,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.name = playerName;
 
 
-        mia.getCharDialogue("blacksmith");
+        mia.getCharDialogue("blacksmith", "player");
 
     }
 }, false);
@@ -570,7 +594,7 @@ who would you like to talk to? [[blacksmith | Blacksmith dialogue]]
 [[physical]]
 
 [[MIA testcase]]</tw-passagedata><tw-passagedata pid="3" name="MIA testcase" tags="" position="350,100" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="dialogue" tags="" position="475,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Blacksmith dialogue" tags="" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
-state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;);
+state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
 &lt;&lt;/script&gt;&gt;
 $dialogue</tw-passagedata><tw-passagedata pid="6" name="Silversmith dialogue" tags="" position="725,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.getCharDialogue(&quot;silversmith&quot;);

@@ -30,7 +30,7 @@
 					"value" : 10
 				}
 			],
-            "performance" : "It's a pleasure to meet you, NLG TIME",
+            "performance" : "It's a %random(bloody, absolute)% pleasure to meet you %charVal(name)%, NLG TIME",
             "influenceRules" : [],
 			"effects" : [{
 

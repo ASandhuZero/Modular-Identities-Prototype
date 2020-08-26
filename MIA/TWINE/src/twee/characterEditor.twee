@@ -59,7 +59,7 @@ who would you like to talk to? [[blacksmith | Blacksmith dialogue]]
 :: dialogue
 :: Blacksmith dialogue
 <<script>>
-state.variables.dialogue = mia.getCharDialogue("blacksmith");
+state.variables.dialogue = mia.getCharDialogue("blacksmith", "player");
 <</script>>
 $dialogue
 
