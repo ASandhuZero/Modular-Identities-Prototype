@@ -17,7 +17,7 @@
                 }
             ],
             "influenceRules" : [],
-            "leadsTo" : ["dialogue1"]
+            "leadsTo" : ["dialogue1", "dialogue2"]
         },
         {
 			"name" : "dialogue1",
@@ -27,14 +27,51 @@
 					"type" : "blacksmith",
 					"first" : "initiator",
 					"operator" : ">",
+					"value" : 5
+				},
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}				
+			],
+            "performance" : "It's a %random(bloody, true)% pleasure to meet you %charVal(name)%",
+            "influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}
+			]
+		},
+		        {
+			"name" : "dialogue2",
+			"conditions" : [
+				{
+					"class" : "smith",
+					"type" : "blacksmith",
+					"first" : "initiator",
+					"operator" : ">",
 					"value" : 10
+				}, 
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
 				}
 			],
-            "performance" : "It's a %random(bloody, absolute)% pleasure to meet you %charVal(name)%, NLG TIME",
+            "performance" : "So what can I do for you?",
             "influenceRules" : [],
-			"effects" : [{
+			"effects" : [
 
-			}]
+			]
 		},
         {
 			"name" : "b_makeSword1",

@@ -137,7 +137,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         };
         this.cif.set(actionToAdd);
     };
-    // Clean up this function
+    // Clean up this function THIS FUNC BROKE BAD. TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
     MIA.prototype.getCastActions = function (decisionType, environmentInfo) {
         var castActions = {};
         for (var i = 0; i < this.cast.length; i++) {
@@ -164,10 +164,21 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     };
+    MIA.prototype.getPlayerChoices = function (player, npc) {
+        var playerActions;
+        this.addActionTypePredicateToSFDB(player, "dialogue");
+        console.log(player, npc);
+        var volitions = this.cif.calculateVolition(this.cast);
+        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
+        return playerActions;
+    };
     MIA.prototype.getCharDialogue = function (talkingChar, listeningChar) {
         var dialogue;
         this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
+        //TODO: Yo this is messed up right here and right now. Seems that there is no terminal action in what is going on yo.
+        // hopefully you'll able to see what is going on later tonight so we can continue our progress into the evening and what not.
+        // LOOK AT GETPLAYERCHOICE FOR THE SOLUTION HERE. CAN'T FOCUS ON IT FOR TOO LONG. SINCE IT'S PROGRESS O'CLOCK
         var action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
         // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
         var pdialogue = action.performance;
@@ -176,8 +187,11 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         var listeningCharData = charData[listeningChar];
         var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-        console.log(dialogue);
-        debugger;
+        for (var i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+        var time = this.cif.setupNextTimeStep();
+        console.log(this.cif.get(time));
         return dialogue;
     };
     MIA.prototype.renderText = function (locutionData, talkingCharData, listeningCharData) {
@@ -512,9 +526,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
 
-
-        mia.getCharDialogue("blacksmith", "player");
-
+        mia.getPlayerChoices("player", "blacksmith");
     }
 }, false);
 
@@ -580,9 +592,9 @@ Get some text to change based on the identity you choose
 
 console.log(state.variables);
 // console.log(cif.getCharacters());
-var dialogue = mia.getCastActions(&quot;dialogue&quot;)
-state.variables.dialogue = dialogue[&quot;player&quot;][&quot;dialogue&quot;];
-console.log(state.variables.dialogue, &quot;This is the character editor variable of dialogue&quot;);
+// var dialogue = mia.getCastActions(&quot;dialogue&quot;)
+// state.variables.dialogue = dialogue[&quot;player&quot;][&quot;dialogue&quot;];
+// console.log(state.variables.dialogue, &quot;This is the character editor variable of dialogue&quot;);
 &lt;&lt;/script&gt;&gt;
 
 $dialogue
@@ -591,14 +603,25 @@ Your name is $name and you appear to be both &lt;&lt;print $description[&quot;pr
 What would you like to do?
 who would you like to talk to? [[blacksmith | Blacksmith dialogue]] 
 [[dialogue]]
-[[physical]]
-
-[[MIA testcase]]</tw-passagedata><tw-passagedata pid="3" name="MIA testcase" tags="" position="350,100" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="dialogue" tags="" position="475,100" size="100,100"></tw-passagedata><tw-passagedata pid="5" name="Blacksmith dialogue" tags="" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
+[[physical]]</tw-passagedata><tw-passagedata pid="3" name="dialogue" tags="" position="350,100" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="Blacksmith dialogue" tags="" position="475,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
+state.variables.playerActions = mia.getPlayerChoices(&quot;player&quot;, &quot;blacksmith&quot;);
 &lt;&lt;/script&gt;&gt;
-$dialogue</tw-passagedata><tw-passagedata pid="6" name="Silversmith dialogue" tags="" position="725,100" size="100,100">&lt;&lt;script&gt;&gt;
+
+$dialogue
+&lt;&lt;for _name, _val range $playerActions&gt;&gt;
+	&lt;&lt;set _identity = _name&gt;&gt;
+	&lt;&lt;print _val.dialogue&gt;&gt;
+	&lt;&lt;capture _identity&gt;&gt;
+	_identity &lt;label&gt;&lt;&lt;radiobutton &quot;$playerActions[_identity]&quot; &quot;_val.dialogue&quot;&gt;&gt;&lt;/label&gt;
+&lt;&lt;/capture&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+
+
+[[Keep talking to the blacksmith | Blacksmith dialogue]]
+[[Talk to the silversmith | Silversmith dialogue]]</tw-passagedata><tw-passagedata pid="5" name="Silversmith dialogue" tags="" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.getCharDialogue(&quot;silversmith&quot;);
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="physical" tags="" position="850,100" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="physical" tags="" position="725,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.getCharPhsyicalAction(&quot;blacksmith&quot;);
 &lt;&lt;/script&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">

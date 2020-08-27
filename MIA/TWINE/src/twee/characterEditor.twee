@@ -39,9 +39,9 @@ Get some text to change based on the identity you choose
 
 console.log(state.variables);
 // console.log(cif.getCharacters());
-var dialogue = mia.getCastActions("dialogue")
-state.variables.dialogue = dialogue["player"]["dialogue"];
-console.log(state.variables.dialogue, "This is the character editor variable of dialogue");
+// var dialogue = mia.getCastActions("dialogue")
+// state.variables.dialogue = dialogue["player"]["dialogue"];
+// console.log(state.variables.dialogue, "This is the character editor variable of dialogue");
 <</script>>
 
 $dialogue
@@ -52,16 +52,26 @@ who would you like to talk to? [[blacksmith | Blacksmith dialogue]]
 [[dialogue]]
 [[physical]]
 
-[[MIA testcase]]
-
-:: MIA testcase {"position":"350,100","size":"100,100"}
 
 :: dialogue
 :: Blacksmith dialogue
 <<script>>
 state.variables.dialogue = mia.getCharDialogue("blacksmith", "player");
+state.variables.playerActions = mia.getPlayerChoices("player", "blacksmith");
 <</script>>
+
 $dialogue
+<<for _name, _val range $playerActions>>
+	<<set _identity = _name>>
+	<<print _val.dialogue>>
+	<<capture _identity>>
+	_identity <label><<radiobutton "$playerActions[_identity]" "_val.dialogue">></label>
+<</capture>>
+<</for>>
+
+
+[[Keep talking to the blacksmith | Blacksmith dialogue]]
+[[Talk to the silversmith | Silversmith dialogue]]
 
 
 :: Silversmith dialogue

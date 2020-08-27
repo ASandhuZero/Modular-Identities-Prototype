@@ -2,6 +2,28 @@
 	"fileName" : "actions.json",
 	"actions" : [
 		{
+			"name" : "CHOSENHERODIALOGUE",
+			"intent" : {
+				"class" : "intents",
+				"type" : "meet",
+				"intentDirection" : true,
+				"first" : "initiator",
+				"second" : "responder"
+			},
+			"conditions" : [
+				{
+					"class" : "hero",
+					"type" : "chosen one",
+					"intentDirection" : true,
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				}
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["dialoguetest", "dialoguetest1"]
+		},
+		{
 			"name" : "herotest",
 			"intent" : {
 				"class" : "SFDBLabelUndirected",
@@ -20,7 +42,7 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["test"]
+			"leadsTo" : ["chosen test"]
 		},
 		{
 			"name" : "chosen test",
@@ -28,8 +50,37 @@
 			],
 			"dialogue" : "THE CHOSEN ONE ARISES!",
 			"influenceRules" : [],
-			"effects" : [{
-			}]
+			"effects" : []
+		},
+		{
+			"name" : "dialoguetest",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}	
+			],
+			"dialogue" : "WAAAGGGHHH!",
+			"influenceRules" : [],
+			"effects" : []
+		},
+		{
+			"name" : "dialoguetest1",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}	
+			],
+			"dialogue" : "OI THIS IS THE SECOND DIALOGUE TEST!",
+			"influenceRules" : [],
+			"effects" : []
         }
     ]
 }

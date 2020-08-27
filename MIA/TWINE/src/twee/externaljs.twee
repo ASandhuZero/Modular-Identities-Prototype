@@ -70,9 +70,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
 
-
-        mia.getCharDialogue("blacksmith", "player");
-
+        mia.getPlayerChoices("player", "blacksmith");
     }
 }, false);
 

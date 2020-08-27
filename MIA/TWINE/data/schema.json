@@ -7,6 +7,32 @@
 	],
 	"schema": [
 		{
+			"class": "public relationship",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"public friends",
+				"publicly romantically committed to",
+				"feuding",
+				"have met"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
+			"class": "intents",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": [
+				"indifferent",
+				"meet"
+			],
+			"defaultValue": 0,
+			"minValue": -10,
+			"maxValue": 10,
+			"allowIntent": true
+		},
+		{
 			"class": "hero",
 			"isBoolean": false,
 			"directionType": "undirected",

@@ -60,7 +60,7 @@ class MIA {
         }
         this.cif.set(actionToAdd);
     }
-    // Clean up this function
+    // Clean up this function THIS FUNC BROKE BAD. TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
     getCastActions(decisionType : string, environmentInfo : object) {
         let castActions : object = {};
         for (let i = 0; i < this.cast.length; i++) {
@@ -89,10 +89,25 @@ class MIA {
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     }
+
+    getPlayerChoices(player : string, npc : string ) {
+        let playerActions : object;
+        this.addActionTypePredicateToSFDB(player, "dialogue");
+        console.log(player, npc);
+        let volitions = this.cif.calculateVolition(this.cast);
+        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
+        return playerActions;
+        
+    }
+ 
+
     getCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
         this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         let volitions = this.cif.calculateVolition(this.cast);
+        //TODO: Yo this is messed up right here and right now. Seems that there is no terminal action in what is going on yo.
+        // hopefully you'll able to see what is going on later tonight so we can continue our progress into the evening and what not.
+        // LOOK AT GETPLAYERCHOICE FOR THE SOLUTION HERE. CAN'T FOCUS ON IT FOR TOO LONG. SINCE IT'S PROGRESS O'CLOCK
         let action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
         // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
         let pdialogue = action.performance;
@@ -101,8 +116,11 @@ class MIA {
         let listeningCharData = charData[listeningChar];
         let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-        console.log(dialogue);
-        debugger;
+        for (let i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+        let time = this.cif.setupNextTimeStep();
+        console.log(this.cif.get(time));
         return dialogue;
     }
 
