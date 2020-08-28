@@ -1,0 +1,21 @@
+{
+    "fileName" : "chatVolitions",
+    "type" : "volition",
+    "rules" : [
+        {
+            "name": "People want to chat",
+            "conditions" : [],
+            "effects" : [
+				{
+					"class": "intents",
+					"type": "chat",
+					"first": "x",
+					"second": "y",
+					"weight": 1,
+					"intentDirection": true,
+					"value": 1
+				}
+            ]
+        }
+    ]
+}
