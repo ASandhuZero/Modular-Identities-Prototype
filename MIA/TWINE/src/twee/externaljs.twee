@@ -28,18 +28,18 @@ document.addEventListener('allLoaded', function(e) {
         let volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        rawVolitionRules = cif.loadFile("data/actionVolitions.json");
+        rawVolitionRules = cif.loadFile("data/chatVolitions.json");
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
         let rawActions;
         let actions;
 
-        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
+        rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/actions.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -69,8 +69,8 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
+        state.variables.playerAction = undefined;
 
-        mia.getPlayerChoices("player", "blacksmith");
     }
 }, false);
 

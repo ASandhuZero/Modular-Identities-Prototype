@@ -2,35 +2,6 @@
 	"fileName": "identityVolitions",
 	"type": "volition",
 	"rules": [
-		
-		
-		{
-			"name": "HELLO THERE ",
-			"conditions": [
-				{
-					"class": "public relationship",
-					"type": "have met",
-					"first": "x",
-					"second": "y",
-					"value": false
-				}
-			],
-			"effects": [
-				{
-					"class": "intents",
-					"type": "meet",
-					"first": "x",
-					"second": "y",
-					"weight": 1,
-					"intentDirection": true,
-					"value": 1
-				}
-			],
-			"origin": "honor.json",
-			"id": "honor_110"
-		},
-
-
 		{	
 			"name": "Hero test rule!",
 			"conditions": [

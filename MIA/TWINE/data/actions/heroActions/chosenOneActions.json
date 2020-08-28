@@ -1,15 +1,8 @@
 {
-	"fileName" : "actions.json",
+	"fileName" : "heroActions.json",
 	"actions" : [
 		{
 			"name" : "CHOSENHERODIALOGUE",
-			"intent" : {
-				"class" : "intents",
-				"type" : "meet",
-				"intentDirection" : true,
-				"first" : "initiator",
-				"second" : "responder"
-			},
 			"conditions" : [
 				{
 					"class" : "hero",
@@ -21,66 +14,29 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["dialoguetest", "dialoguetest1"]
+			"leadsTo" : ["ch_dialogue1", "ch_dialogue2"]
 		},
 		{
-			"name" : "herotest",
-			"intent" : {
-				"class" : "SFDBLabelUndirected",
-				"type" : "dialogue",
-				"intentDirection" : true,
-				"first" : "initiator"
-			},
-			"conditions" : [
-				{
-					"class" : "hero",
-					"type" : "chosen one",
-					"intentDirection" : true,
-					"first" : "initiator",
-					"operator" : ">",
-					"value" : 1
-				}
-			],
-			"influenceRules" : [],
-			"leadsTo" : ["chosen test"]
-		},
-		{
-			"name" : "chosen test",
-			"conditions" : [
-			],
-			"dialogue" : "THE CHOSEN ONE ARISES!",
+			"name" : "ch_dialogue1",
+			"conditions" : [],
+			"dialogue" : "This is a test of the dialogue! I am the chosen one!",
 			"influenceRules" : [],
 			"effects" : []
 		},
 		{
-			"name" : "dialoguetest",
-			"conditions" : [
+			"name" : "ch_dialogue2",
+			"conditions" : [],
+			"dialogue" : "This is the second test of the dialogue from the chosen one",
+			"influenceRules" : [],
+			"effects" : [
 				{
 					"class" : "public relationship",
 					"type" : "have met",
 					"first" : "initiator",
 					"second" : "responder",
-					"value" : false
+					"value" : true
 				}	
-			],
-			"dialogue" : "WAAAGGGHHH!",
-			"influenceRules" : [],
-			"effects" : []
-		},
-		{
-			"name" : "dialoguetest1",
-			"conditions" : [
-				{
-					"class" : "public relationship",
-					"type" : "have met",
-					"first" : "initiator",
-					"second" : "responder",
-					"value" : false
-				}	
-			],
-			"dialogue" : "OI THIS IS THE SECOND DIALOGUE TEST!",
-			"influenceRules" : [],
-			"effects" : []
-        }
+			]
+		}
     ]
 }

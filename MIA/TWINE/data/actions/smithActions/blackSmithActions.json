@@ -1,64 +1,31 @@
 {
 	"fileName" : "blackSmithActions.json",
 	"actions" : [
-        {
-            "name" : "BLACKSMITHDIALOGUE",
-            "intent" : {
-                "class" : "smith",
-                "type" : "blacksmith",
-                "intentDirection" : true,
-                "first" : "initiator"
-            },
-            "conditions" : [{
-                    "class" : "SFDBLabelUndirected",
-                    "type" : "dialogue",
-                    "first" : "initiator",
-                    "value" : true
-                }
-            ],
-            "influenceRules" : [],
-            "leadsTo" : ["dialogue1", "dialogue2"]
-        },
-        {
-			"name" : "dialogue1",
+			{
+			"name" : "BLACKSMITHDIALOGUE",
 			"conditions" : [
 				{
-					"class" : "smith",
-					"type" : "blacksmith",
-					"first" : "initiator",
-					"operator" : ">",
-					"value" : 5
+				"class" : "intents",
+				"type" : "chat",
+				"intentDirection" : true,
+				"first" : "initiator",
+				"second" : "responder"
 				},
-				{
-					"class" : "public relationship",
-					"type" : "have met",
-					"first" : "initiator",
-					"second" : "responder",
-					"value" : false
-				}				
-			],
-            "performance" : "It's a %random(bloody, true)% pleasure to meet you %charVal(name)%",
-            "influenceRules" : [],
-			"effects" : [
-				{
-					"class" : "public relationship",
-					"type" : "have met",
-					"first" : "initiator",
-					"second" : "responder",
-					"value" : true
-				}
-			]
-		},
-		        {
-			"name" : "dialogue2",
-			"conditions" : [
 				{
 					"class" : "smith",
 					"type" : "blacksmith",
 					"first" : "initiator",
 					"operator" : ">",
 					"value" : 10
-				}, 
+				}
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["bs_dialogue1", "bs_dialogue2"]
+		},
+
+        {
+			"name" : "bs_dialogue1",
+			"conditions" : [
 				{
 					"class" : "public relationship",
 					"type" : "have met",
@@ -70,33 +37,30 @@
             "performance" : "So what can I do for you?",
             "influenceRules" : [],
 			"effects" : [
-
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}
 			]
 		},
-        {
-			"name" : "b_makeSword1",
+		{
+			"name" : "bs_dialogue2",
 			"conditions" : [
-				{
-					"class" : "smith",
-					"type" : "blacksmith",
-					"first" : "initiator",
-					"operator" : ">",
-					"value" : 10
-				}
 			],
+			"performance" : "It's a %random(bloody, true)% pleasure to chat with you %charVal(name)%",
 			"influenceRules" : [],
-			"effects" : [{
-				"class" : "item",
-				"type" : "sword",
-				"operator" : "+",
-				"value" : 1
-			}, {
-				"class" : "smith",
-				"type" : "blacksmith",
-				"first" : "initiator",
-				"operator" : "+",
-				"value" : 1
-			}]
+			"effects" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}
+			]
 		}
     ]
 }

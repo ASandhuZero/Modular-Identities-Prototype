@@ -55,6 +55,13 @@
 				"type" : "blacksmith",
 				"first" : "silversmith",
 				"value" : 10
+			},
+			{
+				"class" : "public relationship",
+				"type" : "have met",
+				"first" : "blacksmith",
+				"second" : "player",
+				"value" : false
 			}
 		]}
 	]

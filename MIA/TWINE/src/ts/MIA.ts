@@ -100,25 +100,25 @@ class MIA {
         
     }
  
+    setActionEffects(action) {
+        for (let i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+    }
+
 
     getCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
         this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         let volitions = this.cif.calculateVolition(this.cast);
-        //TODO: Yo this is messed up right here and right now. Seems that there is no terminal action in what is going on yo.
-        // hopefully you'll able to see what is going on later tonight so we can continue our progress into the evening and what not.
-        // LOOK AT GETPLAYERCHOICE FOR THE SOLUTION HERE. CAN'T FOCUS ON IT FOR TOO LONG. SINCE IT'S PROGRESS O'CLOCK
-        let action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
-        // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
+        let action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
         let pdialogue = action.performance;
         let charData = this.cif.getCharactersWithMetadata();
         let talkingCharData = charData[talkingChar];
         let listeningCharData = charData[listeningChar];
         let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-        for (let i = 0; i < action.effects.length; i++) {
-            this.cif.set(action.effects[i]);
-        }
+        this.setActionEffects(action);
         let time = this.cif.setupNextTimeStep();
         console.log(this.cif.get(time));
         return dialogue;

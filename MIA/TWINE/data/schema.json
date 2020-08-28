@@ -25,7 +25,8 @@
 			"directionType": "directed",
 			"types": [
 				"indifferent",
-				"meet"
+				"meet",
+				"chat"
 			],
 			"defaultValue": 0,
 			"minValue": -10,

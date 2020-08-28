@@ -172,24 +172,23 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
         playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
         return playerActions;
     };
+    MIA.prototype.setActionEffects = function (action) {
+        for (var i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+    };
     MIA.prototype.getCharDialogue = function (talkingChar, listeningChar) {
         var dialogue;
         this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
-        //TODO: Yo this is messed up right here and right now. Seems that there is no terminal action in what is going on yo.
-        // hopefully you'll able to see what is going on later tonight so we can continue our progress into the evening and what not.
-        // LOOK AT GETPLAYERCHOICE FOR THE SOLUTION HERE. CAN'T FOCUS ON IT FOR TOO LONG. SINCE IT'S PROGRESS O'CLOCK
-        var action = this.cif.getAction(talkingChar, talkingChar, volitions, this.cast);
-        // let pdialogue = "%charVal(name)% is having trouble keeping %gendered(his/her/their)% partner happy.!";
+        var action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
         var pdialogue = action.performance;
         var charData = this.cif.getCharactersWithMetadata();
         var talkingCharData = charData[talkingChar];
         var listeningCharData = charData[listeningChar];
         var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-        for (var i = 0; i < action.effects.length; i++) {
-            this.cif.set(action.effects[i]);
-        }
+        this.setActionEffects(action);
         var time = this.cif.setupNextTimeStep();
         console.log(this.cif.get(time));
         return dialogue;
@@ -484,18 +483,18 @@ document.addEventListener('allLoaded', function(e) {
         let volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        rawVolitionRules = cif.loadFile("data/actionVolitions.json");
+        rawVolitionRules = cif.loadFile("data/chatVolitions.json");
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
         let rawActions;
         let actions;
 
-        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
+        rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/actions.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -525,8 +524,8 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
+        state.variables.playerAction = undefined;
 
-        mia.getPlayerChoices("player", "blacksmith");
     }
 }, false);
 
@@ -573,7 +572,7 @@ $("head").append(newScript);
 
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
 
 [[CharacterEditor]]</tw-passagedata><tw-passagedata pid="2" name="CharacterEditor" tags="" position="225,100" size="100,100">&lt;&lt;script&gt;&gt;
 // mia.getPlayerIdentities();
@@ -591,10 +590,6 @@ Get some text to change based on the identity you choose
 &lt;&lt;script&gt;&gt;
 
 console.log(state.variables);
-// console.log(cif.getCharacters());
-// var dialogue = mia.getCastActions(&quot;dialogue&quot;)
-// state.variables.dialogue = dialogue[&quot;player&quot;][&quot;dialogue&quot;];
-// console.log(state.variables.dialogue, &quot;This is the character editor variable of dialogue&quot;);
 &lt;&lt;/script&gt;&gt;
 
 $dialogue
@@ -604,21 +599,27 @@ What would you like to do?
 who would you like to talk to? [[blacksmith | Blacksmith dialogue]] 
 [[dialogue]]
 [[physical]]</tw-passagedata><tw-passagedata pid="3" name="dialogue" tags="" position="350,100" size="100,100"></tw-passagedata><tw-passagedata pid="4" name="Blacksmith dialogue" tags="" position="475,100" size="100,100">&lt;&lt;script&gt;&gt;
+console.log(state.variables.playerAction);	
+if (state.variables.playerAction !== undefined) {
+	mia.setActionEffects(state.variables.playerAction);
+	state.variables.playerAction = undefined;
+}
+
+
 state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
 state.variables.playerActions = mia.getPlayerChoices(&quot;player&quot;, &quot;blacksmith&quot;);
+console.log(state.variables);
 &lt;&lt;/script&gt;&gt;
 
 $dialogue
-&lt;&lt;for _name, _val range $playerActions&gt;&gt;
-	&lt;&lt;set _identity = _name&gt;&gt;
-	&lt;&lt;print _val.dialogue&gt;&gt;
+&lt;&lt;for _index, _val range $playerActions&gt;&gt;
+	&lt;&lt;set _identity = _index&gt;&gt;
 	&lt;&lt;capture _identity&gt;&gt;
-	_identity &lt;label&gt;&lt;&lt;radiobutton &quot;$playerActions[_identity]&quot; &quot;_val.dialogue&quot;&gt;&gt;&lt;/label&gt;
+	_identity &lt;label&gt;&lt;&lt;radiobutton &quot;$playerAction&quot; $playerActions[_identity]&gt;&gt; _val.dialogue&lt;/label&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-
-[[Keep talking to the blacksmith | Blacksmith dialogue]]
+&lt;&lt;button [[Keep talking to the blacksmith | Blacksmith dialogue]]&gt;&gt; &lt;&lt;/button&gt;&gt;
 [[Talk to the silversmith | Silversmith dialogue]]</tw-passagedata><tw-passagedata pid="5" name="Silversmith dialogue" tags="" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.getCharDialogue(&quot;silversmith&quot;);
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="physical" tags="" position="725,100" size="100,100">&lt;&lt;script&gt;&gt;
