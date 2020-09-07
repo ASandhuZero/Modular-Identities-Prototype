@@ -18,15 +18,54 @@
 		},
 		{
 			"name" : "ch_dialogue1",
-			"conditions" : [],
-			"dialogue" : "This is a test of the dialogue! I am the chosen one!",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}
+			],
+			"performance" : "Hello, I am the chosen one!",
 			"influenceRules" : [],
-			"effects" : []
+			"effects" : [
+				{
+					"class" : "perceived_hero",
+					"type" : "chosen one",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : 10,
+					"operator" : "+"
+				},
+				{
+					"class" : "perceived_role",
+					"type" : "hero",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : true
+				},
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}	
+			]
 		},
 		{
 			"name" : "ch_dialogue2",
-			"conditions" : [],
-			"dialogue" : "This is the second test of the dialogue from the chosen one",
+			"conditions" : [				
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}
+			],
+			"performance" : "Hello, how are you today?",
 			"influenceRules" : [],
 			"effects" : [
 				{

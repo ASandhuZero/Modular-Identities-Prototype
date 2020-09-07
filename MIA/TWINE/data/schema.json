@@ -20,6 +20,19 @@
 			"defaultValue": false
 		},
 		{
+			"class": "perceived_role",
+			"isBoolean": true,
+			"directionType": "directed",
+			"types": [
+				"hero", 
+				"smith", 
+				"mage", 
+				"tank"
+			],
+			"allowIntent": false,
+			"defaultValue": false
+		},
+		{
 			"class": "intents",
 			"isBoolean": false,
 			"directionType": "directed",
@@ -31,6 +44,14 @@
 			"defaultValue": 0,
 			"minValue": -10,
 			"maxValue": 10,
+			"allowIntent": true
+		},
+		{
+			"class": "character",
+			"isBoolean": true,
+			"directionType": "undirected",
+			"types": ["NPC", "Player"],
+			"defaultValue": false,
 			"allowIntent": true
 		},
 		{
@@ -48,6 +69,26 @@
 			"isBoolean": false,
 			"directionType": "undirected",
 			"types": ["blacksmith", "silversmith"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class": "perceived_hero",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": ["chosen one", "hero of the people", "antihero", "any"],
+			"defaultValue": 0,
+			"minValue": 0,
+			"maxValue": 100,
+			"allowIntent": true
+		},
+		{
+			"class": "perceived_smith",
+			"isBoolean": false,
+			"directionType": "directed",
+			"types": ["blacksmith", "silversmith", "any"],
 			"defaultValue": 0,
 			"minValue": 0,
 			"maxValue": 100,

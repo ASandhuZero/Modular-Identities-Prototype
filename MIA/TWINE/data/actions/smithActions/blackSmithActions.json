@@ -1,8 +1,8 @@
 {
 	"fileName" : "blackSmithActions.json",
 	"actions" : [
-			{
-			"name" : "BLACKSMITHDIALOGUE",
+		{
+			"name" : "BLACKSMITH_DIALOGUE",
 			"conditions" : [
 				{
 				"class" : "intents",
@@ -20,11 +20,54 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["bs_dialogue1", "bs_dialogue2"]
+			"leadsTo" : ["BLACKSMITH_HERO_DIALOGUE", "BLACKSMITH_DEFAULT_DIALOGUE"]
 		},
-
+		{
+			"name" : "BLACKSMITH_HERO_DIALOGUE",
+			"conditions" : [
+				{
+					"class" : "perceived_role",
+					"type" : "hero",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" :  	true
+				}
+			],
+			"influenceRules" : [
+				{
+					"name": "Blacksmiths are more inclined to talk to heroes.",
+					"conditions": [
+						{
+							"class" : "perceived_role",
+							"type" : "hero",
+							"first" : "initiator",
+							"second" : "responder",
+							"value" :  	true
+						}
+					],
+					"weight" : 100
+				}
+			],
+			"leadsTo" : ["BLACKSMITH_CHOSEN_DIALOGUE"]
+		},
+		{
+			"name" : "BLACKSMITH_CHOSEN_DIALOGUE",
+			"conditions" : [
+				{
+					"class" : "perceived_hero",
+					"type" : "chosen one",
+					"first" : "initiator",
+					"second" : "responder",
+					"operator" : ">",
+					"value" :  	1
+				}
+			],
+			"influenceRules" : [
+			],
+			"leadsTo" : ["blacksmith_chosen_1"]
+		},
         {
-			"name" : "bs_dialogue1",
+			"name" : "blacksmith_chosen_1",
 			"conditions" : [
 				{
 					"class" : "public relationship",
@@ -34,9 +77,42 @@
 					"value" : true
 				}
 			],
+            "performance" : "Ah so you a hero eh?",
+            "influenceRules" : [],
+			"effects" : [
+			]
+		},
+		{
+			"name" : "BLACKSMITH_DEFAULT_DIALOGUE",
+			"conditions" : [
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["bs_dialogue1", "bs_dialogue2", "bs_dialogue3"]
+		},
+        {
+			"name" : "bs_dialogue1",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				},
+				{
+					"class" : "character",
+					"type" : "NPC",
+					"first" : "initiator"
+				}
+			],
             "performance" : "So what can I do for you?",
             "influenceRules" : [],
 			"effects" : [
+			]
+		},
+		{
+			"name" : "bs_dialogue3",
+			"conditions" : [
 				{
 					"class" : "public relationship",
 					"type" : "have met",
@@ -44,11 +120,22 @@
 					"second" : "responder",
 					"value" : true
 				}
+			],
+            "performance" : "How has the day been going, %charVal(name)%?",
+            "influenceRules" : [],
+			"effects" : [
 			]
 		},
 		{
 			"name" : "bs_dialogue2",
 			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}
 			],
 			"performance" : "It's a %random(bloody, true)% pleasure to chat with you %charVal(name)%",
 			"influenceRules" : [],

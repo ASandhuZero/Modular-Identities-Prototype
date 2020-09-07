@@ -1,9 +1,10 @@
+// TODO: Cry to yourself because you know that you should be using interfaces
+// with your objects and not just defaulting to any. One of these days I will
+// clean it up.
 class MIA {
     
-    //TODO: Put this somewhere else. PlayerName is here just for testing
-    playerName : string;
     actionList : any;
-    
+    identities : any;   
     identityDialogue : any;
     interface : object;
     
@@ -21,7 +22,6 @@ class MIA {
         this.cif = {};
         this.cast = [];
         this.allowedIdentities = [];
-        this.playerName = "";
         this.timeStep = 0;
         this.interface = {
             "getCastActions" : this.getCastActions
@@ -60,7 +60,8 @@ class MIA {
         }
         this.cif.set(actionToAdd);
     }
-    // Clean up this function THIS FUNC BROKE BAD. TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
+    // Clean up this function THIS FUNC BROKE BAD. 
+    // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
     getCastActions(decisionType : string, environmentInfo : object) {
         let castActions : object = {};
         for (let i = 0; i < this.cast.length; i++) {
@@ -91,11 +92,24 @@ class MIA {
     }
 
     getPlayerChoices(player : string, npc : string ) {
-        let playerActions : object;
+        let playerActions : any[];
         this.addActionTypePredicateToSFDB(player, "dialogue");
         console.log(player, npc);
         let volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
+        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 
+            3, 3, 3);
+
+        let charData = this.cif.getCharactersWithMetadata();
+        let talkingCharData = charData[player];
+        let listeningCharData = charData[npc];
+        for (let i = 0; i < playerActions.length; i++) {
+            let action = playerActions[i];
+            let pdialogue = action.performance;
+            let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+            let dialogue = this.renderText(locutionData, 
+                talkingCharData, listeningCharData);
+            playerActions[i].performance = dialogue;
+        }
         return playerActions;
         
     }
@@ -106,21 +120,23 @@ class MIA {
         }
     }
 
-
     getCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
         this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
+        
         let volitions = this.cif.calculateVolition(this.cast);
-        let action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
+        let action : any;
+        action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
+        
         let pdialogue = action.performance;
         let charData = this.cif.getCharactersWithMetadata();
         let talkingCharData = charData[talkingChar];
         let listeningCharData = charData[listeningChar];
         let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
+       
         this.setActionEffects(action);
         let time = this.cif.setupNextTimeStep();
-        console.log(this.cif.get(time));
         return dialogue;
     }
 
@@ -150,7 +166,7 @@ class MIA {
         debugger
     }
 
-    intentSelection(charVolition : object[], char: string, decisionType : string, storedVolitions){
+    intentSelection(charVolition : object[], char: string, storedVolitions) {
         let intents : object[];
         let rankedIntents : object;
         let intent : object;
@@ -163,7 +179,6 @@ class MIA {
         intents = this.scoreIntents(charVolition);
         // Rank Intents
         console.log(intents, "intents");
-        debugger;
         rankedIntents = this.rankIntents(intents);
         // Select dominant intent for right now
         // get action template from intent
@@ -171,7 +186,8 @@ class MIA {
         intent = this.chooseIntent(rankedIntents);
 
         actions = this.cif.getActions(char, char, storedVolitions, this.cast, 2);
-        //TODO extrapolate out this to two levels of reasoning so you don't have to overhaul all you reasoning in one location.
+        //TODO extrapolate out this to two levels of reasoning so you don't have 
+        // to overhaul all you reasoning in one location.
         action = this.chooseAction(actions, intent);
         // fill in action template 
         actionSymbols = this.chooseActionSymbols(action);
@@ -212,7 +228,8 @@ class MIA {
 
         return intent
     }
-    //TODO: Right now this doesn't do anything but it will at some point. Currently offloading action decision making to TWINE
+    //TODO: Right now this doesn't do anything but it will at some point. 
+    // Currently offloading action decision making to TWINE
     chooseAction(actions : object[], intent : object) { 
         for (let i = 0; i < actions.length; i++) {
             let action = actions[i];
@@ -224,9 +241,10 @@ class MIA {
                 }
             }
         }
-        // Set up actions as a two phase thing. Get one action file to choose which action to do. Then get back the identtiy information from CIF.
-        // Honestly, this makes sense? Need to do some more building about this. Focus on this in the morning.
-
+        // Set up actions as a two phase thing. Get one action file to choose 
+        // which action to do. Then get back the identtiy information from CIF.
+        // Honestly, this makes sense? Need to do some more building about this. 
+        // Focus on this in the morning.
         return {}
     }
     // This is currently not doing anything. 
@@ -266,11 +284,7 @@ class MIA {
     setAUNLG(AUNLG) {
         this.AUNLG = AUNLG;
     }
-
-    getIdentities() {
-        return {};
-    }
-
+    
     getIdentityValues() {
         return this.identityValues;
     }
@@ -319,7 +333,8 @@ class MIA {
         }
         for (let i = 0; i < cast.length; i++) {
             let character = cast[i];
-            castIdentityValues[character] = this.getIdentityValue(identityData, character);
+            let identityValue = this.getIdentityValue(identityData, character);
+            castIdentityValues[character] = identityValue;
             
         }
         return castIdentityValues;
@@ -338,7 +353,7 @@ class MIA {
         return identityValues;
     }
 
-    updateTimeStep(){
+    updateTimeStep() {
         this.timeStep = this.cif.setupNextTimeStep();
     }
 
@@ -346,8 +361,22 @@ class MIA {
 
     getPlayerIdentities() {
         let identities = {}
+        let socialStructure = this.cif.getSocialStructure();
+        console.log(this.identities);
+        for (let i = 0; i < this.identities.length; i++) {
+            let identity = this.identities[i];
+            identities[identity] = socialStructure[identity];
+        }
         return identities;
     }
+
+    getIdentities() {
+        return this.identities;
+    }
+    setIdentities(identities : any) {
+        this.identities = identities;
+    }
+
     setIdentityDialogue(identityDialogue : object) {
         this.identityDialogue = identityDialogue;
     }

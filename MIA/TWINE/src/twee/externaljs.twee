@@ -5,6 +5,7 @@ var nlgLoaded = false;
 
 :: Check if CiF loaded [script]
 document.addEventListener('allLoaded', function(e) {
+    //TODO: This is bad. Please fix this.
     if (miaLoaded && cifLoaded && nlgLoaded) {
         let playerName;
         let loadResult = cif.init();
@@ -47,14 +48,11 @@ document.addEventListener('allLoaded', function(e) {
         let history = cif.addHistory(rawHistory);
         history = cif.addHistory(rawHistory);
         
-        // updateTimeStep(cif);
         playerName = cif.getCharName("Player");
 
-
-        var identityCastValues = mia.getIdentityValuesForCast(identities, history, cast);
-       
         mia.setCiF(cif, identities);
         mia.setAUNLG(AUNLG);
+        mia.setIdentities(identities);
 
         state.variables.interface = {
             "getPlayerIdentities" : mia.getPlayerIdentities,

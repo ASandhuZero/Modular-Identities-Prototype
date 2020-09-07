@@ -20,10 +20,13 @@ Actual story for my research
 PLEASE GOD GET THE NODE STUFF WORKING. DON'T FORGET OKAY?
 
 [[CharacterEditor]]
+[[blacksmith | Blacksmith dialogue]]
+[[dialogue]]
+[[physical]]
 
 :: CharacterEditor {"position":"225,100","size":"100,100"}
 <<script>>
-// mia.getPlayerIdentities();
+let identityStructure = mia.getPlayerIdentities();
 <</script>>
 name: <<textbox "$name" $name>>
 <<for _name, _val range $identitiesValues>>
@@ -40,11 +43,15 @@ Get some text to change based on the identity you choose
 console.log(state.variables);
 <</script>>
 
+<<set _pros = $description["pros"][0]>>
+<<set _cons = $description["cons"][0]>>
+
 $dialogue
-Your name is $name and you appear to be both <<print $description["pros"][0]>> and <<print $description["cons"][0]>>.
+Your name is $name and you appear to be both <<print _pros>> and <<print _cons>>.
 
 What would you like to do?
-who would you like to talk to? [[blacksmith | Blacksmith dialogue]] 
+who would you like to talk to? 
+[[blacksmith | Blacksmith dialogue]]
 [[dialogue]]
 [[physical]]
 
@@ -55,7 +62,9 @@ who would you like to talk to? [[blacksmith | Blacksmith dialogue]]
 console.log(state.variables.playerAction);	
 if (state.variables.playerAction !== undefined) {
 	mia.setActionEffects(state.variables.playerAction);
+	cif.setupNextTimeStep();
 	state.variables.playerAction = undefined;
+	console.log("We ran");
 }
 
 
@@ -68,7 +77,8 @@ $dialogue
 <<for _index, _val range $playerActions>>
 	<<set _identity = _index>>
 	<<capture _identity>>
-	_identity <label><<radiobutton "$playerAction" $playerActions[_identity]>> _val.dialogue</label>
+	<<set _action = $playerActions[_identity]>>
+	_identity <label><<radiobutton "$playerAction" _action>> _val.performance</label>
 <</capture>>
 <</for>>
 

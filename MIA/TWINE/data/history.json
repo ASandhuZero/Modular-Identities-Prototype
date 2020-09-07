@@ -3,51 +3,33 @@
 		"pos": 0,
 		"data": [
 			{
+				"class" : "character",
+				"type" : "Player",
+				"first" : "player",
+				"value" : true
+			},
+			{
+				"class" : "character",
+				"type" : "NPC",
+				"first" : "blacksmith",
+				"value" : true
+			},
+			{
 				"class" : "hero",
 				"type" : "chosen one",
 				"first" : "player",
 				"value" : 50
 			},
 			{
-				"class" : "trait",
-				"type" : "anyone",
-				"first" : "blacksmith",
-				"value" : true
-			},
-			{
-				"class" : "trait",
-				"type" : "anyone",
-				"first" : "silversmith",
-				"value" : true
-			},
-			{
-				"class" : "trait",
-				"type" : "anyone",
+				"class" : "smith",
+				"type" : "blacksmith",
 				"first" : "player",
-				"value" : true
-			},
-			{
-				"class" : "attribute",
-				"type" : "strength",
-				"first" : "hero",
-				"value" : 0
-			},
-			{
-				"class" : "attribute",
-				"type" : "intelligence",
-				"first" : "hero",
-				"value" : 5
+				"value" : 30
 			},
 			{
 				"class" : "smith",
 				"type" : "blacksmith",
 				"first" : "blacksmith",
-				"value" : 30
-			},
-			{
-				"class" : "smith",
-				"type" : "silversmith",
-				"first" : "silversmith",
 				"value" : 30
 			},
 			{
