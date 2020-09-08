@@ -168,9 +168,12 @@ var MIA = /** @class */ (function () {
         return castActions;
     };
     MIA.prototype.getPlayerChoices = function (player, npc) {
+        var roleActions = {};
+        var actionBlend = {};
         var playerActions;
+        var shouldBlend = false;
+        var blendAction;
         this.addActionTypePredicateToSFDB(player, "dialogue");
-        console.log(player, npc);
         var volitions = this.cif.calculateVolition(this.cast);
         playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
         var charData = this.cif.getCharactersWithMetadata();
@@ -182,8 +185,48 @@ var MIA = /** @class */ (function () {
             var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
             var dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
             playerActions[i].performance = dialogue;
+            var role = undefined;
+            if (action.role !== undefined) {
+                role = action.role;
+            }
+            roleActions[role] = action;
+            if (action.type === "blend") {
+                shouldBlend = true;
+                actionBlend = action;
+            }
+        }
+        if (shouldBlend) {
+            var blendAction_1 = this.BlendActions(actionBlend, roleActions);
+            playerActions.push(blendAction_1);
         }
         return playerActions;
+    };
+    //Blending identity actions together
+    MIA.prototype.BlendActions = function (actionBlend, roleActions) {
+        var blend = actionBlend.blend;
+        var roleList = blend.split(',');
+        var performanceList = [];
+        var action = {
+            "name": "blendedAction",
+            "conditions": [],
+            "performance": "",
+            "influenceRules": [],
+            "effects": []
+        };
+        for (var i = 0; i < roleList.length; i++) {
+            var role = roleList[i];
+            var actionToBlend = roleActions[role];
+            var blendConditions = actionToBlend.conditions;
+            var blendRules = actionToBlend.influenceRules;
+            var blendEffects = actionToBlend.effects;
+            var blendPerformance = actionToBlend.performance;
+            action.conditions.push(blendConditions);
+            action.influenceRules.push(blendRules);
+            action.effects.push(blendEffects);
+            performanceList.push(blendPerformance);
+        }
+        action.performance = performanceList.join(" ");
+        return action;
     };
     MIA.prototype.setActionEffects = function (action) {
         for (var i = 0; i < action.effects.length; i++) {
@@ -312,9 +355,6 @@ var MIA = /** @class */ (function () {
     };
     //get the action that an identity needs.
     MIA.prototype.getIdentityAction = function () {
-    };
-    //Blending identity actions together
-    MIA.prototype.BlendIdentityActions = function () {
     };
     MIA.prototype.SelectIntent = function (identities) {
         return ["placeholder"];

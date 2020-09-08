@@ -128,6 +128,7 @@
 		},
 		{
 			"name" : "bs_dialogue2",
+			"role" : "blacksmith",
 			"conditions" : [
 				{
 					"class" : "public relationship",

@@ -92,9 +92,13 @@ class MIA {
     }
 
     getPlayerChoices(player : string, npc : string ) {
+        let roleActions = {};
+        let actionBlend = {};
         let playerActions : any[];
+        let shouldBlend = false;
+        let blendAction : any[];
         this.addActionTypePredicateToSFDB(player, "dialogue");
-        console.log(player, npc);
+        
         let volitions = this.cif.calculateVolition(this.cast);
         playerActions = this.cif.getActions(player, npc, volitions, this.cast, 
             3, 3, 3);
@@ -102,6 +106,7 @@ class MIA {
         let charData = this.cif.getCharactersWithMetadata();
         let talkingCharData = charData[player];
         let listeningCharData = charData[npc];
+        
         for (let i = 0; i < playerActions.length; i++) {
             let action = playerActions[i];
             let pdialogue = action.performance;
@@ -109,11 +114,58 @@ class MIA {
             let dialogue = this.renderText(locutionData, 
                 talkingCharData, listeningCharData);
             playerActions[i].performance = dialogue;
+
+            let role = undefined;
+            if (action.role !== undefined) {
+                role = action.role;
+            }
+            roleActions[role] = action;
+            if (action.type === "blend") {
+                shouldBlend = true;
+                actionBlend = action;
+            }
+        }
+
+        if (shouldBlend) {
+            let blendAction = this.BlendActions(actionBlend, roleActions);
+            playerActions.push(blendAction);
         }
         return playerActions;
         
     }
  
+    //Blending identity actions together
+    BlendActions(actionBlend, roleActions) {
+        let blend = actionBlend.blend;
+        let roleList = blend.split(',');
+        let performanceList = [];
+
+        let action = {
+            "name" : "blendedAction",
+            "conditions" : [],
+            "performance" : "",
+            "influenceRules" : [],
+            "effects" : []
+        };
+        for (let i = 0; i < roleList.length; i++) {
+            let role = roleList[i];
+            let actionToBlend = roleActions[role];
+            let blendConditions = actionToBlend.conditions;
+            let blendRules = actionToBlend.influenceRules;
+            let blendEffects = actionToBlend.effects;
+            let blendPerformance = actionToBlend.performance;
+
+
+            action.conditions.push(blendConditions);
+            action.influenceRules.push(blendRules);
+            action.effects.push(blendEffects);
+            performanceList.push(blendPerformance);
+        }
+        action.performance = performanceList.join(" ")
+
+        return action;
+    }
+
     setActionEffects(action) {
         for (let i = 0; i < action.effects.length; i++) {
             this.cif.set(action.effects[i]);
@@ -257,10 +309,7 @@ class MIA {
         
     }
 
-    //Blending identity actions together
-    BlendIdentityActions() {
 
-    }
 
     SelectIntent(identities : object) {
         return ["placeholder"];

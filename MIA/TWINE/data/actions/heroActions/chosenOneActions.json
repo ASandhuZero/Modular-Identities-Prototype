@@ -14,7 +14,7 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["ch_dialogue1", "ch_dialogue2"]
+			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_blend"]
 		},
 		{
 			"name" : "ch_dialogue1",
@@ -28,6 +28,7 @@
 				}
 			],
 			"performance" : "Hello, I am the chosen one!",
+			"role" : "chosen one",
 			"influenceRules" : [],
 			"effects" : [
 				{
@@ -75,6 +76,54 @@
 					"second" : "responder",
 					"value" : true
 				}	
+			]
+		},
+		{
+			"name" : "ch_blend",
+			"type" : "blend",
+			"conditions" : [				
+				{
+					"class" : "smith",
+					"type" : "blacksmith",
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 5
+				}
+			],
+			"blend" : "chosen one,blacksmith",
+			"performance" : "Howdy, I am the chosen one, but I also dabble in blacksmithing ",
+			"influenceRules" : [],
+			"effects" : [	
+				{
+					"class" : "perceived_hero",
+					"type" : "chosen one",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : 10,
+					"operator" : "+"
+				},
+				{
+					"class" : "perceived_role",
+					"type" : "hero",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : true
+				},				
+				{
+					"class" : "perceived_smith",
+					"type" : "blacksmith",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : 10,
+					"operator" : "+"
+				},				
+				{
+					"class" : "perceived_role",
+					"type" : "blacksmith",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : true
+				}
 			]
 		}
     ]
