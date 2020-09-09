@@ -14,7 +14,7 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_blend"]
+			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_action_blend"]
 		},
 		{
 			"name" : "ch_dialogue1",
@@ -27,7 +27,11 @@
 					"value" : false
 				}
 			],
-			"performance" : "Hello, I am the chosen one!",
+			"performance" : {
+				"greeting" : "Hello.",
+				"remark" : "I am the chosen one!" 
+			},
+			"procedure" : ["greeting", "remark"],
 			"role" : "chosen one",
 			"influenceRules" : [],
 			"effects" : [
@@ -57,6 +61,7 @@
 		},
 		{
 			"name" : "ch_dialogue2",
+			"type" : "standard",
 			"conditions" : [				
 				{
 					"class" : "public relationship",
@@ -66,7 +71,32 @@
 					"value" : false
 				}
 			],
-			"performance" : "Hello, how are you today?",
+			"performance" : {
+				"greeting" : "Hello.",
+				"question" : "How are you today?"	
+			},
+			"procedure" : ["greeting", "question"],
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}	
+			]
+		},
+				{
+			"name" : "ch_dialogue3",
+			"type" : "standard",
+			"conditions" : [				
+			],
+			"performance" : {
+				"greeting" : "Hello.",
+				"question" : "How are you today?"	
+			},
+			"procedure" : ["greeting", "question"],
 			"influenceRules" : [],
 			"effects" : [
 				{
@@ -79,8 +109,9 @@
 			]
 		},
 		{
-			"name" : "ch_blend",
+			"name" : "ch_role_blend",
 			"type" : "blend",
+			"blendType" : "role",
 			"conditions" : [				
 				{
 					"class" : "smith",
@@ -91,40 +122,25 @@
 				}
 			],
 			"blend" : "chosen one,blacksmith",
-			"performance" : "Howdy, I am the chosen one, but I also dabble in blacksmithing ",
 			"influenceRules" : [],
-			"effects" : [	
+			"effects" : []
+		},
+		{
+			"name" : "ch_action_blend",
+			"type" : "blend",
+			"blendType" : "procedure",
+			"conditions" : [				
 				{
-					"class" : "perceived_hero",
-					"type" : "chosen one",
-					"first" : "responder",
-					"second" : "initiator",
-					"value" : 10,
-					"operator" : "+"
-				},
-				{
-					"class" : "perceived_role",
-					"type" : "hero",
-					"first" : "responder",
-					"second" : "initiator",
-					"value" : true
-				},				
-				{
-					"class" : "perceived_smith",
+					"class" : "smith",
 					"type" : "blacksmith",
-					"first" : "responder",
-					"second" : "initiator",
-					"value" : 10,
-					"operator" : "+"
-				},				
-				{
-					"class" : "perceived_role",
-					"type" : "blacksmith",
-					"first" : "responder",
-					"second" : "initiator",
-					"value" : true
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 5
 				}
-			]
+			],
+			"blend" : "greeting,remark",
+			"influenceRules" : [],
+			"effects" : []
 		}
     ]
 }

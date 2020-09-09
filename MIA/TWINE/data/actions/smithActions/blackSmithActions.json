@@ -77,7 +77,10 @@
 					"value" : true
 				}
 			],
-            "performance" : "Ah so you a hero eh?",
+            "performance" : {
+				"question" : "Ah so you a hero eh?"
+			},
+			"procedure" : ["question"],
             "influenceRules" : [],
 			"effects" : [
 			]
@@ -105,7 +108,10 @@
 					"first" : "initiator"
 				}
 			],
-            "performance" : "So what can I do for you?",
+            "performance" : {
+				"question": "So what can I do for you?"
+			},
+			"procedure" : ["question"],
             "influenceRules" : [],
 			"effects" : [
 			]
@@ -121,7 +127,10 @@
 					"value" : true
 				}
 			],
-            "performance" : "How has the day been going, %charVal(name)%?",
+            "performance" : {
+				"question": "How has the day been going, %charVal(name)%?"
+			},
+			"procedure" : ["question"],
             "influenceRules" : [],
 			"effects" : [
 			]
@@ -138,7 +147,10 @@
 					"value" : false
 				}
 			],
-			"performance" : "It's a %random(bloody, true)% pleasure to chat with you %charVal(name)%",
+			"performance" : {
+				"greeting" : "It's a %random(bloody, true)% pleasure to chat with you %charVal(name)%."
+			},
+			"procedure" : ["greeting"],
 			"influenceRules" : [],
 			"effects" : [
 				{

@@ -30,9 +30,9 @@ let identityStructure = mia.getPlayerIdentities();
 <</script>>
 name: <<textbox "$name" $name>>
 <<for _name, _val range $identitiesValues>>
-	<<set _identity = _name>>
-	<<capture _identity>>
-	_identity <label><<textbox "$identitiesValues[_identity]" "100">></label>
+	<<set _index = _name>>
+	<<capture _index>>
+	_index <label><<textbox "$identitiesValues[_index]" "100">></label>
 <</capture>>
 <</for>>
 Get some text to change based on the identity you choose
@@ -59,12 +59,11 @@ who would you like to talk to?
 :: dialogue
 :: Blacksmith dialogue
 <<script>>
-console.log(state.variables.playerAction);	
+console.log("player actions", state.variables.playerAction);	
 if (state.variables.playerAction !== undefined) {
 	mia.setActionEffects(state.variables.playerAction);
 	cif.setupNextTimeStep();
 	state.variables.playerAction = undefined;
-	console.log("We ran");
 }
 
 
@@ -75,10 +74,9 @@ console.log(state.variables);
 
 $dialogue
 <<for _index, _val range $playerActions>>
-	<<set _identity = _index>>
-	<<capture _identity>>
-	<<set _action = $playerActions[_identity]>>
-	_identity <label><<radiobutton "$playerAction" _action>> _val.performance</label>
+	<<capture _index>>
+	<<set _action = $playerActions[_index]>>
+	_index <label><<radiobutton "$playerAction" _action>> _val.dialogue</label>
 <</capture>>
 <</for>>
 
