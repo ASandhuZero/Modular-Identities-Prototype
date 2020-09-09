@@ -94,6 +94,7 @@ class MIA {
     getPlayerChoices(player : string, npc : string ) {
         let roleActions = {};
         let actionBlend = {};
+        let actionBlendList = [];
         let playerActions : any[];
         let actionReturnList = [];
         let shouldBlend = false;
@@ -101,7 +102,7 @@ class MIA {
         
         let volitions = this.cif.calculateVolition(this.cast);
         playerActions = this.cif.getActions(player, npc, volitions, this.cast, 
-            3, 3, 3);
+            5, 5, 5);
 
         let charData = this.cif.getCharactersWithMetadata();
         let talkingCharData = charData[player];
@@ -110,7 +111,7 @@ class MIA {
             let action = playerActions[i];
             if (action.type === "blend") {
                 shouldBlend = true;
-                actionBlend = action;
+                actionBlendList.push(action);
                 continue;
             }
 
@@ -131,15 +132,19 @@ class MIA {
             actionReturnList.push(action);
         }
         if (shouldBlend) {
-            let blendAction = this.BlendActions(actionBlend, roleActions);
-            if (blendAction !== undefined) {
-                if (blendAction.performance !== "") {
-                    let pdialogue = blendAction.performance;
-                    let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                    let dialogue = this.renderText(locutionData, 
-                        talkingCharData, listeningCharData);
-                    blendAction.dialogue = dialogue;
-                    actionReturnList.push(blendAction);
+            for (let i = 0; i < actionBlendList.length; i++) {
+                let actionBlend = actionBlendList[i];
+                console.log("A blend should happen!");
+                let blendAction = this.BlendActions(actionBlend, roleActions);
+                if (blendAction !== undefined) {
+                    if (blendAction.performance !== "") {
+                        let pdialogue = blendAction.performance;
+                        let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                        let dialogue = this.renderText(locutionData, 
+                            talkingCharData, listeningCharData);
+                            blendAction.dialogue = dialogue;
+                            actionReturnList.push(blendAction);
+                    }
                 }
             }
         }

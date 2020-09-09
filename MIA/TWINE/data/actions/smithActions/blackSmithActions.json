@@ -148,7 +148,7 @@
 				}
 			],
 			"performance" : {
-				"greeting" : "It's a %random(bloody, true)% pleasure to chat with you %charVal(name)%."
+				"greeting" : "It's a %random(fantastic, true)% pleasure to chat with you %charVal(name)%."
 			},
 			"procedure" : ["greeting"],
 			"influenceRules" : [],

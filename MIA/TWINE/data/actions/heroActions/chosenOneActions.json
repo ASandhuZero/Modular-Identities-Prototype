@@ -14,7 +14,7 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_action_blend"]
+			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_role_blend", "ch_action_blend"]
 		},
 		{
 			"name" : "ch_dialogue1",
@@ -72,7 +72,7 @@
 				}
 			],
 			"performance" : {
-				"greeting" : "Hello.",
+				"greeting" : "Ahoy!",
 				"question" : "How are you today?"	
 			},
 			"procedure" : ["greeting", "question"],
@@ -93,7 +93,7 @@
 			"conditions" : [				
 			],
 			"performance" : {
-				"greeting" : "Hello.",
+				"greeting" : "Howdy.",
 				"question" : "How are you today?"	
 			},
 			"procedure" : ["greeting", "question"],
@@ -138,7 +138,7 @@
 					"value" : 5
 				}
 			],
-			"blend" : "greeting,remark",
+			"blend" : "greeting,remark,question",
 			"influenceRules" : [],
 			"effects" : []
 		}

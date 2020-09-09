@@ -170,12 +170,13 @@ var MIA = /** @class */ (function () {
     MIA.prototype.getPlayerChoices = function (player, npc) {
         var roleActions = {};
         var actionBlend = {};
+        var actionBlendList = [];
         var playerActions;
         var actionReturnList = [];
         var shouldBlend = false;
         this.addActionTypePredicateToSFDB(player, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 3, 3, 3);
+        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 5, 5, 5);
         var charData = this.cif.getCharactersWithMetadata();
         var talkingCharData = charData[player];
         var listeningCharData = charData[npc];
@@ -183,7 +184,7 @@ var MIA = /** @class */ (function () {
             var action = playerActions[i];
             if (action.type === "blend") {
                 shouldBlend = true;
-                actionBlend = action;
+                actionBlendList.push(action);
                 continue;
             }
             var performance_1 = this.getPerformanceFromProcedure(action);
@@ -202,14 +203,18 @@ var MIA = /** @class */ (function () {
             actionReturnList.push(action);
         }
         if (shouldBlend) {
-            var blendAction = this.BlendActions(actionBlend, roleActions);
-            if (blendAction !== undefined) {
-                if (blendAction.performance !== "") {
-                    var pdialogue = blendAction.performance;
-                    var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                    var dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-                    blendAction.dialogue = dialogue;
-                    actionReturnList.push(blendAction);
+            for (var i = 0; i < actionBlendList.length; i++) {
+                var actionBlend_1 = actionBlendList[i];
+                console.log("A blend should happen!");
+                var blendAction = this.BlendActions(actionBlend_1, roleActions);
+                if (blendAction !== undefined) {
+                    if (blendAction.performance !== "") {
+                        var pdialogue = blendAction.performance;
+                        var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                        var dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
+                        blendAction.dialogue = dialogue;
+                        actionReturnList.push(blendAction);
+                    }
                 }
             }
         }
