@@ -1,0 +1,39 @@
+{
+    "fileName" : "heroBlends.json",
+	"actions" : [
+        {
+            "name" : "ch_role_blend",
+            "type" : "blend",
+            "blendType" : "role",
+            "conditions" : [				
+                {
+                    "class" : "smith",
+                    "type" : "blacksmith",
+                    "first" : "initiator",
+                    "operator" : ">",
+                    "value" : 5
+                }
+            ],
+            "blend" : "chosen one,blacksmith",
+            "influenceRules" : [],
+            "effects" : []
+        },
+        {
+            "name" : "ch_action_blend",
+            "type" : "blend",
+            "blendType" : "procedure",
+            "conditions" : [				
+                {
+                    "class" : "smith",
+                    "type" : "blacksmith",
+                    "first" : "initiator",
+                    "operator" : ">",
+                    "value" : 5
+                }
+            ],
+            "blend" : "greeting,remark,question",
+            "influenceRules" : [],
+            "effects" : []
+        }    
+    ]
+}

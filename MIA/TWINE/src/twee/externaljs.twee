@@ -38,6 +38,10 @@ document.addEventListener('allLoaded', function(e) {
 
         rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
+        rawActions = cif.loadFile("data/actions/heroActions/heroBlends.json");
+        actions = cif.addActions(rawActions);
+        rawActions = cif.loadFile("data/actions/smithActions/smithBlends.json")
+        actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
