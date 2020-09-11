@@ -1,0 +1,118 @@
+{
+	"fileName" : "chosenActions.json",
+	"utterances" : {
+		
+	},
+	"actions" : [
+		{
+			"name" : "CHOSENHERODIALOGUE",
+			"conditions" : [
+				{
+					"class" : "hero",
+					"role" : "chosen one",
+					"intentDirection" : true,
+					"first" : "initiator",
+					"operator" : ">",
+					"value" : 1
+				}
+			],
+			"influenceRules" : [],
+			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_role_blend", "ch_action_blend"]
+		},
+		{
+			"name" : "ch_dialogue1",
+			"role" : "chosen one",
+			"type" : "dialogue",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}
+			],
+			"performance" : {
+				"greeting" : "Hello.",
+				"remark" : "I am the chosen one!" 
+			},
+			"procedure" : ["greeting", "remark"],
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "perceived_hero",
+					"type" : "chosen one",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : 10,
+					"operator" : "+"
+				},
+				{
+					"class" : "perceived_role",
+					"type" : "hero",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : true
+				},
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}	
+			]
+		},
+		{
+			"name" : "ch_dialogue2",
+			"role" : "chosen one",
+			"type" : "dialogue",
+			"conditions" : [				
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : false
+				}
+			],
+			"performance" : {
+				"greeting" : "Ahoy!",
+				"question" : "How are you today? %roleJargon(Friendly)% %charText(insult)%"	
+			},
+			"procedure" : ["greeting", "question"],
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}	
+			]
+		},
+		{
+			"name" : "ch_dialogue3",
+			"role" : "chosen one",
+			"type" : "dialogue",
+			"conditions" : [				
+			],
+			"performance" : {
+				"greeting" : "Howdy.",
+				"question" : "How are you today?"	
+			},
+			"procedure" : ["greeting", "question"],
+			"influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}	
+			]
+		}
+    ]
+}
