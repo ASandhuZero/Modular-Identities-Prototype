@@ -104,10 +104,14 @@ var MIA = /** @class */ (function () {
         this.cast = [];
         this.allowedIdentities = [];
         this.timeStep = 0;
-        this.interface = {
-            "getCastActions": this.getCastActions
-        };
+        this.interface = {};
     }
+    /**
+     * Tester function to get things up and running. Should be removed
+     * in the final cut of this code boy
+     * @param identities_values
+     * @param identity_description
+     */
     MIA.prototype.evaluateIdentities = function (identities_values, identity_description) {
         var arr = [];
         var descriptions = {
@@ -127,24 +131,31 @@ var MIA = /** @class */ (function () {
         }
         return descriptions;
     };
-    MIA.prototype.addActionTypePredicateToSFDB = function (character, actionType) {
+    /**
+     * addLabelToSFDB.
+     * @param character A character from the cast of characters
+     * @param label the label that we want to add.
+     */
+    MIA.prototype.addLabelToSFDB = function (character, label) {
         var actionToAdd = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
             "first": character,
             "second": undefined,
             "timeHappened": this.timeStep,
-            "type": actionType,
+            "type": label,
             "value": true
         };
         this.cif.set(actionToAdd);
     };
     // Clean up this function THIS FUNC BROKE BAD. 
     // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
-    MIA.prototype.getCastActions = function (decisionType, environmentInfo) {
+    // TODO: This should be a util function.
+    // I don't think I even use this for anything?
+    MIA.prototype.getCastActionsWithLabel = function (decisionType, environmentInfo) {
         var castActions = {};
         for (var i = 0; i < this.cast.length; i++) {
-            this.addActionTypePredicateToSFDB(this.cast[i], decisionType);
+            this.addLabelToSFDB(this.cast[i], decisionType);
         }
         var storedVolitions = this.cif.calculateVolition(this.cast);
         var volitions = [];
@@ -152,12 +163,6 @@ var MIA = /** @class */ (function () {
             var char = this.cast[i];
             var action = {};
             action = this.cif.getAction(char, char, storedVolitions, this.cast);
-            // let charVolition = rawVolitions[char][char];
-            // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
-            // let actions = this.getActions(decisionType);
-            // let idClass = castActions[char]["intent"]["class"];
-            // let type = castActions[char]["intent"]["type"];
-            // castActions[char]["action"] = actions[idClass][type]["high"];
             castActions[char] = action;
         }
         // CIF gets volitions
@@ -167,51 +172,71 @@ var MIA = /** @class */ (function () {
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     };
-    MIA.prototype.getPlayerChoices = function (player, npc) {
+    /**
+     * This function should reflect all the player choices in a given
+     * scene. This means a hierarchial approach of dialogue and physical
+     * actions are needed here.
+     * @param player The player character name
+     * @param char The cast character the player is interacting with.
+     */
+    MIA.prototype.getPlayerCharacterInteractions = function (player, char) {
         var roleActions = {};
-        var actionBlend = {};
+        var dialogueActions = {};
+        var physicalActions = {};
+        var procedureComponentActions = {};
         var actionBlendList = [];
         var playerActions;
         var actionReturnList = [];
         var shouldBlend = false;
-        this.addActionTypePredicateToSFDB(player, "dialogue");
+        var actionType = "dialogue";
+        // TODO: This shouldn't be done here.
+        // this.addLabelToSFDB(player, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 5, 5, 5);
-        var charData = this.cif.getCharactersWithMetadata();
-        var talkingCharData = charData[player];
-        var listeningCharData = charData[npc];
+        playerActions = this.cif.getActions(player, char, volitions, this.cast, 5, 5, 5);
+        var castData = this.cif.getCharactersWithMetadata();
+        var playerData = castData[player];
+        var charData = castData[char];
+        //This for loop is doing two things. 
+        // 1. Checking to see if a blend should happen from thee player actions.
+        // 2. Processing the dialogue text (I think this can be broken out into 
+        // a function.
         for (var i = 0; i < playerActions.length; i++) {
             var action = playerActions[i];
+            // checking if should blend
             if (action.type === "blend") {
                 shouldBlend = true;
                 actionBlendList.push(action);
                 continue;
             }
-            var performance_1 = this.getPerformanceFromProcedure(action);
-            var pdialogue = performance_1;
-            var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-            var dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-            action.dialogue = dialogue;
-            var role = undefined;
-            if (action.role !== undefined) {
-                role = action.role;
-                if (roleActions[role] === undefined) {
-                    roleActions[role] = [];
+            if (actionType === "dialogue") {
+                // parsing out the dialogue from action. 
+                // I feel like this should only happen if the action is for dialogue
+                var performance_1 = this.getPerformanceFromProcedure(action);
+                var pdialogue = performance_1;
+                var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                var dialogue = this.renderText(locutionData, playerData, charData);
+                action.dialogue = dialogue;
+                var role = undefined;
+                if (action.role !== undefined) {
+                    role = action.role;
+                    if (roleActions[role] === undefined) {
+                        roleActions[role] = [];
+                    }
+                    roleActions[role].push(action);
                 }
-                roleActions[role].push(action);
+                actionReturnList.push(action);
             }
-            actionReturnList.push(action);
         }
         if (shouldBlend) {
             for (var i = 0; i < actionBlendList.length; i++) {
-                var actionBlend_1 = actionBlendList[i];
+                var actionBlend = actionBlendList[i];
                 console.log("A blend should happen!");
-                var blendAction = this.BlendActions(actionBlend_1, roleActions);
+                var blendAction = this.BlendActions(actionBlend, roleActions);
                 if (blendAction !== undefined) {
                     if (blendAction.performance !== "") {
                         var pdialogue = blendAction.performance;
                         var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                        var dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
+                        var dialogue = this.renderText(locutionData, playerData, charData);
                         blendAction.dialogue = dialogue;
                         actionReturnList.push(blendAction);
                     }
@@ -366,7 +391,7 @@ var MIA = /** @class */ (function () {
     };
     MIA.prototype.getCharDialogue = function (talkingChar, listeningChar) {
         var dialogue;
-        this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
+        this.addLabelToSFDB(talkingChar, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
         var action;
         action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
@@ -688,7 +713,9 @@ document.addEventListener('allLoaded', function(e) {
 
         let rawActions;
         let actions;
-
+        
+        // This is where all the actions are loaded in.
+        // TODO: Maybe find a more elegant solution for this.
         rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/heroBlends.json");
@@ -697,7 +724,7 @@ document.addEventListener('allLoaded', function(e) {
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenAction.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -711,10 +738,6 @@ document.addEventListener('allLoaded', function(e) {
         mia.setAUNLG(AUNLG);
         mia.setIdentities(identities);
 
-        state.variables.interface = {
-            "getPlayerIdentities" : mia.getPlayerIdentities,
-            "getCastActions" : mia.getCastActions
-        }
         state.variables.identitiesValues = mia.getIdentityValues();
         state.variables.identityDescription = mia.getIdentityDescriptions();
         state.variables.cast = cif.getCharacters();
@@ -722,7 +745,6 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.getCharDialogue = mia.getCharDialogue;
         state.variables.playerIdentities = mia.getPlayerIdentities;
         state.variables.evaluateIdentities = mia.evaluateIdentities;
-        state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
         state.variables.playerAction = undefined;
 
@@ -772,7 +794,7 @@ $("head").append(newScript);
 
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
 
 [[CharacterEditor]]
 [[blacksmith | Blacksmith dialogue]]
@@ -813,13 +835,18 @@ if (state.variables.playerAction !== undefined) {
 	state.variables.playerAction = undefined;
 }
 
-
 state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
-state.variables.playerActions = mia.getPlayerChoices(&quot;player&quot;, &quot;blacksmith&quot;);
+state.variables.playerActions = mia.getPlayerCharacterInteractions(&quot;player&quot;, &quot;blacksmith&quot;);
 console.log(state.variables);
 &lt;&lt;/script&gt;&gt;
 
-$dialogue
+Ideal output : &quot;So you do a little bit of smithing eh? Want to smith something?&quot;
+Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
+Story snippet : If reject, then nothing. If accept, then (ACTION)
+Output: Reject leads to &quot;eh then why even mention you&#39;re a blacksmith?&quot;
+		Accept lead to a new weapon forged.	
+
+Blacksmith : $dialogue
 &lt;&lt;for _index, _val range $playerActions&gt;&gt;
 	&lt;&lt;capture _index&gt;&gt;
 	&lt;&lt;set _action = $playerActions[_index]&gt;&gt;

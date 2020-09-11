@@ -66,13 +66,18 @@ if (state.variables.playerAction !== undefined) {
 	state.variables.playerAction = undefined;
 }
 
-
 state.variables.dialogue = mia.getCharDialogue("blacksmith", "player");
-state.variables.playerActions = mia.getPlayerChoices("player", "blacksmith");
+state.variables.playerActions = mia.getPlayerCharacterInteractions("player", "blacksmith");
 console.log(state.variables);
 <</script>>
 
-$dialogue
+Ideal output : "So you do a little bit of smithing eh? Want to smith something?"
+Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
+Story snippet : If reject, then nothing. If accept, then (ACTION)
+Output: Reject leads to "eh then why even mention you're a blacksmith?"
+		Accept lead to a new weapon forged.	
+
+Blacksmith : $dialogue
 <<for _index, _val range $playerActions>>
 	<<capture _index>>
 	<<set _action = $playerActions[_index]>>

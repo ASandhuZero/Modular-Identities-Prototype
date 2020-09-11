@@ -24,10 +24,14 @@ class MIA {
         this.allowedIdentities = [];
         this.timeStep = 0;
         this.interface = {
-            "getCastActions" : this.getCastActions
         }
     }
-    
+    /**
+     * Tester function to get things up and running. Should be removed 
+     * in the final cut of this code boy
+     * @param identities_values 
+     * @param identity_description 
+     */
     evaluateIdentities(identities_values : object, identity_description: object) {
         let arr = []
         let descriptions = {
@@ -47,25 +51,31 @@ class MIA {
         }
         return descriptions;
     }
-
-    addActionTypePredicateToSFDB(character : string, actionType : string) {
+    /**
+     * addLabelToSFDB. 
+     * @param character A character from the cast of characters
+     * @param label the label that we want to add.
+     */
+    addLabelToSFDB(character : string, label : string) {
         let actionToAdd : object = {
             "class": "SFDBLabelUndirected",
             "duration": 0,
             "first": character,
             "second": undefined,
             "timeHappened": this.timeStep,
-            "type": actionType,
+            "type": label,
             "value": true
         }
         this.cif.set(actionToAdd);
     }
     // Clean up this function THIS FUNC BROKE BAD. 
     // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
-    getCastActions(decisionType : string, environmentInfo : object) {
+    // TODO: This should be a util function.
+    // I don't think I even use this for anything?
+    getCastActionsWithLabel(decisionType : string, environmentInfo : object) {
         let castActions : object = {};
         for (let i = 0; i < this.cast.length; i++) {
-            this.addActionTypePredicateToSFDB(this.cast[i], decisionType);
+            this.addLabelToSFDB(this.cast[i], decisionType);
         }
         let storedVolitions = this.cif.calculateVolition(this.cast);
         let volitions : object[] = []
@@ -73,13 +83,6 @@ class MIA {
             let char : string = this.cast[i];
             let action : object = {};
             action = this.cif.getAction(char, char, storedVolitions, this.cast);
-            
-            // let charVolition = rawVolitions[char][char];
-            // castActions[char] = this.intentSelection(charVolition, char, decisionType, storedVolitions);
-            // let actions = this.getActions(decisionType);
-            // let idClass = castActions[char]["intent"]["class"];
-            // let type = castActions[char]["intent"]["type"];
-            // castActions[char]["action"] = actions[idClass][type]["high"];
          
             castActions[char] = action;
         }
@@ -90,46 +93,65 @@ class MIA {
         // identity and dialoguetype used together to NLG dialogue
         return castActions;
     }
-
-    getPlayerChoices(player : string, npc : string ) {
+    /**
+     * This function should reflect all the player choices in a given 
+     * scene. This means a hierarchial approach of dialogue and physical 
+     * actions are needed here. 
+     * @param player The player character name 
+     * @param char The cast character the player is interacting with.
+     */
+    getPlayerCharacterInteractions(player : string, char : string ) {
         let roleActions = {};
-        let actionBlend = {};
+        let dialogueActions = {};
+        let physicalActions = {};
+        let procedureComponentActions = {};
         let actionBlendList = [];
         let playerActions : any[];
         let actionReturnList = [];
         let shouldBlend = false;
-        this.addActionTypePredicateToSFDB(player, "dialogue");
+        let actionType = "dialogue";
+        // TODO: This shouldn't be done here.
+        // this.addLabelToSFDB(player, "dialogue");
         
         let volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, npc, volitions, this.cast, 
+        playerActions = this.cif.getActions(player, char, volitions, this.cast, 
             5, 5, 5);
 
-        let charData = this.cif.getCharactersWithMetadata();
-        let talkingCharData = charData[player];
-        let listeningCharData = charData[npc];
+    
+        let castData = this.cif.getCharactersWithMetadata();
+        let playerData = castData[player];
+        let charData = castData[char];
+        //This for loop is doing two things. 
+        // 1. Checking to see if a blend should happen from thee player actions.
+        // 2. Processing the dialogue text (I think this can be broken out into 
+        // a function.
         for (let i = 0; i < playerActions.length; i++) {
+            
             let action = playerActions[i];
+            // checking if should blend
             if (action.type === "blend") {
                 shouldBlend = true;
                 actionBlendList.push(action);
                 continue;
             }
-
-            let performance = this.getPerformanceFromProcedure(action);
-            let pdialogue = performance;
-            let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-            let dialogue = this.renderText(locutionData, 
-                talkingCharData, listeningCharData);
-            action.dialogue = dialogue;
-            let role = undefined;
-            if (action.role !== undefined) {
-                role = action.role;
-                if (roleActions[role] === undefined) {
-                    roleActions[role] = [];
-                } 
-                roleActions[role].push(action);
+            if (actionType === "dialogue") {                
+                // parsing out the dialogue from action. 
+                // I feel like this should only happen if the action is for dialogue
+                let performance = this.getPerformanceFromProcedure(action);
+                let pdialogue = performance;
+                let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                let dialogue = this.renderText(locutionData, playerData, charData);
+                action.dialogue = dialogue;
+                let role = undefined;
+                if (action.role !== undefined) {
+                    role = action.role;
+                    if (roleActions[role] === undefined) {
+                        roleActions[role] = [];
+                    } 
+                    roleActions[role].push(action);
+                }
+                actionReturnList.push(action);
             }
-            actionReturnList.push(action);
         }
         if (shouldBlend) {
             for (let i = 0; i < actionBlendList.length; i++) {
@@ -141,7 +163,7 @@ class MIA {
                         let pdialogue = blendAction.performance;
                         let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
                         let dialogue = this.renderText(locutionData, 
-                            talkingCharData, listeningCharData);
+                            playerData, charData);
                             blendAction.dialogue = dialogue;
                             actionReturnList.push(blendAction);
                     }
@@ -309,7 +331,7 @@ class MIA {
 
     getCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
-        this.addActionTypePredicateToSFDB(talkingChar, "dialogue");
+        this.addLabelToSFDB(talkingChar, "dialogue");
         
         let volitions = this.cif.calculateVolition(this.cast);
         let action : any;

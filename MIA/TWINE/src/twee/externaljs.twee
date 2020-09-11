@@ -35,7 +35,9 @@ document.addEventListener('allLoaded', function(e) {
 
         let rawActions;
         let actions;
-
+        
+        // This is where all the actions are loaded in.
+        // TODO: Maybe find a more elegant solution for this.
         rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/heroBlends.json");
@@ -44,7 +46,7 @@ document.addEventListener('allLoaded', function(e) {
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/heroActions/chosenOneActions.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenAction.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -58,10 +60,6 @@ document.addEventListener('allLoaded', function(e) {
         mia.setAUNLG(AUNLG);
         mia.setIdentities(identities);
 
-        state.variables.interface = {
-            "getPlayerIdentities" : mia.getPlayerIdentities,
-            "getCastActions" : mia.getCastActions
-        }
         state.variables.identitiesValues = mia.getIdentityValues();
         state.variables.identityDescription = mia.getIdentityDescriptions();
         state.variables.cast = cif.getCharacters();
@@ -69,7 +67,6 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.getCharDialogue = mia.getCharDialogue;
         state.variables.playerIdentities = mia.getPlayerIdentities;
         state.variables.evaluateIdentities = mia.evaluateIdentities;
-        state.variables.getCastActions = mia.getCastActions;
         state.variables.name = playerName;
         state.variables.playerAction = undefined;
 

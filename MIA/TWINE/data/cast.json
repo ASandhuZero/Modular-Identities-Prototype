@@ -1,16 +1,20 @@
 {
 	"cast": {
 		"player" : {
-			"name" : "default"
+			"name" : "Player",
+			"utterances" : {
+				"friendly" : ["pal"]
+			}
+			
 		},
 		"silversmith": {
 			"name": "Hozai"
 		},
 		"blacksmith": {
 			"name": "Randel",
-			"flavorText" : [
-				"howdy", "ahoy"
-			]
+			"utterances" : {
+				"friendly" : ["bucko"]
+			}
 		}
 	}
 }
