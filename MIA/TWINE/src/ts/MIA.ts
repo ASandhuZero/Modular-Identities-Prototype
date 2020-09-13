@@ -269,7 +269,7 @@ class MIA {
     
     let action = {
         "name" : "blendedAction",
-        "role" : "Blend"
+        "role" : "Blend",
         "conditions" : [],
         "performance" : "",
         "influenceRules" : [],
