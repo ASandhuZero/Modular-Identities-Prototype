@@ -2,13 +2,17 @@
   "name": "twine",
   "version": "1.0.0",
   "description": "",
-  "main": "require-config.js",
+  "main": "main.js",
   "directories": {
     "doc": "doc"
   },
   "scripts": {
+    "start": "electron",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.1"
+  }
 }
