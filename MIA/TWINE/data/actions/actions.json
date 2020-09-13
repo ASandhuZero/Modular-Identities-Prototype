@@ -12,7 +12,7 @@
 			},
 			"conditions" : [],
 			"influenceRules" : [],
-			"leadsTo" : ["CHOSENHERODIALOGUE", "BLACKSMITH_DIALOGUE"]
+			"leadsTo" : ["CHOSEN_DIALOGUE", "BLACKSMITH_DIALOGUE"]
 		}
 	]
 }

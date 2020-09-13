@@ -5,7 +5,7 @@
 	},
 	"actions" : [
 		{
-			"name" : "CHOSENHERODIALOGUE",
+			"name" : "CHOSEN_DIALOGUE",
 			"conditions" : [
 				{
 					"class" : "hero",
@@ -17,10 +17,10 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["ch_dialogue1", "ch_dialogue2", "ch_role_blend", "ch_action_blend"]
+			"leadsTo" : ["chosen_dialogue_1", "chosen_dialogue_2", "chosen_role_blend", "chosen_action_blend"]
 		},
 		{
-			"name" : "ch_dialogue1",
+			"name" : "chosen_dialogue_1",
 			"role" : "chosen one",
 			"type" : "dialogue",
 			"conditions" : [
@@ -64,7 +64,7 @@
 			]
 		},
 		{
-			"name" : "ch_dialogue2",
+			"name" : "chosen_dialogue_2",
 			"role" : "chosen one",
 			"type" : "dialogue",
 			"conditions" : [				

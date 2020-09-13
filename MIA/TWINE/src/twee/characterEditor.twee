@@ -75,13 +75,13 @@ Ideal output : "So you do a little bit of smithing eh? Want to smith something?"
 Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
 Story snippet : If reject, then nothing. If accept, then (ACTION)
 Output: Reject leads to "eh then why even mention you're a blacksmith?"
-		Accept lead to a new weapon forged.	
+		Accept lead to a new weapon forged.	"Now ain't that a beauty?	"
 
 Blacksmith : $dialogue
 <<for _index, _val range $playerActions>>
 	<<capture _index>>
 	<<set _action = $playerActions[_index]>>
-	_index <label><<radiobutton "$playerAction" _action>> _val.dialogue</label>
+	_val.role <label><<radiobutton "$playerAction" _action>> _val.dialogue</label>
 <</capture>>
 <</for>>
 

@@ -273,6 +273,7 @@ var MIA = /** @class */ (function () {
         }
         var action = {
             "name": "blendedAction",
+            "role": "Blend",
             "conditions": [],
             "performance": "",
             "influenceRules": [],
@@ -334,6 +335,7 @@ var MIA = /** @class */ (function () {
         //TODO: Need to have some kind of escape maybe?
         var action = {
             "name": "blendedAction",
+            "role": "Blend",
             "conditions": [],
             "performance": "",
             "influenceRules": [],
@@ -724,7 +726,7 @@ document.addEventListener('allLoaded', function(e) {
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/heroActions/chosenAction.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenActions.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 
@@ -794,7 +796,7 @@ $("head").append(newScript);
 
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">PLEASE GOD GET THE NODE STUFF WORKING. DON&#39;T FORGET OKAY?
 
 [[CharacterEditor]]
 [[blacksmith | Blacksmith dialogue]]
@@ -844,13 +846,13 @@ Ideal output : &quot;So you do a little bit of smithing eh? Want to smith someth
 Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
 Story snippet : If reject, then nothing. If accept, then (ACTION)
 Output: Reject leads to &quot;eh then why even mention you&#39;re a blacksmith?&quot;
-		Accept lead to a new weapon forged.	
+		Accept lead to a new weapon forged.	&quot;Now ain&#39;t that a beauty?	&quot;
 
 Blacksmith : $dialogue
 &lt;&lt;for _index, _val range $playerActions&gt;&gt;
 	&lt;&lt;capture _index&gt;&gt;
 	&lt;&lt;set _action = $playerActions[_index]&gt;&gt;
-	_index &lt;label&gt;&lt;&lt;radiobutton &quot;$playerAction&quot; _action&gt;&gt; _val.dialogue&lt;/label&gt;
+	_val.role &lt;label&gt;&lt;&lt;radiobutton &quot;$playerAction&quot; _action&gt;&gt; _val.dialogue&lt;/label&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 

@@ -46,7 +46,7 @@ document.addEventListener('allLoaded', function(e) {
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/smithActions/blackSmithActions.json")
         actions = cif.addActions(rawActions);
-        rawActions = cif.loadFile("data/actions/heroActions/chosenAction.json");
+        rawActions = cif.loadFile("data/actions/heroActions/chosenActions.json");
         actions = cif.addActions(rawActions);
         console.log(actions);
 

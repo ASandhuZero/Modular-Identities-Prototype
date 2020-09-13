@@ -204,6 +204,7 @@ class MIA {
         
         let action = {
             "name" : "blendedAction",
+            "role" : "Blend",
             "conditions" : [],
             "performance" : "",
             "influenceRules" : [],
@@ -268,6 +269,7 @@ class MIA {
     
     let action = {
         "name" : "blendedAction",
+        "role" : "Blend"
         "conditions" : [],
         "performance" : "",
         "influenceRules" : [],

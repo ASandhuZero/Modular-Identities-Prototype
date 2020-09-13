@@ -90,7 +90,7 @@
 			"conditions" : [
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["bs_dialogue1", "bs_dialogue2", "bs_dialogue3"]
+			"leadsTo" : ["bs_dialogue1", "bs_dialogue2", "bs_dialogue3", "bs_dialogue4"]
 		},
         {
 			"name" : "bs_dialogue1",
@@ -114,6 +114,41 @@
 			"procedure" : ["question"],
             "influenceRules" : [],
 			"effects" : [
+			]
+		},
+		{
+			"name" : "bs_dialogue4",
+			"conditions" : [
+				{
+					"class" : "public relationship",
+					"type" : "have met",
+					"first" : "initiator",
+					"second" : "responder",
+					"value" : true
+				}
+				
+			],
+            "performance" : {
+				"remark": "I am a blacksmith as well!"
+			},
+			"procedure" : ["remark"],
+            "influenceRules" : [],
+			"effects" : [
+				{
+					"class" : "perceived_smith",
+					"type" : "blacksmith",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : 10,
+					"operator" : "+"
+				},
+				{
+					"class" : "perceived_role",
+					"type" : "smith",
+					"first" : "responder",
+					"second" : "initiator",
+					"value" : true
+				}
 			]
 		},
 		{

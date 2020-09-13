@@ -2,7 +2,7 @@
     "fileName" : "heroBlends.json",
 	"actions" : [
         {
-            "name" : "ch_role_blend",
+            "name" : "chosen_role_blend",
             "type" : "blend",
             "blendType" : "role",
             "conditions" : [				
@@ -19,7 +19,7 @@
             "effects" : []
         },
         {
-            "name" : "ch_action_blend",
+            "name" : "chosen_action_blend",
             "type" : "blend",
             "blendType" : "procedure",
             "conditions" : [				
