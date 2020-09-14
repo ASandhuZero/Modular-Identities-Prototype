@@ -2,12 +2,16 @@ const margin = { top: 40, bottom: 10, left: 120, right: 20 };
 const width = 800 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 
-const chosen_data = d3.json("./data/actions/heroActions/chosenActions.json").then(function(data) {
-    update(data, d3.rgb(149, 125, 173));
-});
-const blacksmith_data = d3.json("./data/actions/smithActions/blackSmithActions.json").then(function(data) {
-    update(data, d3.rgb(254, 200, 216));
-});
+
+function setUp() {
+
+    const chosen_data = d3.json("./data/actions/heroActions/chosenActions.json").then(function(data) {
+        update(data, d3.rgb(149, 125, 173));
+    });
+    const blacksmith_data = d3.json("./data/actions/smithActions/blackSmithActions.json").then(function(data) {
+        update(data, d3.rgb(254, 200, 216));
+    });
+}
 
 function update(new_data, color) { 
     const role = new_data.role;
@@ -54,5 +58,6 @@ function update(new_data, color) {
     // both old and new elements
     circle
         .attr("transform",function(d, i) { return "translate("+[50,100*i]+")";});
-    
 }
+
+setUp();
