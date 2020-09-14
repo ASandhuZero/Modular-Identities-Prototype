@@ -1,5 +1,6 @@
 {
 	"fileName" : "blackSmithActions.json",
+	"role" : "blacksmith",
 	"actions" : [
 		{
 			"name" : "BLACKSMITH_DIALOGUE",
