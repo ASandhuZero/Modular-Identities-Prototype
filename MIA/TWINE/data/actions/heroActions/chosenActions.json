@@ -3,6 +3,7 @@
 	"utterances" : {
 		
 	},
+	"role" : "chosen one",
 	"actions" : [
 		{
 			"name" : "CHOSEN_DIALOGUE",
