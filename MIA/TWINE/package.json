@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "d3-hierarchy": "^2.0.0",
     "electron": "^10.1.1",
     "electron-reload": "^1.5.0"
   }
