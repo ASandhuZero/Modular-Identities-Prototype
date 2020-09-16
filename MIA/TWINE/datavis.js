@@ -9,13 +9,8 @@ function setUp() {
         d3.json("./data/actions/heroActions/chosenActions.json"),
         d3.json("./data/actions/heroActions/heroBlends.json"),
         d3.json("./data/actions/smithActions/blackSmithActions.json"),
-    d3.json("./data/actions/smithActions/smithBlends.json")
+        d3.json("./data/actions/smithActions/smithBlends.json")
     ]).then(function(files) {
-        //ideally we take all the files, create single structure with all
-        // links, targets, and sources. 
-        // From there we should be able to pass it into the tree visual?
-        // link structure = {"source" : data, "target" : data, "type": data}
-        // node structure = {id : data}
        let nodeData = []
        let linkData = []
        // TODO: Get rid of this or do something else with it.
@@ -148,14 +143,15 @@ function forcesSim(nodeData, linkData, types) {
       .attr("fill", "currentColor")
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round")
-    .selectAll("g")
-    .data(nodes)
-    .join("g")
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
       .call(drag(simulation));
-
-  node.append("circle")
+      
+      node.append("circle")
       .attr("stroke", "white")
       .attr("fill", d => d.data.terminal ? color(d.data.terminal) : "#999")
+      .on("click", (event, d) => console.log(d.data))
       .attr("stroke-width", 1.5)
       .attr("r", 4);
 
