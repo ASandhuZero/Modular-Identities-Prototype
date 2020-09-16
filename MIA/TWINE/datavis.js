@@ -49,6 +49,9 @@ function formatData(data) {
         }
         formattedData.nodes.push(node);
         let children = action.leadsTo? action.leadsTo : 0;
+        if (children === 0) {
+            action.terminal = true;
+        }
         for (let j = 0; j < children.length; j++) {
             let child = children[j];
             let link = {
@@ -151,6 +154,7 @@ function forcesSim(nodeData, linkData, types) {
 
   node.append("circle")
       .attr("stroke", "white")
+      .attr("fill", d => d.data.terminal ? color(d.data.terminal) : "#999")
       .attr("stroke-width", 1.5)
       .attr("r", 4);
 
