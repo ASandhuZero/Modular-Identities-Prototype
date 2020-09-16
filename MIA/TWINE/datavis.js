@@ -23,6 +23,7 @@ function setUp() {
         let colors = [d3.rgb(149, 125, 173), d3.rgb(254, 200, 216)]
         for (let i = 0; i < files.length; i ++) {
             let rawData = files[i];
+            types.push(rawData.role);
             let formattedData = formatData(rawData);
             nodeData = nodeData.concat(formattedData.nodes);
             linkData = linkData.concat(formattedData.links);
