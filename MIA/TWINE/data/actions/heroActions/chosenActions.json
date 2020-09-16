@@ -3,6 +3,7 @@
 	"utterances" : {
 		
 	},
+	"root" : true,
 	"role" : "chosen one",
 	"actions" : [
 		{
