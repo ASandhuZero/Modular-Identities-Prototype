@@ -26,14 +26,14 @@ Go to character editor first.
 :: Character Editor {"position":"225,100","size":"100,100"}
 
 name: <<textbox "$name" $name>>
-<<for _name, _val range $identitiesValues>>
+<<for _name, _val range $roleValue>>
 	<<set _index = _name>>
 	<<capture _index>>
-	_index <label><<checkbox "$identitiesValues[_index]" false true>></label>
+	_index <label><<checkbox "$roleValue[_index]" false true>></label>
 <</capture>>
 <</for>>
 Get some text to change based on the identity you choose
-<<set $description = $evaluateIdentities($identitiesValues, $identityDescription)>>
+<<set $description = $evaluateIdentities($roleValue, $identityDescription)>>
 
 Your name is $name and you appear to be both <<print _pros>> and <<print _cons>>.
 
@@ -44,9 +44,11 @@ who would you like to talk to?
 
 :: Role Editor
 <<script>>
-console.log(state.variables.identitiesValues, "here are the variables");
+console.log(state.variables.roleValue, "here are the variables");
+mia.testCaseToTryThis(state.variables.roleValue)
+console.log(state.variables.roleValue);
 <</script>>
-<<for _name, _val range $identitiesValues>>
+<<for _name, _val range $roleValue>>
 	<<set _index = _name>>
 	<<capture _index>>
 	<<if _val>>

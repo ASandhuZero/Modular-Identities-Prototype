@@ -4,20 +4,20 @@
 class MIA {
     
     actionList : any;
-    identities : any;   
+    roles : any;   
     identityDialogue : any;
     interface : object;
     
     AUNLG : any;
     timeStep : number;
-    identityValues : object;
+    roleValues : object;
     identityDescription : object;
     cif : any;
     cast : string[];
     allowedIdentities : string[];
     
     constructor() {
-        this.identityValues = {};
+        this.roleValues = {};
         this.identityDescription = {};
         this.cif = {};
         this.cast = [];
@@ -67,6 +67,22 @@ class MIA {
             "value": true
         }
         this.cif.set(actionToAdd);
+    }
+
+    testCaseToTryThis(roles) {
+        let roleKeys = mia.getRoles();
+        let socialStructure = this.cif.getSocialStructure();
+        let playerRoles = [];
+        for (let i = 0; i < roleKeys.length; i++) {
+            let roleKey = roleKeys[i];
+            let playerRoleValue = roles[roleKey];
+            if (playerRoleValue) {
+                playerRoles.push(roleKey)
+            }
+        }
+        
+
+        debugger
     }
     // Clean up this function THIS FUNC BROKE BAD. 
     // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
@@ -493,11 +509,11 @@ class MIA {
         this.AUNLG = AUNLG;
     }
     
-    getIdentityValues() {
-        return this.identityValues;
+    getRoleValues() {
+        return this.roleValues;
     }
-    setIdentityValues(identitiesValues : object) {
-        this.identityValues = identitiesValues;
+    setRoleValues(roleValue : object) {
+        this.roleValues = roleValue;
     }
     getIdentityDescriptions() {
         return this.identityDescription;
@@ -570,19 +586,19 @@ class MIA {
     getPlayerIdentities() {
         let identities = {}
         let socialStructure = this.cif.getSocialStructure();
-        console.log(this.identities);
-        for (let i = 0; i < this.identities.length; i++) {
-            let identity = this.identities[i];
+        console.log(this.roles);
+        for (let i = 0; i < this.roles.length; i++) {
+            let identity = this.roles[i];
             identities[identity] = socialStructure[identity];
         }
         return identities;
     }
 
-    getIdentities() {
-        return this.identities;
+    getRoles() {
+        return this.roles;
     }
-    setIdentities(identities : any) {
-        this.identities = identities;
+    setRoles(identities : any) {
+        this.roles = identities;
     }
 
     setIdentityDialogue(identityDialogue : object) {
@@ -639,13 +655,14 @@ let identityDescription = {
 }
 
 mia.setIdentityDescriptions(identityDescription);
+//TODO: This should come from the schema. Please fix this you nerd.
 let identityValues = {
     "hero" : false,
-    "blacksmith" : false,
+    "smith" : false,
     "mage" : false,
     "tank" : false
 }
-mia.setIdentityValues(identityValues);
+mia.setRoleValues(identityValues);
 
 event = document.createEvent('Event');
 event.initEvent('MIA', true, true);
