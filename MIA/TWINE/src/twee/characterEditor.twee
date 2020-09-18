@@ -45,8 +45,8 @@ who would you like to talk to?
 :: Role Editor
 <<script>>
 console.log(state.variables.roleValue, "here are the variables");
-mia.testCaseToTryThis(state.variables.roleValue)
-console.log(state.variables.roleValue);
+state.variables.playerRoles = mia.testCaseToTryThis(state.variables.roleValue)
+console.log(state.variables);
 <</script>>
 <<for _name, _val range $roleValue>>
 	<<set _index = _name>>
