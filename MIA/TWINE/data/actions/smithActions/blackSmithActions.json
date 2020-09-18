@@ -106,7 +106,7 @@
 				},
 				{
 					"class" : "character",
-					"type" : "NPC",
+					"type" : "npc",
 					"first" : "initiator"
 				}
 			],

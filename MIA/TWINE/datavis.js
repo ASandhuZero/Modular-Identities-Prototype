@@ -64,7 +64,8 @@ function formatData(data) {
 
     return formattedData;
 }
-
+// Where this code came from
+// URL: https://observablehq.com/@d3/mobile-patent-suits?collection=@d3/d3-force
 function linkArc(d) {
   const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
   return `

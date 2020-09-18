@@ -17,44 +17,53 @@ Actual story for my research
 }
 
 :: Start 
-PLEASE GOD GET THE NODE STUFF WORKING. DON'T FORGET OKAY?
+Go to character editor first.
+	Let player choose character.
+	Let that affect the next states in each of the other parts.
 
-[[CharacterEditor]]
-[[blacksmith | Blacksmith dialogue]]
-[[dialogue]]
-[[physical]]
+[[Character Editor]]
 
-:: CharacterEditor {"position":"225,100","size":"100,100"}
-<<script>>
-let identityStructure = mia.getPlayerIdentities();
-<</script>>
+:: Character Editor {"position":"225,100","size":"100,100"}
+
 name: <<textbox "$name" $name>>
 <<for _name, _val range $identitiesValues>>
 	<<set _index = _name>>
 	<<capture _index>>
-	_index <label><<textbox "$identitiesValues[_index]" "100">></label>
+	_index <label><<checkbox "$identitiesValues[_index]" false true>></label>
 <</capture>>
 <</for>>
 Get some text to change based on the identity you choose
 <<set $description = $evaluateIdentities($identitiesValues, $identityDescription)>>
 
-<<script>>
-
-console.log(state.variables);
-<</script>>
-
-<<set _pros = $description["pros"][0]>>
-<<set _cons = $description["cons"][0]>>
-
-$dialogue
 Your name is $name and you appear to be both <<print _pros>> and <<print _cons>>.
 
 What would you like to do?
-who would you like to talk to? 
-[[blacksmith | Blacksmith dialogue]]
-[[dialogue]]
-[[physical]]
+who would you like to talk to?
+[[Role Editor]] 
 
+
+:: Role Editor
+<<script>>
+console.log(state.variables.identitiesValues, "here are the variables");
+<</script>>
+<<for _name, _val range $identitiesValues>>
+	<<set _index = _name>>
+	<<capture _index>>
+	<<if _val>>
+		_name
+	<</if>>
+<</capture>>
+<</for>>
+[[character output]]
+
+
+:: character output
+This page should be a 
+
+
+[[dialogue experiment with the blacksmith | Blacksmith dialogue]]
+[[physical experiment with the drill instructor | Drill instructor interaction]]
+[[Internal experiment with the psychic | Psychic interaction]]
 
 :: dialogue
 :: Blacksmith dialogue
@@ -98,3 +107,10 @@ state.variables.getCharDialogue("silversmith");
 <<script>>
 state.variables.getCharPhsyicalAction("blacksmith");
 <</script>>
+
+
+:: Drill instructor interaction
+THIS IS A TEST PAGE FOR THE PHYSICAL ACTION PROCESSING
+
+:: Psychic interaction
+THIS IS A TEST PAGE FOR THE INTERNAL ACTION PROCESSING

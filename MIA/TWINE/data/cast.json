@@ -1,7 +1,7 @@
 {
 	"cast": {
 		"player" : {
-			"name" : "Player",
+			"name" : "player",
 			"utterances" : {
 				"friendly" : ["pal"]
 			}

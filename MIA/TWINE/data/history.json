@@ -4,13 +4,13 @@
 		"data": [
 			{
 				"class" : "character",
-				"type" : "Player",
+				"type" : "player",
 				"first" : "player",
 				"value" : true
 			},
 			{
 				"class" : "character",
-				"type" : "NPC",
+				"type" : "npc",
 				"first" : "blacksmith",
 				"value" : true
 			},

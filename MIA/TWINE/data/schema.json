@@ -50,7 +50,7 @@
 			"class": "character",
 			"isBoolean": true,
 			"directionType": "undirected",
-			"types": ["NPC", "Player"],
+			"types": ["npc", "player", "someone"],
 			"defaultValue": false,
 			"allowIntent": true
 		},
