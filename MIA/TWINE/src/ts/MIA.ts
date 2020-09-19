@@ -7,6 +7,7 @@ class MIA {
     roles : any;   
     identityDialogue : any;
     interface : object;
+    roleTypes : object;
     
     AUNLG : any;
     timeStep : number;
@@ -23,8 +24,8 @@ class MIA {
         this.cast = [];
         this.allowedIdentities = [];
         this.timeStep = 0;
-        this.interface = {
-        }
+        this.interface = {};
+        this.roleTypes = {};
     }
     /**
      * Tester function to get things up and running. Should be removed 
@@ -69,19 +70,15 @@ class MIA {
         this.cif.set(actionToAdd);
     }
 
-    testCaseToTryThis(roles) {
+    getRoleTypes() {
+        return this.roleTypes;
+    }
+    setRoleTypes(roleTypes) {
+        this.roleTypes = roleTypes;
+    }
+    getRoleTypesFromRoles(roles) {
         let roleKeys = mia.getRoles();
-        let socialStructure = this.cif.getSocialStructure();
-        let playerRoles = [];
-        for (let i = 0; i < roleKeys.length; i++) {
-            let roleKey = roleKeys[i];
-            let playerRoleValue = roles[roleKey];
-            if (playerRoleValue) {
-                playerRoles.push(roleKey)
-            }
-        }
-        
-
+        let roleTypes = mia.getRoleTypes()
         debugger
     }
     // Clean up this function THIS FUNC BROKE BAD. 
@@ -580,8 +577,6 @@ class MIA {
     updateTimeStep() {
         this.timeStep = this.cif.setupNextTimeStep();
     }
-
-
 
     getPlayerIdentities() {
         let identities = {}

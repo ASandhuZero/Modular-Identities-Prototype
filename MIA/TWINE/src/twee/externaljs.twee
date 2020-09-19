@@ -7,14 +7,18 @@ var nlgLoaded = false;
 document.addEventListener('allLoaded', function(e) {
     //TODO: This is bad. Please fix this.
     if (miaLoaded && cifLoaded && nlgLoaded) {
+
+       
         let playerName;
         let loadResult = cif.init();
-        console.log(loadResult);
         //Load in our schema, cast, triggerRules and volitionRules, and actions.
         let rawSchema = cif.loadFile("data/schema.json");
         let schema = cif.loadSocialStructure(rawSchema);
         let roles = rawSchema["roles"];
-        console.log(roles);
+        let roleObj;
+        // TODO: Would be cool to procedurally generate all the roles... but
+        // like that costs computation? 
+        roleObj = rawSchema["roleObj"];
 
         let rawCast = cif.loadFile("data/cast.json");
         let cast = cif.addCharacters(rawCast);
@@ -33,11 +37,11 @@ document.addEventListener('allLoaded', function(e) {
         volitionRules = cif.addRules(rawVolitionRules);
         console.log(volitionRules);
 
-        let rawActions;
-        let actions;
-        
         // This is where all the actions are loaded in.
         // TODO: Maybe find a more elegant solution for this.
+        let rawActions;
+        let actions;
+
         rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/heroBlends.json");
@@ -48,7 +52,6 @@ document.addEventListener('allLoaded', function(e) {
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/chosenActions.json");
         actions = cif.addActions(rawActions);
-        console.log(actions);
 
         let rawHistory = cif.loadFile("data/history.json");
         let history = cif.addHistory(rawHistory);
@@ -59,6 +62,7 @@ document.addEventListener('allLoaded', function(e) {
         mia.setCiF(cif, roles);
         mia.setAUNLG(AUNLG);
         mia.setRoles(roles);
+        mia.setRoleTypes(roleObj);
 
         state.variables.roleValue = mia.getRoleValues();
         
@@ -69,7 +73,6 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.playerIdentities = [];
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.name = playerName;
-        state.variables.testCaseToTryThis = mia.testCaseToTryThis;
         state.variables.playerAction = undefined;
 
     }

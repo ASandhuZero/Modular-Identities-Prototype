@@ -5,6 +5,12 @@
 		"mage", 
 		"tank"
 	],
+	"roleObj" : {
+		"hero" : ["chosen one", "hero of the people", "antihero"],
+		"smith" : ["blacksmith", "silversmith"],
+		"mage" : ["scholar", "combat", "healer"],
+		"tank" : ["defensive", "distractor ", "brute"]
+	},
 	"schema": [
 		{
 			"class": "public relationship",
