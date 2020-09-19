@@ -158,7 +158,14 @@ var MIA = /** @class */ (function () {
     MIA.prototype.getRoleTypesFromRoles = function (roles) {
         var roleKeys = mia.getRoles();
         var roleTypes = mia.getRoleTypes();
-        debugger;
+        var playerRoles = {};
+        for (var i = 0; i < roleKeys.length; i++) {
+            var roleKey = roleKeys[i];
+            if (roles[roleKey]) {
+                playerRoles[roleKey] = roleTypes[roleKey];
+            }
+        }
+        return playerRoles;
     };
     // Clean up this function THIS FUNC BROKE BAD. 
     // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
@@ -841,7 +848,7 @@ console.log(state.variables);
 	&lt;&lt;set _index = _name&gt;&gt;
 	&lt;&lt;capture _index&gt;&gt;
 	&lt;&lt;if _val&gt;&gt;
-		_name
+		$playerRoles[_name]
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;

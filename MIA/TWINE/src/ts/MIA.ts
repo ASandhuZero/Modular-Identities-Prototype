@@ -79,7 +79,14 @@ class MIA {
     getRoleTypesFromRoles(roles) {
         let roleKeys = mia.getRoles();
         let roleTypes = mia.getRoleTypes()
-        debugger
+        let playerRoles = {};
+        for (let i = 0; i < roleKeys.length; i++) {
+            let roleKey = roleKeys[i];
+            if (roles[roleKey]) {
+                playerRoles[roleKey] = roleTypes[roleKey];
+            }
+        }
+        return playerRoles;
     }
     // Clean up this function THIS FUNC BROKE BAD. 
     // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION

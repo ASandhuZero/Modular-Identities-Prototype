@@ -52,7 +52,7 @@ console.log(state.variables);
 	<<set _index = _name>>
 	<<capture _index>>
 	<<if _val>>
-		_name
+		$playerRoles[_name]
 	<</if>>
 <</capture>>
 <</for>>
