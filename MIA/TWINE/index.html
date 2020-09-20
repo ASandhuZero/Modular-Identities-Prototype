@@ -821,7 +821,7 @@ $("head").append(newScript);
 
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">Go to character editor first.
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">Go to character editor first.
 	Let player choose character.
 	Let that affect the next states in each of the other parts.
 
@@ -848,10 +848,14 @@ console.log(state.variables);
 	&lt;&lt;set _index = _name&gt;&gt;
 	&lt;&lt;capture _index&gt;&gt;
 	&lt;&lt;if _val&gt;&gt;
-		$playerRoles[_name]
+		&lt;&lt;for _roleType, _value range $playerRoles[_name]&gt;&gt;
+
+		_value &lt;label&gt;&lt;&lt;checkbox &quot;$playerRoles[_values]&quot; false true&gt;&gt;&lt;/label&gt; 
+		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
+Make sure the playerRoles is locking down to the right place.
 [[character output]]</tw-passagedata><tw-passagedata pid="4" name="character output" tags="" position="475,100" size="100,100">This page should be a 
 
 

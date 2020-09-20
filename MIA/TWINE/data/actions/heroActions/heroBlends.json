@@ -31,7 +31,7 @@
                     "value" : 5
                 }
             ],
-            "blend" : "greeting,remark,question",
+            "blend" : "greeting,remark,remark,question",
             "influenceRules" : [],
             "effects" : []
         }    

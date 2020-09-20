@@ -52,10 +52,14 @@ console.log(state.variables);
 	<<set _index = _name>>
 	<<capture _index>>
 	<<if _val>>
-		$playerRoles[_name]
+		<<for _roleType, _value range $playerRoles[_name]>>
+
+		_value <label><<checkbox "$playerRoles[_values]" false true>></label> 
+		<</for>>
 	<</if>>
 <</capture>>
 <</for>>
+Make sure the playerRoles is locking down to the right place.
 [[character output]]
 
 
