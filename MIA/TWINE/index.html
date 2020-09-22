@@ -99,7 +99,7 @@ var saveAs=saveAs||navigator.msSaveBlob&&navigator.msSaveBlob.bind(navigator)||f
 var MIA = /** @class */ (function () {
     function MIA() {
         this.roleValues = {};
-        this.identityDescription = {};
+        this.roleDescription = {};
         this.cif = {};
         this.cast = [];
         this.allowedIdentities = [];
@@ -155,14 +155,25 @@ var MIA = /** @class */ (function () {
     MIA.prototype.setRoleTypes = function (roleTypes) {
         this.roleTypes = roleTypes;
     };
-    MIA.prototype.getRoleTypesFromRoles = function (roles) {
+    MIA.prototype.getRoleTypesValue = function (roles) {
         var roleKeys = mia.getRoles();
         var roleTypes = mia.getRoleTypes();
         var playerRoles = {};
+        var formattedRoleTypeList = [];
         for (var i = 0; i < roleKeys.length; i++) {
             var roleKey = roleKeys[i];
             if (roles[roleKey]) {
-                playerRoles[roleKey] = roleTypes[roleKey];
+                var roleTypeList = roleTypes[roleKey];
+                var formattedRoleTypes = {};
+                for (var j = 0; j < roleTypeList.length; j++) {
+                    var roleType = roleTypeList[j];
+                    var formattedRole = {
+                        "roleType": roleType,
+                        "value": false
+                    };
+                    formattedRoleTypeList.push(formattedRole);
+                }
+                playerRoles[roleKey] = formattedRoleTypeList;
             }
         }
         return playerRoles;
@@ -559,11 +570,11 @@ var MIA = /** @class */ (function () {
     MIA.prototype.setRoleValues = function (roleValue) {
         this.roleValues = roleValue;
     };
-    MIA.prototype.getIdentityDescriptions = function () {
-        return this.identityDescription;
+    MIA.prototype.getroleDescriptions = function () {
+        return this.roleDescription;
     };
-    MIA.prototype.setIdentityDescriptions = function (identityDescription) {
-        this.identityDescription = identityDescription;
+    MIA.prototype.setroleDescriptions = function (roleDescription) {
+        this.roleDescription = roleDescription;
     };
     MIA.prototype.getDescriptions = function (identities_values, identity_description) {
         var arr = [];
@@ -618,7 +629,7 @@ var MIA = /** @class */ (function () {
     MIA.prototype.updateTimeStep = function () {
         this.timeStep = this.cif.setupNextTimeStep();
     };
-    MIA.prototype.getPlayerIdentities = function () {
+    MIA.prototype.getplayerRoles = function () {
         var identities = {};
         var socialStructure = this.cif.getSocialStructure();
         console.log(this.roles);
@@ -634,13 +645,13 @@ var MIA = /** @class */ (function () {
     MIA.prototype.setRoles = function (identities) {
         this.roles = identities;
     };
-    MIA.prototype.setIdentityDialogue = function (identityDialogue) {
-        this.identityDialogue = identityDialogue;
+    MIA.prototype.setRoleDialogue = function (roleDialgue) {
+        this.roleDialgue = roleDialgue;
     };
     return MIA;
 }());
 var mia = new MIA();
-var identityDialogue = {
+var roleDialgue = {
     "smith": {
         "blacksmith": {
             "low": "Yeah, I apprentice at the local blacksmith",
@@ -661,8 +672,8 @@ var identityDialogue = {
         }
     }
 };
-mia.setIdentityDialogue(identityDialogue);
-var identityDescription = {
+mia.setRoleDialogue(roleDialgue);
+var roleDescription = {
     "hero": {
         "cons": ["bullheaded"],
         "pros": ["fearless"]
@@ -680,7 +691,7 @@ var identityDescription = {
         "pros": ["strong"]
     }
 };
-mia.setIdentityDescriptions(identityDescription);
+mia.setroleDescriptions(roleDescription);
 //TODO: This should come from the schema. Please fix this you nerd.
 var identityValues = {
     "hero": false,
@@ -711,7 +722,7 @@ document.addEventListener('allLoaded', function(e) {
        
         let playerName;
         let loadResult = cif.init();
-        //Load in our schema, cast, triggerRules and volitionRules, and actions.
+        //Load in our schema, cast, triggerRules and voSlitionRules, and actions.
         let rawSchema = cif.loadFile("data/schema.json");
         let schema = cif.loadSocialStructure(rawSchema);
         let roles = rawSchema["roles"];
@@ -765,12 +776,14 @@ document.addEventListener('allLoaded', function(e) {
         mia.setRoleTypes(roleObj);
 
         state.variables.roleValue = mia.getRoleValues();
+        state.variables.roleTypeValue = {};
         
-        state.variables.identityDescription = mia.getIdentityDescriptions();
+        state.variables.roleDescription = mia.getroleDescriptions();
         state.variables.cast = cif.getCharacters();
         
         state.variables.getCharDialogue = mia.getCharDialogue;
-        state.variables.playerIdentities = [];
+        state.variables.playerRoles = [];
+        state.variables.playerRoleTypes = {};
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.name = playerName;
         state.variables.playerAction = undefined;
@@ -821,7 +834,7 @@ $("head").append(newScript);
 
 
 
-//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="qaz" color="blue"></tw-tag><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">Go to character editor first.
+//TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">Go to character editor first.
 	Let player choose character.
 	Let that affect the next states in each of the other parts.
 
@@ -833,30 +846,37 @@ $("head").append(newScript);
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 Get some text to change based on the identity you choose
-&lt;&lt;set $description = $evaluateIdentities($roleValue, $identityDescription)&gt;&gt;
+&lt;&lt;set $description = $evaluateIdentities($roleValue, $roleDescription)&gt;&gt;
 
 Your name is $name and you appear to be both &lt;&lt;print _pros&gt;&gt; and &lt;&lt;print _cons&gt;&gt;.
 
 What would you like to do?
 who would you like to talk to?
 [[Role Editor]]</tw-passagedata><tw-passagedata pid="3" name="Role Editor" tags="" position="350,100" size="100,100">&lt;&lt;script&gt;&gt;
-console.log(state.variables.roleValue, &quot;here are the variables&quot;);
-state.variables.playerRoles = mia.getRoleTypesFromRoles(state.variables.roleValue)
-console.log(state.variables);
+state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
+console.log(state.variables, &quot;here are the variables&quot;);
+state.variables.playerRoleTypes = {};
 &lt;&lt;/script&gt;&gt;
+
 &lt;&lt;for _name, _val range $roleValue&gt;&gt;
 	&lt;&lt;set _index = _name&gt;&gt;
 	&lt;&lt;capture _index&gt;&gt;
 	&lt;&lt;if _val&gt;&gt;
 		&lt;&lt;for _roleType, _value range $playerRoles[_name]&gt;&gt;
-
-		_value &lt;label&gt;&lt;&lt;checkbox &quot;$playerRoles[_values]&quot; false true&gt;&gt;&lt;/label&gt; 
+			&lt;&lt;capture _value&gt;&gt;
+			_name, _value.roleType &lt;label&gt;
+			&lt;&lt;checkbox &quot;$playerRoleTypes[_value.roleType]&quot; false true&gt;&gt;
+			&lt;/label&gt; 
+			&lt;&lt;/capture&gt;&gt;
 		&lt;&lt;/for&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
+	&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 Make sure the playerRoles is locking down to the right place.
-[[character output]]</tw-passagedata><tw-passagedata pid="4" name="character output" tags="" position="475,100" size="100,100">This page should be a 
+[[character output]]</tw-passagedata><tw-passagedata pid="4" name="character output" tags="" position="475,100" size="100,100">&lt;&lt;script&gt;&gt;
+console.log(state.variables, &quot;here are the variables&quot;);
+&lt;&lt;/script&gt;&gt;
+This page should be a 
 
 
 [[dialogue experiment with the blacksmith | Blacksmith dialogue]]

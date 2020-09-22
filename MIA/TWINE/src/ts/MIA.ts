@@ -5,21 +5,21 @@ class MIA {
     
     actionList : any;
     roles : any;   
-    identityDialogue : any;
+    roleDialgue : any;
     interface : object;
     roleTypes : object;
     
     AUNLG : any;
     timeStep : number;
     roleValues : object;
-    identityDescription : object;
+    roleDescription : object;
     cif : any;
     cast : string[];
     allowedIdentities : string[];
     
     constructor() {
         this.roleValues = {};
-        this.identityDescription = {};
+        this.roleDescription = {};
         this.cif = {};
         this.cast = [];
         this.allowedIdentities = [];
@@ -69,21 +69,33 @@ class MIA {
         }
         this.cif.set(actionToAdd);
     }
-
+    
     getRoleTypes() {
         return this.roleTypes;
     }
     setRoleTypes(roleTypes) {
         this.roleTypes = roleTypes;
     }
-    getRoleTypesFromRoles(roles) {
+
+    getRoleTypesValue(roles) {
         let roleKeys = mia.getRoles();
         let roleTypes = mia.getRoleTypes()
         let playerRoles = {};
+        let formattedRoleTypeList = [];
         for (let i = 0; i < roleKeys.length; i++) {
             let roleKey = roleKeys[i];
             if (roles[roleKey]) {
-                playerRoles[roleKey] = roleTypes[roleKey];
+                let roleTypeList = roleTypes[roleKey];
+                let formattedRoleTypes = {};
+                for (let j = 0; j < roleTypeList.length; j++) {
+                    let roleType = roleTypeList[j];
+                    let formattedRole = {
+                        "roleType" : roleType,
+                        "value" : false
+                    }
+                    formattedRoleTypeList.push(formattedRole);
+                }
+                playerRoles[roleKey] = formattedRoleTypeList;
             }
         }
         return playerRoles;
@@ -519,11 +531,11 @@ class MIA {
     setRoleValues(roleValue : object) {
         this.roleValues = roleValue;
     }
-    getIdentityDescriptions() {
-        return this.identityDescription;
+    getroleDescriptions() {
+        return this.roleDescription;
     }
-    setIdentityDescriptions(identityDescription : object) {
-        this.identityDescription = identityDescription;
+    setroleDescriptions(roleDescription : object) {
+        this.roleDescription = roleDescription;
     }
     getDescriptions(identities_values : object, identity_description : object) {
         var arr = []
@@ -585,7 +597,7 @@ class MIA {
         this.timeStep = this.cif.setupNextTimeStep();
     }
 
-    getPlayerIdentities() {
+    getplayerRoles() {
         let identities = {}
         let socialStructure = this.cif.getSocialStructure();
         console.log(this.roles);
@@ -603,8 +615,8 @@ class MIA {
         this.roles = identities;
     }
 
-    setIdentityDialogue(identityDialogue : object) {
-        this.identityDialogue = identityDialogue;
+    setRoleDialogue(roleDialgue : object) {
+        this.roleDialgue = roleDialgue;
     }
 
 }
@@ -613,7 +625,7 @@ let mia = new MIA();
 
 
 
-let identityDialogue = {
+let roleDialgue = {
     "smith" : {
         "blacksmith" : {
             "low" : "Yeah, I apprentice at the local blacksmith",
@@ -635,9 +647,9 @@ let identityDialogue = {
     }
 }
 
-mia.setIdentityDialogue(identityDialogue);
+mia.setRoleDialogue(roleDialgue);
 
-let identityDescription = {
+let roleDescription = {
     "hero" : {
         "cons" : ["bullheaded"],
         "pros" : ["fearless"]
@@ -656,7 +668,7 @@ let identityDescription = {
     }
 }
 
-mia.setIdentityDescriptions(identityDescription);
+mia.setroleDescriptions(roleDescription);
 //TODO: This should come from the schema. Please fix this you nerd.
 let identityValues = {
     "hero" : false,

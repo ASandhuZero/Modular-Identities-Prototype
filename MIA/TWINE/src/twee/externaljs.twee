@@ -11,7 +11,7 @@ document.addEventListener('allLoaded', function(e) {
        
         let playerName;
         let loadResult = cif.init();
-        //Load in our schema, cast, triggerRules and volitionRules, and actions.
+        //Load in our schema, cast, triggerRules and voSlitionRules, and actions.
         let rawSchema = cif.loadFile("data/schema.json");
         let schema = cif.loadSocialStructure(rawSchema);
         let roles = rawSchema["roles"];
@@ -65,12 +65,14 @@ document.addEventListener('allLoaded', function(e) {
         mia.setRoleTypes(roleObj);
 
         state.variables.roleValue = mia.getRoleValues();
+        state.variables.roleTypeValue = {};
         
-        state.variables.identityDescription = mia.getIdentityDescriptions();
+        state.variables.roleDescription = mia.getroleDescriptions();
         state.variables.cast = cif.getCharacters();
         
         state.variables.getCharDialogue = mia.getCharDialogue;
-        state.variables.playerIdentities = [];
+        state.variables.playerRoles = [];
+        state.variables.playerRoleTypes = {};
         state.variables.evaluateIdentities = mia.evaluateIdentities;
         state.variables.name = playerName;
         state.variables.playerAction = undefined;

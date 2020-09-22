@@ -33,7 +33,7 @@ name: <<textbox "$name" $name>>
 <</capture>>
 <</for>>
 Get some text to change based on the identity you choose
-<<set $description = $evaluateIdentities($roleValue, $identityDescription)>>
+<<set $description = $evaluateIdentities($roleValue, $roleDescription)>>
 
 Your name is $name and you appear to be both <<print _pros>> and <<print _cons>>.
 
@@ -44,26 +44,33 @@ who would you like to talk to?
 
 :: Role Editor
 <<script>>
-console.log(state.variables.roleValue, "here are the variables");
-state.variables.playerRoles = mia.getRoleTypesFromRoles(state.variables.roleValue)
-console.log(state.variables);
+state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
+console.log(state.variables, "here are the variables");
+state.variables.playerRoleTypes = {};
 <</script>>
+
 <<for _name, _val range $roleValue>>
 	<<set _index = _name>>
 	<<capture _index>>
 	<<if _val>>
 		<<for _roleType, _value range $playerRoles[_name]>>
-
-		_value <label><<checkbox "$playerRoles[_values]" false true>></label> 
+			<<capture _value>>
+			_name, _value.roleType <label>
+			<<checkbox "$playerRoleTypes[_value.roleType]" false true>>
+			</label> 
+			<</capture>>
 		<</for>>
 	<</if>>
-<</capture>>
+	<</capture>>
 <</for>>
 Make sure the playerRoles is locking down to the right place.
 [[character output]]
 
 
 :: character output
+<<script>>
+console.log(state.variables, "here are the variables");
+<</script>>
 This page should be a 
 
 
