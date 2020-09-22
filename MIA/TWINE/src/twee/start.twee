@@ -1,0 +1,23 @@
+:: StoryTitle
+Actual story for my research 
+
+:: StoryData
+{
+	"ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+	"format": "SugarCube",
+	"format-version": "2.30.0",
+	"start": "Start",
+	"tag-colors": {
+		"bar": "green",
+		"foo": "red",
+		"qaz": "blue"
+	},
+	"zoom": 1
+}
+
+:: Start 
+Go to character editor first.
+	Let player choose character.
+	Let that affect the next states in each of the other parts.
+
+[[Character Editor]]

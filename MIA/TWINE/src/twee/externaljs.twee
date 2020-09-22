@@ -42,6 +42,7 @@ document.addEventListener('allLoaded', function(e) {
         let rawActions;
         let actions;
 
+        // THIS UPSETS ME EYES
         rawActions = cif.loadFile("data/actions/actions.json");
         actions = cif.addActions(rawActions);
         rawActions = cif.loadFile("data/actions/heroActions/heroBlends.json");
@@ -64,12 +65,11 @@ document.addEventListener('allLoaded', function(e) {
         mia.setRoles(roles);
         mia.setRoleTypes(roleObj);
 
+
         state.variables.roleValue = mia.getRoleValues();
-        state.variables.roleTypeValue = {};
-        
+        state.variables.roleTypeValue = {};        
         state.variables.roleDescription = mia.getroleDescriptions();
         state.variables.cast = cif.getCharacters();
-        
         state.variables.getCharDialogue = mia.getCharDialogue;
         state.variables.playerRoles = [];
         state.variables.playerRoleTypes = {};
