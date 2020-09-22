@@ -62,9 +62,9 @@ document.addEventListener('allLoaded', function(e) {
 
         mia.setCiF(cif, roles);
         mia.setAUNLG(AUNLG);
-        mia.setRoles(roles);
+        mia.setRoleClasses(roles);
         mia.setRoleTypes(roleObj);
-
+        
 
         state.variables.roleValue = mia.getRoleValues();
         state.variables.roleTypeValue = {};        

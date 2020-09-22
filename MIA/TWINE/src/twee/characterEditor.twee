@@ -45,6 +45,7 @@ Make sure the playerRoles is locking down to the right place.
 :: character output
 <<script>>
 console.log(state.variables, "here are the variables");
+mia.UpdatePlayer(state.variables.name, state.variables.playerRoleTypes);
 <</script>>
 This page should be a landing page to try things out
 

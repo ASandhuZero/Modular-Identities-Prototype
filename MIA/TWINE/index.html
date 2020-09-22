@@ -155,14 +155,14 @@ var MIA = /** @class */ (function () {
     MIA.prototype.setRoleTypes = function (roleTypes) {
         this.roleTypes = roleTypes;
     };
-    MIA.prototype.getRoleTypesValue = function (roles) {
-        var roleKeys = mia.getRoles();
+    MIA.prototype.getRoleTypesValue = function (roleClasses) {
+        var roleKeys = mia.getRoleClasses();
         var roleTypes = mia.getRoleTypes();
         var playerRoles = {};
         var formattedRoleTypeList = [];
         for (var i = 0; i < roleKeys.length; i++) {
             var roleKey = roleKeys[i];
-            if (roles[roleKey]) {
+            if (roleClasses[roleKey]) {
                 var roleTypeList = roleTypes[roleKey];
                 var formattedRoleTypes = {};
                 for (var j = 0; j < roleTypeList.length; j++) {
@@ -429,13 +429,19 @@ var MIA = /** @class */ (function () {
         action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
         var performance = this.getPerformanceFromProcedure(action);
         var pdialogue = performance;
+        // TODO: Save this somewhere whenever the game starts up and then edit 
+        // it as time goes on 
         var charData = this.cif.getCharactersWithMetadata();
         var talkingCharData = charData[talkingChar];
         var listeningCharData = charData[listeningChar];
+        if (listeningChar === "player") {
+            listeningCharData.name = this.playerName;
+        }
         var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
         this.setActionEffects(action);
         var time = this.cif.setupNextTimeStep();
+        debugger;
         return dialogue;
     };
     MIA.prototype.renderText = function (locutionData, talkingCharData, listeningCharData) {
@@ -632,21 +638,26 @@ var MIA = /** @class */ (function () {
     MIA.prototype.getplayerRoles = function () {
         var identities = {};
         var socialStructure = this.cif.getSocialStructure();
-        console.log(this.roles);
-        for (var i = 0; i < this.roles.length; i++) {
-            var identity = this.roles[i];
+        console.log(this.roleClasses);
+        for (var i = 0; i < this.roleClasses.length; i++) {
+            var identity = this.roleClasses[i];
             identities[identity] = socialStructure[identity];
         }
         return identities;
     };
-    MIA.prototype.getRoles = function () {
-        return this.roles;
+    MIA.prototype.getRoleClasses = function () {
+        return this.roleClasses;
     };
-    MIA.prototype.setRoles = function (identities) {
-        this.roles = identities;
+    MIA.prototype.setRoleClasses = function (identities) {
+        this.roleClasses = identities;
     };
     MIA.prototype.setRoleDialogue = function (roleDialgue) {
         this.roleDialgue = roleDialgue;
+    };
+    MIA.prototype.UpdatePlayer = function (name, roles) {
+        this.playerName = name;
+        console.log(name);
+        console.log(roles);
     };
     return MIA;
 }());
@@ -773,9 +784,9 @@ document.addEventListener('allLoaded', function(e) {
 
         mia.setCiF(cif, roles);
         mia.setAUNLG(AUNLG);
-        mia.setRoles(roles);
+        mia.setRoleClasses(roles);
         mia.setRoleTypes(roleObj);
-
+        
 
         state.variables.roleValue = mia.getRoleValues();
         state.variables.roleTypeValue = {};        
@@ -871,6 +882,7 @@ state.variables.playerRoleTypes = {};
 Make sure the playerRoles is locking down to the right place.
 [[character output]]</tw-passagedata><tw-passagedata pid="3" name="character output" tags="" position="350,100" size="100,100">&lt;&lt;script&gt;&gt;
 console.log(state.variables, &quot;here are the variables&quot;);
+mia.UpdatePlayer(state.variables.name, state.variables.playerRoleTypes);
 &lt;&lt;/script&gt;&gt;
 This page should be a landing page to try things out
 
@@ -912,7 +924,6 @@ state.variables.getCharPhsyicalAction(&quot;blacksmith&quot;);
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Drill instructor interaction" tags="" position="975,100" size="100,100">THIS IS A TEST PAGE FOR THE PHYSICAL ACTION PROCESSING</tw-passagedata><tw-passagedata pid="9" name="Psychic interaction" tags="" position="1100,100" size="100,100">THIS IS A TEST PAGE FOR THE INTERNAL ACTION PROCESSING</tw-passagedata><tw-passagedata pid="10" name="Start" tags="" position="1225,100" size="100,100">Go to character editor first.
 	Let player choose character.
 	Let that affect the next states in each of the other parts.
-
 [[Character Editor]]</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */

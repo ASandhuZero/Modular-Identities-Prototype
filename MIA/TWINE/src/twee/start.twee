@@ -15,9 +15,9 @@ Actual story for my research
 	"zoom": 1
 }
 
+
 :: Start 
 Go to character editor first.
 	Let player choose character.
 	Let that affect the next states in each of the other parts.
-
 [[Character Editor]]

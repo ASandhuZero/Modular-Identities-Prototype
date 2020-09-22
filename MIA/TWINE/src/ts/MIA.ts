@@ -4,10 +4,11 @@
 class MIA {
     
     actionList : any;
-    roles : any;   
+    roleClasses : any;   
     roleDialgue : any;
     interface : object;
     roleTypes : object;
+    playerName : string;
     
     AUNLG : any;
     timeStep : number;
@@ -77,14 +78,14 @@ class MIA {
         this.roleTypes = roleTypes;
     }
 
-    getRoleTypesValue(roles) {
-        let roleKeys = mia.getRoles();
+    getRoleTypesValue(roleClasses) {
+        let roleKeys = mia.getRoleClasses();
         let roleTypes = mia.getRoleTypes()
         let playerRoles = {};
         let formattedRoleTypeList = [];
         for (let i = 0; i < roleKeys.length; i++) {
             let roleKey = roleKeys[i];
-            if (roles[roleKey]) {
+            if (roleClasses[roleKey]) {
                 let roleTypeList = roleTypes[roleKey];
                 let formattedRoleTypes = {};
                 for (let j = 0; j < roleTypeList.length; j++) {
@@ -372,14 +373,20 @@ class MIA {
         action = this.cif.getAction(talkingChar, listeningChar, volitions, this.cast);
         let performance = this.getPerformanceFromProcedure(action);
         let pdialogue = performance;
+        // TODO: Save this somewhere whenever the game starts up and then edit 
+        // it as time goes on 
         let charData = this.cif.getCharactersWithMetadata();
         let talkingCharData = charData[talkingChar];
         let listeningCharData = charData[listeningChar];
+        if (listeningChar === "player") {
+            listeningCharData.name = this.playerName;
+        }
         let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
-       
+        
         this.setActionEffects(action);
         let time = this.cif.setupNextTimeStep();
+        debugger;
         return dialogue;
     }
 
@@ -600,25 +607,32 @@ class MIA {
     getplayerRoles() {
         let identities = {}
         let socialStructure = this.cif.getSocialStructure();
-        console.log(this.roles);
-        for (let i = 0; i < this.roles.length; i++) {
-            let identity = this.roles[i];
+        console.log(this.roleClasses);
+        for (let i = 0; i < this.roleClasses.length; i++) {
+            let identity = this.roleClasses[i];
             identities[identity] = socialStructure[identity];
         }
         return identities;
     }
 
-    getRoles() {
-        return this.roles;
+    getRoleClasses() {
+        return this.roleClasses;
     }
-    setRoles(identities : any) {
-        this.roles = identities;
+    setRoleClasses(identities : any) {
+        this.roleClasses = identities;
     }
 
     setRoleDialogue(roleDialgue : object) {
         this.roleDialgue = roleDialgue;
     }
 
+
+
+    UpdatePlayer(name, roles) {
+        this.playerName = name;
+        console.log(name);
+        console.log(roles);
+    }
 }
 
 let mia = new MIA();
