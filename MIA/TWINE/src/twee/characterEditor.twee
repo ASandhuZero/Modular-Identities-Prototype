@@ -1,9 +1,9 @@
 :: Character Editor {"position":"225,100","size":"100,100"}
 
 name: <<textbox "$name" $name>>
-<<for _name, _val range $roleValue>>
-	<<set _index = _name>>
-	<<capture _index>>
+<<for _name, _val range $roleValue>>\
+	<<set _index = _name>>\
+	<<capture _index>>\
 	_index <label><<checkbox "$roleValue[_index]" false true>></label>
 <</capture>>
 <</for>>
@@ -15,6 +15,9 @@ Your name is $name and you appear to be both <<print _pros>> and <<print _cons>>
 What would you like to do?
 who would you like to talk to?
 [[Role Editor]] 
+[[dialogue experiment with the blacksmith | Blacksmith dialogue]]
+[[physical experiment with the drill instructor | Drill instructor interaction]]
+[[Internal experiment with the psychic | Psychic interaction]]
 
 
 :: Role Editor
@@ -23,21 +26,21 @@ state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
 console.log(state.variables, "here are the variables");
 state.variables.playerRoleTypes = {};
 <</script>>
-
-<<for _name, _val range $roleValue>>
-	<<set _index = _name>>
-	<<capture _index>>
-	<<if _val>>
-		<<for _roleType, _value range $playerRoles[_name]>>
-			<<capture _value>>
-			_name, _value.roleType <label>
+/* hello */
+<<for _name, _val range $roleValue>>\
+	<<set _index = _name>>\
+	<<capture _index>>\
+	<<if _val>>\
+		<<for _roleType, _value range $playerRoles[_name]>>\
+			<<capture _value>>\
+			_name, _value.roleType <label>\
 			<<checkbox "$playerRoleTypes[_value.roleType]" false true>>
 			</label> 
-			<</capture>>
-		<</for>>
-	<</if>>
-	<</capture>>
-<</for>>
+			<</capture>>\
+		<</for>>\
+	<</if>>\
+	<</capture>>\
+<</for>>\
 Make sure the playerRoles is locking down to the right place.
 [[character output]]
 
@@ -45,7 +48,7 @@ Make sure the playerRoles is locking down to the right place.
 :: character output
 <<script>>
 console.log(state.variables, "here are the variables");
-mia.UpdatePlayer(state.variables.name, state.variables.playerRoleTypes);
+mia.UpdatePlayer(state.variables);
 <</script>>
 This page should be a landing page to try things out
 

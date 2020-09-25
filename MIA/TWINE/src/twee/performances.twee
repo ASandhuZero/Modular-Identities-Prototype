@@ -8,8 +8,8 @@ if (state.variables.playerAction !== undefined) {
 	state.variables.playerAction = undefined;
 }
 
-state.variables.dialogue = mia.getCharDialogue("blacksmith", "player");
-state.variables.playerActions = mia.getPlayerCharacterInteractions("player", "blacksmith");
+state.variables.dialogue = mia.generateCharDialogue("blacksmith", "player");
+state.variables.playerActions = mia.generatePlayerActions("player", "blacksmith");
 console.log(state.variables);
 <</script>>
 
@@ -20,12 +20,13 @@ Output: Reject leads to "eh then why even mention you're a blacksmith?"
 		Accept lead to a new weapon forged.	"Now ain't that a beauty?	"
 
 Blacksmith : $dialogue
-<<for _index, _val range $playerActions>>
-	<<capture _index>>
-	<<set _action = $playerActions[_index]>>
+
+<<for _index, _val range $playerActions>>\
+	<<capture _index>>\
+	<<set _action = $playerActions[_index]>>\
 	_val.role <label><<radiobutton "$playerAction" _action>> _val.dialogue</label>
 <</capture>>
-<</for>>
+<</for>>\
 
 <<button [[Keep talking to the blacksmith | Blacksmith dialogue]]>> <</button>>
 [[Talk to the silversmith | Silversmith dialogue]]
@@ -33,7 +34,7 @@ Blacksmith : $dialogue
 
 :: Silversmith dialogue
 <<script>>
-state.variables.getCharDialogue("silversmith");
+state.variables.generateCharDialogue("silversmith");
 <</script>>
 
 :: physical

@@ -5,7 +5,7 @@ class MIA {
     
     actionList : any;
     roleClasses : any;   
-    roleDialgue : any;
+    roleDialogue : any;
     interface : object;
     roleTypes : object;
     playerName : string;
@@ -16,14 +16,14 @@ class MIA {
     roleDescription : object;
     cif : any;
     cast : string[];
-    allowedIdentities : string[];
+    allowedRoleClasses : string[];
     
     constructor() {
         this.roleValues = {};
         this.roleDescription = {};
         this.cif = {};
         this.cast = [];
-        this.allowedIdentities = [];
+        this.allowedRoleClasses = [];
         this.timeStep = 0;
         this.interface = {};
         this.roleTypes = {};
@@ -70,159 +70,7 @@ class MIA {
         }
         this.cif.set(actionToAdd);
     }
-    
-    getRoleTypes() {
-        return this.roleTypes;
-    }
-    setRoleTypes(roleTypes) {
-        this.roleTypes = roleTypes;
-    }
-
-    getRoleTypesValue(roleClasses) {
-        let roleKeys = mia.getRoleClasses();
-        let roleTypes = mia.getRoleTypes()
-        let playerRoles = {};
-        let formattedRoleTypeList = [];
-        for (let i = 0; i < roleKeys.length; i++) {
-            let roleKey = roleKeys[i];
-            if (roleClasses[roleKey]) {
-                let roleTypeList = roleTypes[roleKey];
-                let formattedRoleTypes = {};
-                for (let j = 0; j < roleTypeList.length; j++) {
-                    let roleType = roleTypeList[j];
-                    let formattedRole = {
-                        "roleType" : roleType,
-                        "value" : false
-                    }
-                    formattedRoleTypeList.push(formattedRole);
-                }
-                playerRoles[roleKey] = formattedRoleTypeList;
-            }
-        }
-        return playerRoles;
-    }
-    // Clean up this function THIS FUNC BROKE BAD. 
-    // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
-    // TODO: This should be a util function.
-    // I don't think I even use this for anything?
-    getCastActionsWithLabel(decisionType : string, environmentInfo : object) {
-        let castActions : object = {};
-        for (let i = 0; i < this.cast.length; i++) {
-            this.addLabelToSFDB(this.cast[i], decisionType);
-        }
-        let storedVolitions = this.cif.calculateVolition(this.cast);
-        let volitions : object[] = []
-        for (let i = 0; i < this.cast.length; i ++) {
-            let char : string = this.cast[i];
-            let action : object = {};
-            action = this.cif.getAction(char, char, storedVolitions, this.cast);
-         
-            castActions[char] = action;
-        }
-        // CIF gets volitions
-        // MIA picks the highest identity
-        //  if dialogue, NLG and MIA
-        //  if action use CIF
-        // identity and dialoguetype used together to NLG dialogue
-        return castActions;
-    }
-    /**
-     * This function should reflect all the player choices in a given 
-     * scene. This means a hierarchial approach of dialogue and physical 
-     * actions are needed here. 
-     * @param player The player character name 
-     * @param char The cast character the player is interacting with.
-     */
-    getPlayerCharacterInteractions(player : string, char : string ) {
-        let roleActions = {};
-        let dialogueActions = {};
-        let physicalActions = {};
-        let procedureComponentActions = {};
-        let actionBlendList = [];
-        let playerActions : any[];
-        let actionReturnList = [];
-        let shouldBlend = false;
-        let actionType = "dialogue";
-        // TODO: This shouldn't be done here.
-        // this.addLabelToSFDB(player, "dialogue");
-        
-        let volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, char, volitions, this.cast, 
-            5, 5, 5);
-
-    
-        let castData = this.cif.getCharactersWithMetadata();
-        let playerData = castData[player];
-        let charData = castData[char];
-        //This for loop is doing two things. 
-        // 1. Checking to see if a blend should happen from thee player actions.
-        // 2. Processing the dialogue text (I think this can be broken out into 
-        // a function.
-        for (let i = 0; i < playerActions.length; i++) {
-            
-            let action = playerActions[i];
-            // checking if should blend
-            if (action.type === "blend") {
-                shouldBlend = true;
-                actionBlendList.push(action);
-                continue;
-            }
-            if (actionType === "dialogue") {                
-                // parsing out the dialogue from action. 
-                // I feel like this should only happen if the action is for dialogue
-                let performance = this.getPerformanceFromProcedure(action);
-                let pdialogue = performance;
-                let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                let dialogue = this.renderText(locutionData, playerData, charData);
-                action.dialogue = dialogue;
-                let role = undefined;
-                if (action.role !== undefined) {
-                    role = action.role;
-                    if (roleActions[role] === undefined) {
-                        roleActions[role] = [];
-                    } 
-                    roleActions[role].push(action);
-                }
-                actionReturnList.push(action);
-            }
-        }
-        if (shouldBlend) {
-            for (let i = 0; i < actionBlendList.length; i++) {
-                let actionBlend = actionBlendList[i];
-                console.log("A blend should happen!");
-                let blendAction = this.BlendActions(actionBlend, roleActions);
-                if (blendAction !== undefined) {
-                    if (blendAction.performance !== "") {
-                        let pdialogue = blendAction.performance;
-                        let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                        let dialogue = this.renderText(locutionData, 
-                            playerData, charData);
-                            blendAction.dialogue = dialogue;
-                            actionReturnList.push(blendAction);
-                    }
-                }
-            }
-        }
-        return actionReturnList;
-    }
- 
-
-    getPerformanceFromProcedure(action) {
-        if (action.procedure.length === 1) {
-            let procedure = action.procedure[0];
-            return action.performance[procedure];
-        }
-        let performanceList = [];
-        let procedure = action.procedure;
-        for (let i = 0; i < procedure.length; i++) {
-            console.log(procedure[i]);
-            let component = action.performance[procedure[i]]
-            performanceList.push(component);
-        }
-        let performance = performanceList.join(' ');
-        return performance;
-    }
-    BlendRoleActions(actionBlend, actions) {
+    blendRoleActions(actionBlend, actions) {
             console.log("in blend actions with the blend of ", actionBlend,
             "and the role actions of ", actions);
             let blend = actionBlend.blend;
@@ -269,9 +117,8 @@ class MIA {
         action.performance = performanceList.join(" ")
         return action;
     }
-
     //TODO: Please for the love of God, clean up this function.
-    BlendProcedureActions(actionBlend, actions) {
+    blendProcedureActions(actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend,
         "and the role actions of ", actions);
         let blend = actionBlend.blend;
@@ -300,71 +147,63 @@ class MIA {
         console.log("the procedure Mapping is", procedureMapping);
         //TODO: Need to have some kind of escape maybe?
     
-    let action = {
-        "name" : "blendedAction",
-        "role" : "Blend",
-        "conditions" : [],
-        "performance" : "",
-        "influenceRules" : [],
-        "effects" : [],
-        "dialogue" : ""
-    };
-    for (let i = 0; i < procedureList.length; i++) {
-        console.log("we are in the procedure loop!")
-        let procedureKey = procedureList[i];
-        let actionList = procedureMapping[procedureKey];
-        if (actionList === undefined) {
-            continue;
+        let action = {
+            "name" : "blendedAction",
+            "role" : "Blend",
+            "conditions" : [],
+            "performance" : "",
+            "influenceRules" : [],
+            "effects" : [],
+            "dialogue" : ""
+        };
+        for (let i = 0; i < procedureList.length; i++) {
+            console.log("we are in the procedure loop!")
+            let procedureKey = procedureList[i];
+            let actionList = procedureMapping[procedureKey];
+            if (actionList === undefined) {
+                continue;
+            }
+            let randIndex = Math.floor(Math.random() * Math.floor(actionList.length));
+            let actionToBlend = actionList[randIndex]; //TODO: make it better blend procedure
+            let performanceBlend = actionToBlend.performance[procedureKey];
+            console.log("The action to blend is!", actionToBlend);
+            let blendConditions = actionToBlend.conditions;
+            let blendRules = actionToBlend.influenceRules;
+            let blendEffects = actionToBlend.effects;
+            //TODO: here is where that work needs to happen.
+            for (let condition in blendConditions) {
+                action.conditions.push(blendConditions[condition]);
+            }
+            for (let rule in blendRules) {
+                action.influenceRules.push(blendRules[rule]);
+            }
+            for (let effect in blendEffects) {
+                action.effects.push(blendEffects[effect]);
+            }
+            performanceList.push(performanceBlend);
         }
-        let randIndex = Math.floor(Math.random() * Math.floor(actionList.length));
-        let actionToBlend = actionList[randIndex]; //TODO: make it better blend procedure
-        let performanceBlend = actionToBlend.performance[procedureKey];
-        console.log("The action to blend is!", actionToBlend);
-        let blendConditions = actionToBlend.conditions;
-        let blendRules = actionToBlend.influenceRules;
-        let blendEffects = actionToBlend.effects;
-        //TODO: here is where that work needs to happen.
-        for (let condition in blendConditions) {
-            action.conditions.push(blendConditions[condition]);
-        }
-        for (let rule in blendRules) {
-            action.influenceRules.push(blendRules[rule]);
-        }
-        for (let effect in blendEffects) {
-            action.effects.push(blendEffects[effect]);
-        }
-        performanceList.push(performanceBlend);
+        
+        action.performance = performanceList.join(" ");
+        console.log("The output for procedure blend is!", action);
+        return action;
     }
-    
-    action.performance = performanceList.join(" ");
-    console.log("The output for procedure blend is!", action);
-    return action;
-    }
-
-    BlendActions(actionBlend, actions) {
+    blendActions(actionBlend, actions) {
         let action : any;
         
         if (actionBlend.blendType === "role") {
-            action = this.BlendRoleActions(actionBlend, actions);
+            action = this.blendRoleActions(actionBlend, actions);
             console.log("The role blend was chosen!, and here is the" +
                 " output!", action);
         }
         if (actionBlend.blendType === "procedure") {
-            action = this.BlendProcedureActions(actionBlend, actions);
+            action = this.blendProcedureActions(actionBlend, actions);
             console.log("The procedure blend was chosen!, and here is the" +
                " output!", action);
         }
         return action;
         
     }
-
-    setActionEffects(action) {
-        for (let i = 0; i < action.effects.length; i++) {
-            this.cif.set(action.effects[i]);
-        }
-    }
-
-    getCharDialogue(talkingChar : string, listeningChar : string) {
+    generateCharDialogue(talkingChar : string, listeningChar : string) {
         let dialogue : string;
         this.addLabelToSFDB(talkingChar, "dialogue");
         
@@ -386,11 +225,8 @@ class MIA {
         
         this.setActionEffects(action);
         let time = this.cif.setupNextTimeStep();
-        debugger;
         return dialogue;
     }
-
-
     renderText(locutionData, talkingCharData, listeningCharData ) {
         let renderedTextList = [];
         let renderedText = "";
@@ -410,13 +246,11 @@ class MIA {
         renderedText = renderedTextList.join("");
         return renderedText;
     }
-
     getCharPhysicalAction(char : string) {
         console.log("fill out this function")
         debugger
     }
-
-    intentSelection(charVolition : object[], char: string, storedVolitions) {
+    selectIntents(charVolition : object[], char: string, storedVolitions) {
         let intents : object[];
         let rankedIntents : object;
         let intent : object;
@@ -447,12 +281,10 @@ class MIA {
             "intent" : intent
         };
     }
-
     //TODO maybe we don't need this functioon so we might want to remove it? 
     scoreIntents(charVolition : object[]) {
         return charVolition; 
     }
-
     rankIntents(intents : object[]) {
         let rankedIntents : object = {};
         for (let i = 0; i < intents.length; i++) {
@@ -464,7 +296,6 @@ class MIA {
         }
         return rankedIntents;
     }
-
     chooseIntent(rankedIntents : object) {
         let intent : object = {} 
         let maxWeight : number = 0;
@@ -506,13 +337,9 @@ class MIA {
     getIdentityAction() {
         
     }
-
-
-
     SelectIntent(identities : object) {
         return ["placeholder"];
     }
-
     setActions(cif) {
         let labels = cif.getSocialStructure()["SFDBLabelUndirected"];
         this.actionList = [];
@@ -520,12 +347,11 @@ class MIA {
             this.actionList.push(label);
         }
     }
-
-    setCiF(cif, identities : string[]) {
+    setCiF(cif, roles : string[]) {
         this.cif =  cif;
         this.cast = cif.getCharacters();
         this.setActions(cif);
-        this.allowedIdentities = identities;
+        this.allowedRoleClasses = roles;
     }
 
     setAUNLG(AUNLG) {
@@ -603,7 +429,155 @@ class MIA {
     updateTimeStep() {
         this.timeStep = this.cif.setupNextTimeStep();
     }
+getRoleTypes() {
+        return this.roleTypes;
+    }
+    setRoleTypes(roleTypes) {
+        this.roleTypes = roleTypes;
+    }
 
+    getRoleTypesValue(roleClasses) {
+        let roleKeys = mia.getRoleClasses();
+        let roleTypes = mia.getRoleTypes()
+        let playerRoles = {};
+        let formattedRoleTypeList = [];
+        for (let i = 0; i < roleKeys.length; i++) {
+            let roleKey = roleKeys[i];
+            if (roleClasses[roleKey]) {
+                let roleTypeList = roleTypes[roleKey];
+                let formattedRoleTypes = {};
+                for (let j = 0; j < roleTypeList.length; j++) {
+                    let roleType = roleTypeList[j];
+                    let formattedRole = {
+                        "roleType" : roleType,
+                        "value" : false
+                    }
+                    formattedRoleTypeList.push(formattedRole);
+                }
+                playerRoles[roleKey] = formattedRoleTypeList;
+            }
+        }
+        return playerRoles;
+    }
+    // Clean up this function THIS FUNC BROKE BAD. 
+    // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
+    // TODO: This should be a util function.
+    // I don't think I even use this for anything?
+    getCastActionsWithLabel(decisionType : string, environmentInfo : object) {
+        let castActions : object = {};
+        for (let i = 0; i < this.cast.length; i++) {
+            this.addLabelToSFDB(this.cast[i], decisionType);
+        }
+        let storedVolitions = this.cif.calculateVolition(this.cast);
+        let volitions : object[] = []
+        for (let i = 0; i < this.cast.length; i ++) {
+            let char : string = this.cast[i];
+            let action : object = {};
+            action = this.cif.getAction(char, char, storedVolitions, this.cast);
+         
+            castActions[char] = action;
+        }
+        // CIF gets volitions
+        // MIA picks the highest identity
+        //  if dialogue, NLG and MIA
+        //  if action use CIF
+        // identity and dialoguetype used together to NLG dialogue
+        return castActions;
+    }
+    /**
+     * This function should reflect all the player choices in a given 
+     * scene. This means a hierarchial approach of dialogue and physical 
+     * actions are needed here. 
+     * @param player The player character name 
+     * @param char The cast character the player is interacting with.
+     */
+    generatePlayerActions(player : string, char : string ) {
+        let roleActions = {};
+        let dialogueActions = {};
+        let physicalActions = {};
+        let procedureComponentActions = {};
+        let actionBlendList = [];
+        let playerActions : any[];
+        let actionReturnList = [];
+        let shouldBlend = false;
+        let actionType = "dialogue";
+        
+        let volitions = this.cif.calculateVolition(this.cast);
+        playerActions = this.cif.getActions(player, char, volitions, this.cast, 
+            5, 5, 5);
+
+    
+        let castData = this.cif.getCharactersWithMetadata();
+        let playerData = castData[player];
+        let charData = castData[char];
+        //This for loop is doing two things. 
+        // 1. Checking to see if a blend should happen from thee player actions.
+        // 2. Processing the dialogue text (I think this can be broken out into 
+        // a function.
+        for (let i = 0; i < playerActions.length; i++) {
+            
+            let action = playerActions[i];
+            // checking if should blend
+            if (action.type === "blend") {
+                shouldBlend = true;
+                actionBlendList.push(action);
+                continue;
+            }
+            if (actionType === "dialogue") {                
+                // parsing out the dialogue from action. 
+                // I feel like this should only happen if the action is for dialogue
+                let performance = this.getPerformanceFromProcedure(action);
+                let pdialogue = performance;
+                let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                let dialogue = this.renderText(locutionData, playerData, charData);
+                action.dialogue = dialogue;
+                let role = undefined;
+                if (action.role !== undefined) {
+                    role = action.role;
+                    if (roleActions[role] === undefined) {
+                        roleActions[role] = [];
+                    } 
+                    roleActions[role].push(action);
+                }
+                actionReturnList.push(action);
+            }
+        }
+        if (shouldBlend) {
+            for (let i = 0; i < actionBlendList.length; i++) {
+                let actionBlend = actionBlendList[i];
+                console.log("A blend should happen!");
+                let blendAction = this.blendActions(actionBlend, roleActions);
+                if (blendAction !== undefined) {
+                    if (blendAction.performance !== "") {
+                        let pdialogue = blendAction.performance;
+                        let locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                        let dialogue = this.renderText(locutionData, 
+                            playerData, charData);
+                            blendAction.dialogue = dialogue;
+                            actionReturnList.push(blendAction);
+                    }
+                }
+            }
+        }
+        return actionReturnList;
+    }
+ 
+
+    getPerformanceFromProcedure(action) {
+        if (action.procedure.length === 1) {
+            let procedure = action.procedure[0];
+            return action.performance[procedure];
+        }
+        let performanceList = [];
+        let procedure = action.procedure;
+        for (let i = 0; i < procedure.length; i++) {
+            console.log(procedure[i]);
+            let component = action.performance[procedure[i]]
+            performanceList.push(component);
+        }
+        let performance = performanceList.join(' ');
+        return performance;
+    }
     getplayerRoles() {
         let identities = {}
         let socialStructure = this.cif.getSocialStructure();
@@ -614,7 +588,11 @@ class MIA {
         }
         return identities;
     }
-
+    setActionEffects(action) {
+        for (let i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+    }
     getRoleClasses() {
         return this.roleClasses;
     }
@@ -623,15 +601,23 @@ class MIA {
     }
 
     setRoleDialogue(roleDialgue : object) {
-        this.roleDialgue = roleDialgue;
+        this.roleDialogue = roleDialgue;
     }
 
 
 
-    UpdatePlayer(name, roles) {
+    UpdatePlayer(gameData) {
+        let playerName = gameData.name;
         this.playerName = name;
-        console.log(name);
-        console.log(roles);
+        let role = {};
+        console.log(gameData);
+        role = {
+            "class" : "hero",
+            "type" : "chosen one",
+            "first" : "player",
+            "value" : 50
+        }
+        debugger;
     }
 }
 

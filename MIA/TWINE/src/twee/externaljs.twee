@@ -70,7 +70,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.roleTypeValue = {};        
         state.variables.roleDescription = mia.getroleDescriptions();
         state.variables.cast = cif.getCharacters();
-        state.variables.getCharDialogue = mia.getCharDialogue;
+        state.variables.generateCharDialogue = mia.generateCharDialogue;
         state.variables.playerRoles = [];
         state.variables.playerRoleTypes = {};
         state.variables.evaluateIdentities = mia.evaluateIdentities;

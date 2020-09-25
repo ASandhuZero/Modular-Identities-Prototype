@@ -438,7 +438,6 @@ module AUNLG {
                 var trimmed:string = (pToken.length > 1) ? trimType(pToken, "x") : undefined;
                 return new CharacterLocution(trimmed);
             } else {
-                debugger;
                 console.log("Unknown locution type: %s", pToken);
                 return undefined;
             }

@@ -102,7 +102,7 @@ var MIA = /** @class */ (function () {
         this.roleDescription = {};
         this.cif = {};
         this.cast = [];
-        this.allowedIdentities = [];
+        this.allowedRoleClasses = [];
         this.timeStep = 0;
         this.interface = {};
         this.roleTypes = {};
@@ -149,148 +149,7 @@ var MIA = /** @class */ (function () {
         };
         this.cif.set(actionToAdd);
     };
-    MIA.prototype.getRoleTypes = function () {
-        return this.roleTypes;
-    };
-    MIA.prototype.setRoleTypes = function (roleTypes) {
-        this.roleTypes = roleTypes;
-    };
-    MIA.prototype.getRoleTypesValue = function (roleClasses) {
-        var roleKeys = mia.getRoleClasses();
-        var roleTypes = mia.getRoleTypes();
-        var playerRoles = {};
-        var formattedRoleTypeList = [];
-        for (var i = 0; i < roleKeys.length; i++) {
-            var roleKey = roleKeys[i];
-            if (roleClasses[roleKey]) {
-                var roleTypeList = roleTypes[roleKey];
-                var formattedRoleTypes = {};
-                for (var j = 0; j < roleTypeList.length; j++) {
-                    var roleType = roleTypeList[j];
-                    var formattedRole = {
-                        "roleType": roleType,
-                        "value": false
-                    };
-                    formattedRoleTypeList.push(formattedRole);
-                }
-                playerRoles[roleKey] = formattedRoleTypeList;
-            }
-        }
-        return playerRoles;
-    };
-    // Clean up this function THIS FUNC BROKE BAD. 
-    // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
-    // TODO: This should be a util function.
-    // I don't think I even use this for anything?
-    MIA.prototype.getCastActionsWithLabel = function (decisionType, environmentInfo) {
-        var castActions = {};
-        for (var i = 0; i < this.cast.length; i++) {
-            this.addLabelToSFDB(this.cast[i], decisionType);
-        }
-        var storedVolitions = this.cif.calculateVolition(this.cast);
-        var volitions = [];
-        for (var i = 0; i < this.cast.length; i++) {
-            var char = this.cast[i];
-            var action = {};
-            action = this.cif.getAction(char, char, storedVolitions, this.cast);
-            castActions[char] = action;
-        }
-        // CIF gets volitions
-        // MIA picks the highest identity
-        //  if dialogue, NLG and MIA
-        //  if action use CIF
-        // identity and dialoguetype used together to NLG dialogue
-        return castActions;
-    };
-    /**
-     * This function should reflect all the player choices in a given
-     * scene. This means a hierarchial approach of dialogue and physical
-     * actions are needed here.
-     * @param player The player character name
-     * @param char The cast character the player is interacting with.
-     */
-    MIA.prototype.getPlayerCharacterInteractions = function (player, char) {
-        var roleActions = {};
-        var dialogueActions = {};
-        var physicalActions = {};
-        var procedureComponentActions = {};
-        var actionBlendList = [];
-        var playerActions;
-        var actionReturnList = [];
-        var shouldBlend = false;
-        var actionType = "dialogue";
-        // TODO: This shouldn't be done here.
-        // this.addLabelToSFDB(player, "dialogue");
-        var volitions = this.cif.calculateVolition(this.cast);
-        playerActions = this.cif.getActions(player, char, volitions, this.cast, 5, 5, 5);
-        var castData = this.cif.getCharactersWithMetadata();
-        var playerData = castData[player];
-        var charData = castData[char];
-        //This for loop is doing two things. 
-        // 1. Checking to see if a blend should happen from thee player actions.
-        // 2. Processing the dialogue text (I think this can be broken out into 
-        // a function.
-        for (var i = 0; i < playerActions.length; i++) {
-            var action = playerActions[i];
-            // checking if should blend
-            if (action.type === "blend") {
-                shouldBlend = true;
-                actionBlendList.push(action);
-                continue;
-            }
-            if (actionType === "dialogue") {
-                // parsing out the dialogue from action. 
-                // I feel like this should only happen if the action is for dialogue
-                var performance_1 = this.getPerformanceFromProcedure(action);
-                var pdialogue = performance_1;
-                var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                var dialogue = this.renderText(locutionData, playerData, charData);
-                action.dialogue = dialogue;
-                var role = undefined;
-                if (action.role !== undefined) {
-                    role = action.role;
-                    if (roleActions[role] === undefined) {
-                        roleActions[role] = [];
-                    }
-                    roleActions[role].push(action);
-                }
-                actionReturnList.push(action);
-            }
-        }
-        if (shouldBlend) {
-            for (var i = 0; i < actionBlendList.length; i++) {
-                var actionBlend = actionBlendList[i];
-                console.log("A blend should happen!");
-                var blendAction = this.BlendActions(actionBlend, roleActions);
-                if (blendAction !== undefined) {
-                    if (blendAction.performance !== "") {
-                        var pdialogue = blendAction.performance;
-                        var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
-                        var dialogue = this.renderText(locutionData, playerData, charData);
-                        blendAction.dialogue = dialogue;
-                        actionReturnList.push(blendAction);
-                    }
-                }
-            }
-        }
-        return actionReturnList;
-    };
-    MIA.prototype.getPerformanceFromProcedure = function (action) {
-        if (action.procedure.length === 1) {
-            var procedure_1 = action.procedure[0];
-            return action.performance[procedure_1];
-        }
-        var performanceList = [];
-        var procedure = action.procedure;
-        for (var i = 0; i < procedure.length; i++) {
-            console.log(procedure[i]);
-            var component = action.performance[procedure[i]];
-            performanceList.push(component);
-        }
-        var performance = performanceList.join(' ');
-        return performance;
-    };
-    MIA.prototype.BlendRoleActions = function (actionBlend, actions) {
+    MIA.prototype.blendRoleActions = function (actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend, "and the role actions of ", actions);
         var blend = actionBlend.blend;
         var roleList = blend.split(',');
@@ -336,7 +195,7 @@ var MIA = /** @class */ (function () {
         return action;
     };
     //TODO: Please for the love of God, clean up this function.
-    MIA.prototype.BlendProcedureActions = function (actionBlend, actions) {
+    MIA.prototype.blendProcedureActions = function (actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend, "and the role actions of ", actions);
         var blend = actionBlend.blend;
         var procedureList = blend.split(',');
@@ -402,26 +261,21 @@ var MIA = /** @class */ (function () {
         console.log("The output for procedure blend is!", action);
         return action;
     };
-    MIA.prototype.BlendActions = function (actionBlend, actions) {
+    MIA.prototype.blendActions = function (actionBlend, actions) {
         var action;
         if (actionBlend.blendType === "role") {
-            action = this.BlendRoleActions(actionBlend, actions);
+            action = this.blendRoleActions(actionBlend, actions);
             console.log("The role blend was chosen!, and here is the" +
                 " output!", action);
         }
         if (actionBlend.blendType === "procedure") {
-            action = this.BlendProcedureActions(actionBlend, actions);
+            action = this.blendProcedureActions(actionBlend, actions);
             console.log("The procedure blend was chosen!, and here is the" +
                 " output!", action);
         }
         return action;
     };
-    MIA.prototype.setActionEffects = function (action) {
-        for (var i = 0; i < action.effects.length; i++) {
-            this.cif.set(action.effects[i]);
-        }
-    };
-    MIA.prototype.getCharDialogue = function (talkingChar, listeningChar) {
+    MIA.prototype.generateCharDialogue = function (talkingChar, listeningChar) {
         var dialogue;
         this.addLabelToSFDB(talkingChar, "dialogue");
         var volitions = this.cif.calculateVolition(this.cast);
@@ -441,7 +295,6 @@ var MIA = /** @class */ (function () {
         dialogue = this.renderText(locutionData, talkingCharData, listeningCharData);
         this.setActionEffects(action);
         var time = this.cif.setupNextTimeStep();
-        debugger;
         return dialogue;
     };
     MIA.prototype.renderText = function (locutionData, talkingCharData, listeningCharData) {
@@ -468,7 +321,7 @@ var MIA = /** @class */ (function () {
         console.log("fill out this function");
         debugger;
     };
-    MIA.prototype.intentSelection = function (charVolition, char, storedVolitions) {
+    MIA.prototype.selectIntents = function (charVolition, char, storedVolitions) {
         var intents;
         var rankedIntents;
         var intent;
@@ -561,11 +414,11 @@ var MIA = /** @class */ (function () {
             this.actionList.push(label);
         }
     };
-    MIA.prototype.setCiF = function (cif, identities) {
+    MIA.prototype.setCiF = function (cif, roles) {
         this.cif = cif;
         this.cast = cif.getCharacters();
         this.setActions(cif);
-        this.allowedIdentities = identities;
+        this.allowedRoleClasses = roles;
     };
     MIA.prototype.setAUNLG = function (AUNLG) {
         this.AUNLG = AUNLG;
@@ -635,6 +488,145 @@ var MIA = /** @class */ (function () {
     MIA.prototype.updateTimeStep = function () {
         this.timeStep = this.cif.setupNextTimeStep();
     };
+    MIA.prototype.getRoleTypes = function () {
+        return this.roleTypes;
+    };
+    MIA.prototype.setRoleTypes = function (roleTypes) {
+        this.roleTypes = roleTypes;
+    };
+    MIA.prototype.getRoleTypesValue = function (roleClasses) {
+        var roleKeys = mia.getRoleClasses();
+        var roleTypes = mia.getRoleTypes();
+        var playerRoles = {};
+        var formattedRoleTypeList = [];
+        for (var i = 0; i < roleKeys.length; i++) {
+            var roleKey = roleKeys[i];
+            if (roleClasses[roleKey]) {
+                var roleTypeList = roleTypes[roleKey];
+                var formattedRoleTypes = {};
+                for (var j = 0; j < roleTypeList.length; j++) {
+                    var roleType = roleTypeList[j];
+                    var formattedRole = {
+                        "roleType": roleType,
+                        "value": false
+                    };
+                    formattedRoleTypeList.push(formattedRole);
+                }
+                playerRoles[roleKey] = formattedRoleTypeList;
+            }
+        }
+        return playerRoles;
+    };
+    // Clean up this function THIS FUNC BROKE BAD. 
+    // TODO: CLEAN UP THIS OIL SPILL OF A FUNCTION
+    // TODO: This should be a util function.
+    // I don't think I even use this for anything?
+    MIA.prototype.getCastActionsWithLabel = function (decisionType, environmentInfo) {
+        var castActions = {};
+        for (var i = 0; i < this.cast.length; i++) {
+            this.addLabelToSFDB(this.cast[i], decisionType);
+        }
+        var storedVolitions = this.cif.calculateVolition(this.cast);
+        var volitions = [];
+        for (var i = 0; i < this.cast.length; i++) {
+            var char = this.cast[i];
+            var action = {};
+            action = this.cif.getAction(char, char, storedVolitions, this.cast);
+            castActions[char] = action;
+        }
+        // CIF gets volitions
+        // MIA picks the highest identity
+        //  if dialogue, NLG and MIA
+        //  if action use CIF
+        // identity and dialoguetype used together to NLG dialogue
+        return castActions;
+    };
+    /**
+     * This function should reflect all the player choices in a given
+     * scene. This means a hierarchial approach of dialogue and physical
+     * actions are needed here.
+     * @param player The player character name
+     * @param char The cast character the player is interacting with.
+     */
+    MIA.prototype.generatePlayerActions = function (player, char) {
+        var roleActions = {};
+        var dialogueActions = {};
+        var physicalActions = {};
+        var procedureComponentActions = {};
+        var actionBlendList = [];
+        var playerActions;
+        var actionReturnList = [];
+        var shouldBlend = false;
+        var actionType = "dialogue";
+        var volitions = this.cif.calculateVolition(this.cast);
+        playerActions = this.cif.getActions(player, char, volitions, this.cast, 5, 5, 5);
+        var castData = this.cif.getCharactersWithMetadata();
+        var playerData = castData[player];
+        var charData = castData[char];
+        //This for loop is doing two things. 
+        // 1. Checking to see if a blend should happen from thee player actions.
+        // 2. Processing the dialogue text (I think this can be broken out into 
+        // a function.
+        for (var i = 0; i < playerActions.length; i++) {
+            var action = playerActions[i];
+            // checking if should blend
+            if (action.type === "blend") {
+                shouldBlend = true;
+                actionBlendList.push(action);
+                continue;
+            }
+            if (actionType === "dialogue") {
+                // parsing out the dialogue from action. 
+                // I feel like this should only happen if the action is for dialogue
+                var performance_1 = this.getPerformanceFromProcedure(action);
+                var pdialogue = performance_1;
+                var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                var dialogue = this.renderText(locutionData, playerData, charData);
+                action.dialogue = dialogue;
+                var role = undefined;
+                if (action.role !== undefined) {
+                    role = action.role;
+                    if (roleActions[role] === undefined) {
+                        roleActions[role] = [];
+                    }
+                    roleActions[role].push(action);
+                }
+                actionReturnList.push(action);
+            }
+        }
+        if (shouldBlend) {
+            for (var i = 0; i < actionBlendList.length; i++) {
+                var actionBlend = actionBlendList[i];
+                console.log("A blend should happen!");
+                var blendAction = this.blendActions(actionBlend, roleActions);
+                if (blendAction !== undefined) {
+                    if (blendAction.performance !== "") {
+                        var pdialogue = blendAction.performance;
+                        var locutionData = this.AUNLG.preprocessDialogue(pdialogue);
+                        var dialogue = this.renderText(locutionData, playerData, charData);
+                        blendAction.dialogue = dialogue;
+                        actionReturnList.push(blendAction);
+                    }
+                }
+            }
+        }
+        return actionReturnList;
+    };
+    MIA.prototype.getPerformanceFromProcedure = function (action) {
+        if (action.procedure.length === 1) {
+            var procedure_1 = action.procedure[0];
+            return action.performance[procedure_1];
+        }
+        var performanceList = [];
+        var procedure = action.procedure;
+        for (var i = 0; i < procedure.length; i++) {
+            console.log(procedure[i]);
+            var component = action.performance[procedure[i]];
+            performanceList.push(component);
+        }
+        var performance = performanceList.join(' ');
+        return performance;
+    };
     MIA.prototype.getplayerRoles = function () {
         var identities = {};
         var socialStructure = this.cif.getSocialStructure();
@@ -645,6 +637,11 @@ var MIA = /** @class */ (function () {
         }
         return identities;
     };
+    MIA.prototype.setActionEffects = function (action) {
+        for (var i = 0; i < action.effects.length; i++) {
+            this.cif.set(action.effects[i]);
+        }
+    };
     MIA.prototype.getRoleClasses = function () {
         return this.roleClasses;
     };
@@ -652,12 +649,20 @@ var MIA = /** @class */ (function () {
         this.roleClasses = identities;
     };
     MIA.prototype.setRoleDialogue = function (roleDialgue) {
-        this.roleDialgue = roleDialgue;
+        this.roleDialogue = roleDialgue;
     };
-    MIA.prototype.UpdatePlayer = function (name, roles) {
+    MIA.prototype.UpdatePlayer = function (gameData) {
+        var playerName = gameData.name;
         this.playerName = name;
-        console.log(name);
-        console.log(roles);
+        var role = {};
+        console.log(gameData);
+        role = {
+            "class": "hero",
+            "type": "chosen one",
+            "first": "player",
+            "value": 50
+        };
+        debugger;
     };
     return MIA;
 }());
@@ -792,7 +797,7 @@ document.addEventListener('allLoaded', function(e) {
         state.variables.roleTypeValue = {};        
         state.variables.roleDescription = mia.getroleDescriptions();
         state.variables.cast = cif.getCharacters();
-        state.variables.getCharDialogue = mia.getCharDialogue;
+        state.variables.generateCharDialogue = mia.generateCharDialogue;
         state.variables.playerRoles = [];
         state.variables.playerRoleTypes = {};
         state.variables.evaluateIdentities = mia.evaluateIdentities;
@@ -846,9 +851,9 @@ $("head").append(newScript);
 
 
 //TODO: Change these from function callbacks to just functions that are saved</script><tw-tag name="bar" color="green"></tw-tag><tw-tag name="foo" color="red"></tw-tag><tw-tag name="qaz" color="blue"></tw-tag><tw-passagedata pid="1" name="Character Editor" tags="" position="225,100" size="100,100">name: &lt;&lt;textbox &quot;$name&quot; $name&gt;&gt;
-&lt;&lt;for _name, _val range $roleValue&gt;&gt;
-	&lt;&lt;set _index = _name&gt;&gt;
-	&lt;&lt;capture _index&gt;&gt;
+&lt;&lt;for _name, _val range $roleValue&gt;&gt;\
+	&lt;&lt;set _index = _name&gt;&gt;\
+	&lt;&lt;capture _index&gt;&gt;\
 	_index &lt;label&gt;&lt;&lt;checkbox &quot;$roleValue[_index]&quot; false true&gt;&gt;&lt;/label&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
@@ -859,30 +864,33 @@ Your name is $name and you appear to be both &lt;&lt;print _pros&gt;&gt; and &lt
 
 What would you like to do?
 who would you like to talk to?
-[[Role Editor]]</tw-passagedata><tw-passagedata pid="2" name="Role Editor" tags="" position="225,100" size="100,100">&lt;&lt;script&gt;&gt;
+[[Role Editor]] 
+[[dialogue experiment with the blacksmith | Blacksmith dialogue]]
+[[physical experiment with the drill instructor | Drill instructor interaction]]
+[[Internal experiment with the psychic | Psychic interaction]]</tw-passagedata><tw-passagedata pid="2" name="Role Editor" tags="" position="225,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
 console.log(state.variables, &quot;here are the variables&quot;);
 state.variables.playerRoleTypes = {};
 &lt;&lt;/script&gt;&gt;
-
-&lt;&lt;for _name, _val range $roleValue&gt;&gt;
-	&lt;&lt;set _index = _name&gt;&gt;
-	&lt;&lt;capture _index&gt;&gt;
-	&lt;&lt;if _val&gt;&gt;
-		&lt;&lt;for _roleType, _value range $playerRoles[_name]&gt;&gt;
-			&lt;&lt;capture _value&gt;&gt;
-			_name, _value.roleType &lt;label&gt;
+/* hello */
+&lt;&lt;for _name, _val range $roleValue&gt;&gt;\
+	&lt;&lt;set _index = _name&gt;&gt;\
+	&lt;&lt;capture _index&gt;&gt;\
+	&lt;&lt;if _val&gt;&gt;\
+		&lt;&lt;for _roleType, _value range $playerRoles[_name]&gt;&gt;\
+			&lt;&lt;capture _value&gt;&gt;\
+			_name, _value.roleType &lt;label&gt;\
 			&lt;&lt;checkbox &quot;$playerRoleTypes[_value.roleType]&quot; false true&gt;&gt;
 			&lt;/label&gt; 
-			&lt;&lt;/capture&gt;&gt;
-		&lt;&lt;/for&gt;&gt;
-	&lt;&lt;/if&gt;&gt;
-	&lt;&lt;/capture&gt;&gt;
-&lt;&lt;/for&gt;&gt;
+			&lt;&lt;/capture&gt;&gt;\
+		&lt;&lt;/for&gt;&gt;\
+	&lt;&lt;/if&gt;&gt;\
+	&lt;&lt;/capture&gt;&gt;\
+&lt;&lt;/for&gt;&gt;\
 Make sure the playerRoles is locking down to the right place.
 [[character output]]</tw-passagedata><tw-passagedata pid="3" name="character output" tags="" position="350,100" size="100,100">&lt;&lt;script&gt;&gt;
 console.log(state.variables, &quot;here are the variables&quot;);
-mia.UpdatePlayer(state.variables.name, state.variables.playerRoleTypes);
+mia.UpdatePlayer(state.variables);
 &lt;&lt;/script&gt;&gt;
 This page should be a landing page to try things out
 
@@ -897,8 +905,8 @@ if (state.variables.playerAction !== undefined) {
 	state.variables.playerAction = undefined;
 }
 
-state.variables.dialogue = mia.getCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
-state.variables.playerActions = mia.getPlayerCharacterInteractions(&quot;player&quot;, &quot;blacksmith&quot;);
+state.variables.dialogue = mia.generateCharDialogue(&quot;blacksmith&quot;, &quot;player&quot;);
+state.variables.playerActions = mia.generatePlayerActions(&quot;player&quot;, &quot;blacksmith&quot;);
 console.log(state.variables);
 &lt;&lt;/script&gt;&gt;
 
@@ -909,16 +917,17 @@ Output: Reject leads to &quot;eh then why even mention you&#39;re a blacksmith?&
 		Accept lead to a new weapon forged.	&quot;Now ain&#39;t that a beauty?	&quot;
 
 Blacksmith : $dialogue
-&lt;&lt;for _index, _val range $playerActions&gt;&gt;
-	&lt;&lt;capture _index&gt;&gt;
-	&lt;&lt;set _action = $playerActions[_index]&gt;&gt;
+
+&lt;&lt;for _index, _val range $playerActions&gt;&gt;\
+	&lt;&lt;capture _index&gt;&gt;\
+	&lt;&lt;set _action = $playerActions[_index]&gt;&gt;\
 	_val.role &lt;label&gt;&lt;&lt;radiobutton &quot;$playerAction&quot; _action&gt;&gt; _val.dialogue&lt;/label&gt;
 &lt;&lt;/capture&gt;&gt;
-&lt;&lt;/for&gt;&gt;
+&lt;&lt;/for&gt;&gt;\
 
 &lt;&lt;button [[Keep talking to the blacksmith | Blacksmith dialogue]]&gt;&gt; &lt;&lt;/button&gt;&gt;
 [[Talk to the silversmith | Silversmith dialogue]]</tw-passagedata><tw-passagedata pid="6" name="Silversmith dialogue" tags="" position="725,100" size="100,100">&lt;&lt;script&gt;&gt;
-state.variables.getCharDialogue(&quot;silversmith&quot;);
+state.variables.generateCharDialogue(&quot;silversmith&quot;);
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="physical" tags="" position="850,100" size="100,100">&lt;&lt;script&gt;&gt;
 state.variables.getCharPhsyicalAction(&quot;blacksmith&quot;);
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Drill instructor interaction" tags="" position="975,100" size="100,100">THIS IS A TEST PAGE FOR THE PHYSICAL ACTION PROCESSING</tw-passagedata><tw-passagedata pid="9" name="Psychic interaction" tags="" position="1100,100" size="100,100">THIS IS A TEST PAGE FOR THE INTERNAL ACTION PROCESSING</tw-passagedata><tw-passagedata pid="10" name="Start" tags="" position="1225,100" size="100,100">Go to character editor first.
