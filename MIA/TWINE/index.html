@@ -513,6 +513,7 @@ var MIA = /** @class */ (function () {
                     formattedRoleTypeList.push(formattedRole);
                 }
                 playerRoles[roleKey] = formattedRoleTypeList;
+                formattedRoleTypeList = [];
             }
         }
         return playerRoles;
@@ -872,7 +873,6 @@ state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
 console.log(state.variables, &quot;here are the variables&quot;);
 state.variables.playerRoleTypes = {};
 &lt;&lt;/script&gt;&gt;
-/* hello */
 &lt;&lt;for _name, _val range $roleValue&gt;&gt;\
 	&lt;&lt;set _index = _name&gt;&gt;\
 	&lt;&lt;capture _index&gt;&gt;\

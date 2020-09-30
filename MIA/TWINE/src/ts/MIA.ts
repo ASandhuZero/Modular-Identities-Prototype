@@ -429,7 +429,7 @@ class MIA {
     updateTimeStep() {
         this.timeStep = this.cif.setupNextTimeStep();
     }
-getRoleTypes() {
+    getRoleTypes() {
         return this.roleTypes;
     }
     setRoleTypes(roleTypes) {
@@ -455,6 +455,7 @@ getRoleTypes() {
                     formattedRoleTypeList.push(formattedRole);
                 }
                 playerRoles[roleKey] = formattedRoleTypeList;
+                formattedRoleTypeList = [];
             }
         }
         return playerRoles;

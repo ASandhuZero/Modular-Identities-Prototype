@@ -26,7 +26,6 @@ state.variables.playerRoles = mia.getRoleTypesValue(state.variables.roleValue)
 console.log(state.variables, "here are the variables");
 state.variables.playerRoleTypes = {};
 <</script>>
-/* hello */
 <<for _name, _val range $roleValue>>\
 	<<set _index = _name>>\
 	<<capture _index>>\
