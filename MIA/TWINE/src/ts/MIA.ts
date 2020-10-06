@@ -73,8 +73,7 @@ class MIA {
     blendRoleActions(actionBlend, actions) {
             console.log("in blend actions with the blend of ", actionBlend,
             "and the role actions of ", actions);
-            let blend = actionBlend.blend;
-            let roleList = blend.split(',');
+            let roleList = actionBlend.blend;
             let performanceList = [];
             for (let i = 0; i < roleList.length; i++) {
             let role = roleList[i];
@@ -121,8 +120,7 @@ class MIA {
     blendProcedureActions(actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend,
         "and the role actions of ", actions);
-        let blend = actionBlend.blend;
-        let procedureList = blend.split(',');
+        let procedureList = actionBlend.blend;
         let performanceList = [];
         let procedureMapping = {}
         //TODO: Make function to put the action data in as the procedure as key 

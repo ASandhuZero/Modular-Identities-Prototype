@@ -13,11 +13,20 @@ state.variables.playerActions = mia.generatePlayerActions("player", "blacksmith"
 console.log(state.variables);
 <</script>>
 
-Ideal output : "So you do a little bit of smithing eh? Want to smith something?"
-Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
-Story snippet : If reject, then nothing. If accept, then (ACTION)
-Output: Reject leads to "eh then why even mention you're a blacksmith?"
-		Accept lead to a new weapon forged.	"Now ain't that a beauty?	"
+Ideal output is below
+BS Action: Introduces self.
+Player Action: 
+	[OPTIONS]
+	BS introduction -> BS dialogue 
+	CO introduction -> CO dialogue
+BS Action: "So you do a little bit of smithing eh? Want to smith something?"
+Player Action: reject offer (DIALOGUE), accept offer (DIALOGUE)
+	REJECT -> then nothing. 
+	ACCEPT -> then (ACTION)
+BS Action: 
+	if REJECT -> "then why did you mention you're a blacksmith?"
+	if ACCEPT -> A NEW *ITEM* HAS BEEN MADE 
+	"Now ain't that a beauty?"
 
 Blacksmith : $dialogue
 

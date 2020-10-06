@@ -14,7 +14,7 @@
                     "value" : 5
                 }
             ],
-            "blend" : "chosen one,blacksmith",
+            "blend" : ["chosen one", "blacksmith"],
             "influenceRules" : [],
             "effects" : []
         },
@@ -31,7 +31,7 @@
                     "value" : 5
                 }
             ],
-            "blend" : "greeting,remark,remark,question",
+            "blend" : ["greeting", "remark", "question"],
             "influenceRules" : [],
             "effects" : []
         }    

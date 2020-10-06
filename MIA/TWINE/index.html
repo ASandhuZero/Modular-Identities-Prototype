@@ -151,8 +151,7 @@ var MIA = /** @class */ (function () {
     };
     MIA.prototype.blendRoleActions = function (actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend, "and the role actions of ", actions);
-        var blend = actionBlend.blend;
-        var roleList = blend.split(',');
+        var roleList = actionBlend.blend;
         var performanceList = [];
         for (var i = 0; i < roleList.length; i++) {
             var role = roleList[i];
@@ -197,8 +196,7 @@ var MIA = /** @class */ (function () {
     //TODO: Please for the love of God, clean up this function.
     MIA.prototype.blendProcedureActions = function (actionBlend, actions) {
         console.log("in blend actions with the blend of ", actionBlend, "and the role actions of ", actions);
-        var blend = actionBlend.blend;
-        var procedureList = blend.split(',');
+        var procedureList = actionBlend.blend;
         var performanceList = [];
         var procedureMapping = {};
         //TODO: Make function to put the action data in as the procedure as key 
@@ -910,11 +908,20 @@ state.variables.playerActions = mia.generatePlayerActions(&quot;player&quot;, &q
 console.log(state.variables);
 &lt;&lt;/script&gt;&gt;
 
-Ideal output : &quot;So you do a little bit of smithing eh? Want to smith something?&quot;
-Story snippet : reject offer (DIALOGUE), accept offer (DIALOGUE)
-Story snippet : If reject, then nothing. If accept, then (ACTION)
-Output: Reject leads to &quot;eh then why even mention you&#39;re a blacksmith?&quot;
-		Accept lead to a new weapon forged.	&quot;Now ain&#39;t that a beauty?	&quot;
+Ideal output is below
+BS Action: Introduces self.
+Player Action: 
+	[OPTIONS]
+	BS introduction -&gt; BS dialogue 
+	CO introduction -&gt; CO dialogue
+BS Action: &quot;So you do a little bit of smithing eh? Want to smith something?&quot;
+Player Action: reject offer (DIALOGUE), accept offer (DIALOGUE)
+	REJECT -&gt; then nothing. 
+	ACCEPT -&gt; then (ACTION)
+BS Action: 
+	if REJECT -&gt; &quot;then why did you mention you&#39;re a blacksmith?&quot;
+	if ACCEPT -&gt; A NEW *ITEM* HAS BEEN MADE 
+	&quot;Now ain&#39;t that a beauty?&quot;
 
 Blacksmith : $dialogue
 
