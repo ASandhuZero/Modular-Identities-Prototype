@@ -5,7 +5,6 @@
 		{
 			"name" : "BLACKSMITH_DIALOGUE",
 			"root" : true,
-			""
 			"conditions" : [
 				{
 				"class" : "intents",

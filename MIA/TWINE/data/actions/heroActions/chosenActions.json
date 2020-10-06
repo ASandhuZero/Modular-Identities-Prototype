@@ -19,7 +19,8 @@
 				}
 			],
 			"influenceRules" : [],
-			"leadsTo" : ["chosen_dialogue_1", "chosen_dialogue_2", "chosen_role_blend", "chosen_action_blend"]
+			"leadsTo" : ["chosen_dialogue_1", "chosen_dialogue_2", 
+						"chosen_role_blend", "chosen_action_blend"]
 		},
 		{
 			"name" : "chosen_dialogue_1",
